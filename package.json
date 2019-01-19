@@ -1,5 +1,5 @@
 {
-  "name": "mern",
+  "name": "schedulize",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,7 +9,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
+    "install": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
@@ -17,7 +17,6 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "eslint": "^5.12.0",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
