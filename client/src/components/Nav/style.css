@@ -1,0 +1,18 @@
+.nav {
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+    padding-top: 10px;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+}
+
+.calendar, .address, .map, .logout {
+    display: inline-block;
+    padding: 10px;
+}
