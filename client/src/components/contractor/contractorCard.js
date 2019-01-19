@@ -1,29 +1,41 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import AddIcon from "@material-ui/icons/Add";
+import { green, white } from "@material-ui/core/colors";
 import {
+  Button,
   Card,
   CardHeader,
   CardContent,
-  Button,
+  Checkbox,
   Input,
   TextField,
   Select,
   MenuItem,
   InputLabel,
   FormControl,
-  Grid
+  FormControlLabel,
+  Grid,
+  Fab,
+  Icon
 } from "@material-ui/core";
 
 const styles = {
+  root: {
+    color: green[600],
+    "&$checked": {
+      color: green[500]
+    }
+  },
+  checked: {},
   card: {
-    // minWidth: 300,
-    // minHeight: 200
+    minWidth: 300,
+    minHeight: 200
     // justifyContent: "center",
   },
   cardHeader: {
-    background: "#4caf50",
-    color: "white"
+    background: `#4caf50`,
+    color: white
   },
   cardContent: {
     width: "100%"
@@ -35,16 +47,21 @@ const styles = {
     display: "flex"
     // alignItems: "center"
     // justifyContent: "center"
+  },
+  fab: {
+    display: "flex"
+    // justifyContent:
   }
 };
 
 class ContractorCard extends React.Component {
   state = {
     age: "",
-    open: false
+    open: false,
+    checked: ""
   };
 
-  handleChange = event => {
+  handleChange = name => event => {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -67,14 +84,14 @@ class ContractorCard extends React.Component {
           <CardContent>
             <Grid container>
               <form className={classes.input} autoComplete="off">
-                <Grid item>
+                <Grid item lg={12}>
                   <Input
                     id="contractorFirstName"
                     placeholder="First Name"
                     className={classes.input}
                   />
                 </Grid>
-                <Grid item>
+                <Grid item lg={12}>
                   <Input
                     id="contractorLastName"
                     placeholder="Last Name"
@@ -140,7 +157,62 @@ class ContractorCard extends React.Component {
                     margin="normal"
                   />
                 </Grid>
-                <Button />
+                <Grid item>
+                  <Input
+                    id="contractorLocation"
+                    placeholder="Location Name"
+                    className={classes.input}
+                  />
+                </Grid>
+                <Grid item>
+                  <Input
+                    id="contractorAdress"
+                    placeholder="Adress 2"
+                    className={classes.input}
+                  />
+                </Grid>
+                <Grid item>
+                  <Input
+                    id="contractorCity"
+                    placeholder="City"
+                    className={classes.input}
+                  />
+                </Grid>
+                <Grid item>
+                  <Input
+                    id="contractorState"
+                    placeholder="State/Province"
+                    className={classes.input}
+                  />
+                </Grid>
+                <Grid item>
+                  <Input
+                    id="contractorPostalCode"
+                    placeholder="Postal Code"
+                    className={classes.input}
+                  />
+                </Grid> 
+                <Grid item>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.state.checkedG}
+                        onChange={this.handleChange("checkedG")}
+                        value="checkedG"
+                        classes={{
+                          root: classes.root,
+                          checked: classes.checked
+                        }}
+                      />
+                    }
+                    label="W-9"
+                  />
+                </Grid>
+                <Grid item>
+                  <Fab color="primary" aria-label="Add" className={classes.fab}>
+                    <AddIcon />
+                  </Fab>
+                </Grid>
               </form>
             </Grid>
           </CardContent>
