@@ -34,7 +34,6 @@ function AddressForm() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id="appt_type"
             name="appt_type"
             label="Appointment Type"
