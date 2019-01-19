@@ -7,27 +7,16 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Checkbox,
   Input,
   TextField,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  FormControlLabel,
   Grid,
   Fab,
   Icon
 } from "@material-ui/core";
+import Standing from "./form/Standing";
+import W9CheckBox from "./form/W9CheckBox";
 
 const styles = {
-  root: {
-    color: green[600],
-    "&$checked": {
-      color: green[500]
-    }
-  },
-  checked: {},
   card: {
     minWidth: 300,
     minHeight: 200
@@ -56,15 +45,12 @@ const styles = {
 
 class ContractorCard extends React.Component {
   state = {
-    age: "",
-    open: false,
-    checked: ""
+    checked: "",
+    name: ""
   };
 
   handleChange = name => event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+    this.setState({ [name]: event.target.checked });
   };
 
   handleClose = () => {
@@ -115,29 +101,7 @@ class ContractorCard extends React.Component {
                 </Grid>
                 <br />
                 <Grid>
-                  <FormControl className={classes.input}>
-                    <InputLabel htmlFor="demo-controlled-open-select">
-                      Standing
-                    </InputLabel>
-                    <Select
-                      open={this.state.open}
-                      onClose={this.handleClose}
-                      onOpen={this.handleOpen}
-                      value={this.state.age}
-                      onChange={this.handleChange}
-                      inputProps={{
-                        name: "age",
-                        id: "demo-controlled-open-select"
-                      }}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <Standing />
                 </Grid>
                 <Grid item>
                   <Input
@@ -191,22 +155,9 @@ class ContractorCard extends React.Component {
                     placeholder="Postal Code"
                     className={classes.input}
                   />
-                </Grid> 
+                </Grid>
                 <Grid item>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={this.state.checkedG}
-                        onChange={this.handleChange("checkedG")}
-                        value="checkedG"
-                        classes={{
-                          root: classes.root,
-                          checked: classes.checked
-                        }}
-                      />
-                    }
-                    label="W-9"
-                  />
+                  <W9CheckBox />
                 </Grid>
                 <Grid item>
                   <Fab color="primary" aria-label="Add" className={classes.fab}>
