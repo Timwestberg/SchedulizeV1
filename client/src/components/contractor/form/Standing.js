@@ -22,19 +22,11 @@ class Standing extends React.Component {
     age: "",
     open: false
   };
-
+  
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-  
   render() {
     const { classes } = this.props;
     return (
