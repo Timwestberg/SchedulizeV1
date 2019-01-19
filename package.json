@@ -27,6 +27,9 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "morgan": "^1.9.1",
-    "eslint": "^4.19.1"
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "prettier": "^1.13.7"
   }
 }
