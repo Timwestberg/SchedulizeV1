@@ -1,4 +1,5 @@
 module.exports = {
   Client: require("./Client"),
-  Contractor: require("./Contractor")
+  Contractor: require("./Contractor"),
+  Appointment: require("./Appointment")
 };
