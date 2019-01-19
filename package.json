@@ -11,7 +11,9 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "test": "npm run lint",
+    "lint": "eslint **/*.js --quiet"
   },
   "author": "",
   "license": "ISC",
