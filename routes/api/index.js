@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const clientRoutes = require("./schedulize");
-const apptRoutes = required("./schedulize")
+const apptRoutes = require("./schedulize")
 const contractorRoutes = require("./schedulize");
 
 // Book routes
