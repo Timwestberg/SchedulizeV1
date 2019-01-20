@@ -11,7 +11,7 @@ li a {
     color: black;
 }
 
-.calendar, .address, .map, .logout {
+.calendar, .address, .map, .forms, .logout {
     display: inline-block;
 }
 
