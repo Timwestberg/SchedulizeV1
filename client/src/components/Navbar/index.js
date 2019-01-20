@@ -3,8 +3,8 @@ import "./style.css";
 
 function Navbar() {
   return (
-    <div className="topnav">
-  <a çhref="/">Home</a>
+  <div className="topnav">
+  <a href="/">Home</a>
   <a href="/calendar">Calendar</a>
   <a href="/addressbook">Address Book</a>
   <a href="/map">Map</a>
