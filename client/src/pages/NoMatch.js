@@ -1,10 +1,10 @@
 import React from "react";
-import Nav from "../components/Nav";
+import Navbar from "../components/Navbar";
 
 function NoMatch() {
   return (
       <div>
-          <Nav/>
+          <Navbar/>
           <h1>404 Page Not Found</h1>
       </div>
   )

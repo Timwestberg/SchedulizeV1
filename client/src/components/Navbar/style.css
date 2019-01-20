@@ -8,9 +8,13 @@ ul {
 
 li a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .calendar, .address, .map, .logout {
     display: inline-block;
+}
+
+.address, .map, .forms, .logout {
+    padding-left: 50px;
 }

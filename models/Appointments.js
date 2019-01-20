@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const apptSchema = new Schema({
+
+    
     //date apointment is put into db
     date_input: {
         type: Date,
@@ -15,11 +17,18 @@ const apptSchema = new Schema({
         trim: true
     },
     //name of appt booker --- required
-    booker_name: {
-        type: String,
-        required: true,
-        trim: true
-    },
+    booker_name: [{
+        first: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        lastname: {
+            type: String,
+            required: true,
+            trim: true
+        }
+    }],
     //phone number of booker
     booker_num: {
         type: Number,
@@ -28,11 +37,18 @@ const apptSchema = new Schema({
     },
     billing: [{
         contactPerson: [{
-            name: {
-                type: String,
-                required: true,
-                trim: true
-            },
+            name: [{
+                first: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+                lastname: {
+                    type: String,
+                    required: true,
+                    trim: true
+                }
+            }],
             phone: {
                 type: Number,
                 required: true,
@@ -97,11 +113,18 @@ const apptSchema = new Schema({
         }]
     }],
     //who appt is for --- required
-    appt_name: {
-        type: String,
-        required: true,
-        trim: true
-    },
+    appt_name: [{
+        first: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        lastname: {
+            type: String,
+            required: true,
+            trim: true
+        }
+    }],
     //Type of appt 
     appt_type: {
         type: String,
@@ -162,8 +185,14 @@ const apptSchema = new Schema({
     }], //location end
     //contractor covering 
     contractor: [{
-        name: {
+        first: {
             type: String,
+            required: true,
+            trim: true
+        },
+        lastname: {
+            type: String,
+            required: true,
             trim: true
         },
         phone: {
