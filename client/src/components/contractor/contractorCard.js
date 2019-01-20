@@ -64,111 +64,109 @@ class ContractorCard extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.hCenter}>
-        <Card className={classes.card}>
-          <CardHeader title="Contractor" className={classes.cardHeader} />
-          <CardContent>
-            <Grid container>
-              <form className={classes.input} autoComplete="off">
-                <Grid item lg={12}>
-                  <Input
-                    id="contractorFirstName"
-                    placeholder="First Name"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item lg={12}>
-                  <Input
-                    id="contractorLastName"
-                    placeholder="Last Name"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorPhone"
-                    placeholder="Phone Number"
-                    type="tel"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorEmail"
-                    placeholder="Email"
-                    className={classes.input}
-                  />
-                </Grid>
-                <br />
-                <Grid>
-                  <Standing />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorPricing"
-                    placeholder="Pricing"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid>
-                  <TextField
-                    id="standard-multiline-flexible"
-                    label="Notes"
-                    multiline
-                    rowsMax="4"
-                    value={this.state.multiline}
-                    className={classes.textField}
-                    margin="normal"
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorLocation"
-                    placeholder="Location Name"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorAdress"
-                    placeholder="Adress 2"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorCity"
-                    placeholder="City"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorState"
-                    placeholder="State/Province"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <Input
-                    id="contractorPostalCode"
-                    placeholder="Postal Code"
-                    className={classes.input}
-                  />
-                </Grid>
-                <Grid item>
-                  <W9CheckBox />
-                </Grid>
-                <Grid item>
-                  <Fab color="primary" aria-label="Add" className={classes.fab}>
-                    <AddIcon />
-                  </Fab>
-                </Grid>
-              </form>
-            </Grid>
-          </CardContent>
-        </Card>
-      </div>
+      <Card className={classes.card}>
+        <CardHeader title="Contractor" className={classes.cardHeader} />
+        <CardContent>
+          <Grid container>
+            <form className={classes.input} autoComplete="off">
+              <Grid item lg={12}>
+                <Input
+                  id="contractorFirstName"
+                  placeholder="First Name"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item lg={12}>
+                <Input
+                  id="contractorLastName"
+                  placeholder="Last Name"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorPhone"
+                  placeholder="Phone Number"
+                  type="tel"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorEmail"
+                  placeholder="Email"
+                  className={classes.input}
+                />
+              </Grid>
+              <br />
+              <Grid>
+                <Standing />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorPricing"
+                  placeholder="Pricing"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid>
+                <TextField
+                  id="standard-multiline-flexible"
+                  label="Notes"
+                  multiline
+                  rowsMax="4"
+                  value={this.state.multiline}
+                  className={classes.input}
+                  margin="normal"
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorLocation"
+                  placeholder="Location Name"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorAdress"
+                  placeholder="Adress 2"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorCity"
+                  placeholder="City"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorState"
+                  placeholder="State/Province"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <Input
+                  id="contractorPostalCode"
+                  placeholder="Postal Code"
+                  className={classes.input}
+                />
+              </Grid>
+              <Grid item>
+                <W9CheckBox />
+              </Grid>
+              <Grid item>
+                <Fab color="primary" aria-label="Add" className={classes.fab}>
+                  <AddIcon />
+                </Fab>
+              </Grid>
+            </form>
+          </Grid>
+        </CardContent>
+      </Card>
     );
   }
 }

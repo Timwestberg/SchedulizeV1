@@ -1,20 +1,13 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { green, white } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
 const styles = {
   input: {
     minWidth: "100%"
-  },
-  root: {
-    color: green[600],
-    "&$checked": {
-      color: green[500]
-    }
-  },
-  checked: {}
+  }
 };
 
 class Standing extends React.Component {
@@ -22,9 +15,17 @@ class Standing extends React.Component {
     age: "",
     open: false
   };
-  
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
   };
 
   render() {
@@ -46,9 +47,10 @@ class Standing extends React.Component {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={1}>Good-Preferred </MenuItem>
+          <MenuItem value={2}>Good</MenuItem>
+          <MenuItem value={3}>Bad</MenuItem>
+          <MenuItem value={4}>Issues</MenuItem>
         </Select>
       </FormControl>
     );
