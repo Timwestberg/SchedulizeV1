@@ -1,25 +1,3 @@
-.nav {
-    overflow: hidden;
-}
-
-ul {
-    list-style-type: none;
-    display: inline-block;
-}
-
-li a {
-    text-decoration: none;
-    color: black;
-}
-
-.calendar, .address, .map, .forms, .logout {
-    display: inline-block;
-}
-
-.address, .map, .forms, .logout {
-    padding-left: 50px;
-}
-
 .topnav {
     overflow: hidden;
     background-color: #e9e9e9;
