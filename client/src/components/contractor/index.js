@@ -7,7 +7,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Input,
   TextField,
   Grid,
   Fab,
@@ -29,7 +28,10 @@ const styles = {
   cardContent: {
     width: "100%"
   },
-  input: {
+  form: {
+    minWidth: "100%"
+  },
+  TextField: {
     minWidth: "100%"
   },
   hCenter: {
@@ -45,12 +47,11 @@ const styles = {
 
 class ContractorCard extends React.Component {
   state = {
-    checked: "",
     name: ""
   };
 
   handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
+    this.setState({ [name]: event.target.value });
   };
 
   handleClose = () => {
@@ -67,104 +68,135 @@ class ContractorCard extends React.Component {
       <Card className={classes.card}>
         <CardHeader title="Contractor" className={classes.cardHeader} />
         <CardContent>
-          <Grid container>
-            <form className={classes.input} autoComplete="off">
-              <Grid item lg={12}>
-                <Input
+          <form className={classes.form} autoComplete="off">
+            <Grid container>
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorFirstName"
                   placeholder="First Name"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="First Name"
+                  value=""
                 />
               </Grid>
-              <Grid item lg={12}>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorLastName"
                   placeholder="Last Name"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="LastName"
+                  value=""
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorPhone"
                   placeholder="Phone Number"
                   type="tel"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="Phone #"
+                  value=""
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorEmail"
                   placeholder="Email"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="Email"
+                  value=""
                 />
               </Grid>
-              <br />
-              <Grid>
+              <Grid item sm={12} md={12} lg={12}>
                 <Standing />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorPricing"
                   placeholder="Pricing"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="Pricing"
+                  value=""
                 />
               </Grid>
-              <Grid>
+              <Grid item sm={12} md={12} lg={12}>
                 <TextField
-                  id="standard-multiline-flexible"
+                  id="contractorNotes"
                   label="Notes"
                   multiline
-                  rowsMax="4"
+                  rowsMax="4 md={12} lg={12}"
                   value={this.state.multiline}
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  value=""
                   margin="normal"
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorLocation"
-                  placeholder="Location Name"
-                  className={classes.input}
+                  placeholder="Location"
+                  className={classes.TextField}
+                  fullWidth
+                  label="Location"
+                  value=""
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorAdress"
                   placeholder="Adress 2"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="Adress 2"
+                  value=""
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorCity"
                   placeholder="City"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="City"
+                  value=""
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorState"
                   placeholder="State/Province"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="State/Province"
+                  value=""
                 />
               </Grid>
-              <Grid item>
-                <Input
+              <Grid item sm={12} md={12} lg={12}>
+                <TextField
                   id="contractorPostalCode"
                   placeholder="Postal Code"
-                  className={classes.input}
+                  className={classes.TextField}
+                  fullWidth
+                  label="Postal Code"
+                  value=""
                 />
               </Grid>
-              <Grid item>
+              <Grid item sm={12} md={12} lg={12}>
                 <W9CheckBox />
               </Grid>
-              <Grid item>
+              <Grid item sm={12} md={12} lg={12}>
                 <Fab color="primary" aria-label="Add" className={classes.fab}>
                   <AddIcon />
                 </Fab>
               </Grid>
-            </form>
-          </Grid>
+            </Grid>
+          </form>
         </CardContent>
       </Card>
     );
