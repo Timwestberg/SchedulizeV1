@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-import AddressCard from "../components/AddressCard";
-import AddressSearch from "../components/AddressSearch";
+import ClientCard from "../components/ClientCard";
 import API from "../utils/API";
-
 
 
 class Address extends Component {
@@ -12,6 +10,7 @@ class Address extends Component {
         name: "",
         phone: "",
         email: "",
+        clientType: [],
         contactName: "",
         contactPhone: "",
         contactEmail: "",
@@ -65,37 +64,31 @@ class Address extends Component {
         //deleting client from API
     }
 
+    handleChange = name => event => {
+        this.setState({
+          [name]: event.target.value,
+        });
+      };
+
     render() {
         return (
             <div>
             <Navbar/>
-            <AddressSearch/>
-            <AddressCard/>
+            <br></br>
+            <ClientCard/>
             {this.state.clients.map(client => (
-                <AddressCard
-                  removeClient={this.removeClient}
-                  id={client.id}
-                  name={client.name} 
-                  phone={client.phone}
-                  email={client.email}
-                  contactName={client.contactName}
-                  contactPhone={client.contactPhone}
-                  contactEmail={client.contactEmail}
-                  contactPosition={client.contactPosition}
-                  ctName={client.ctName}
-                  ctEmail={client.ctEmail}
-                  ctPosition={client.ctPosition}
-                  locationName={client.locationName}
-                  streetNumber={client.streetNumber}
-                  streetName={client.streetName}
-                  cityName={client.cityName}
-                  state={client.state}
-                  zipCode={client.zipCode}                  
-                />
+            <ClientCard 
+            name={client.name}
+            />
             ))}
             </div>
         )
-    };
+
+
+
+
+    }
 }
 
-export default Address;
+
+    export default Address;
