@@ -1,22 +1,18 @@
-import React, {
-  Component
-} from 'react';
-import Appointmentform from "./components/AppointmentForm"
-import ContractorCard from "./components/contractor/contractorCard"
-import ApptCard from "./components/ApptCard"
-import './App.css';
+import React, { Component } from "react";
+import Appointmentform from "./components/AppointmentForm";
+import ContractorCard from "./components/contractor";
+import ApptCard from "./components/Appointments/ApptCard";
+import "./App.css";
 
 class App extends Component {
   render() {
-    return ( <
-      div className = "App" >
-      <Appointmentform / >
+    return (
+      <div className="App">
+        <Appointmentform />
 
-      <ContractorCard />
+        <ContractorCard />
 
-      <ApptCard />
-
-
+        <ApptCard />
       </div>
     );
   }
