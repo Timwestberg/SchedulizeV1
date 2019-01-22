@@ -97,6 +97,7 @@ class ClientCard extends React.Component {
 
     return (
       <div className={classes.root}>
+      <Grid container item xs={12}>
         <Card className={classes.card}>
           <CardContent>
             <AppBar position="static">
@@ -108,7 +109,7 @@ class ClientCard extends React.Component {
               </Toolbar>
             </AppBar>
             <form className={classes.container} noValidate autoComplete="off">
-              <Grid container spacing={8}>
+              <Grid container spacing={16}>
                 <Grid item xs={2}>
                   <TextField
                     id="outlined-name"
@@ -241,7 +242,6 @@ class ClientCard extends React.Component {
                     ))}
                   </TextField>
                 </Grid>
-                {/* </Grid> */}
                 <Grid item xs={4}>
                   <TextField
                     id="outlined-multiline-flexible"
@@ -328,6 +328,7 @@ class ClientCard extends React.Component {
             </form>
           </CardContent>
         </Card>
+        </Grid>
       </div>
     )
   }
