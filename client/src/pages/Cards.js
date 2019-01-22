@@ -1,7 +1,7 @@
 import React, {
     Component
   } from 'react';
-  import Appointmentform from "../components/AppointmentForm"
+  import Appointmentform from "../components/NewAppointmentForm/NewAppointment"
   import ContractorCard from "../components/contractor/contractorCard"
   import ApptCard from "../components/ApptCard"
   import Navbar from "../components/Navbar"
