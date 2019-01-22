@@ -14,6 +14,8 @@ import {
   Icon
 } from "@material-ui/core";
 import Type from "./form/Type";
+import DateTime from "./form/Date&TimePicker";
+import Date from "./form/DatePicker";
 
 const styles = {
   card: {
@@ -68,6 +70,22 @@ class NewAppointmentCard extends React.Component {
         <CardContent>
           <Grid container>
             <form className={classes.input} autoComplete="off">
+
+            {/* Date the appointment was called in to be assigned */}
+            <Grid item lg={12}>
+
+                <Date />
+
+              </Grid>
+
+              {/* Date the assignment will be taking place on */}
+
+
+               <Grid item lg={12}>
+
+                <DateTime />
+
+              </Grid>
 
             {/* Who will is assigning the assignment */}
               <Grid item lg={12}>
@@ -270,7 +288,7 @@ class NewAppointmentCard extends React.Component {
                 </Fab>
               </Grid>
 
-              
+
             </form>
           </Grid>
         </CardContent>
