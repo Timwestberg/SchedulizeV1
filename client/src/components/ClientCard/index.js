@@ -201,7 +201,6 @@ class ClientCard extends React.Component {
                     defaultValue="Location Name"
                     // fullWidth
                     className={classes.textField}
-                    helperText="Some important text"
                     margin="normal"
                     variant="outlined"
                   />
@@ -213,7 +212,6 @@ class ClientCard extends React.Component {
                     defaultValue="Street Address"
                     // fullWidth
                     className={classes.textField}
-                    helperText="Some important text"
                     margin="normal"
                     variant="outlined"
                   />
@@ -264,7 +262,6 @@ class ClientCard extends React.Component {
                     label="City"
                     defaultValue="City"
                     className={classes.textField}
-                    helperText="Some important text"
                     margin="normal"
                     variant="outlined"
                   />
@@ -275,7 +272,6 @@ class ClientCard extends React.Component {
                     label="State/Province"
                     defaultValue="State/Province"
                     className={classes.textField}
-                    helperText="Some important text"
                     margin="normal"
                     variant="outlined"
                   />
@@ -292,7 +288,6 @@ class ClientCard extends React.Component {
                       label="Postal / Zip Code"
                       defaultValue="Zip Code"
                       className={classes.textField}
-                      helperText="Some important text"
                       margin="normal"
                       variant="outlined"
                     />
