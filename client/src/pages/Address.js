@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import ClientCard from "../components/ClientCard";
+import ContractorCard from "../components/ContractorCard";
 import API from "../utils/API";
 
 
@@ -74,6 +75,8 @@ class Address extends Component {
         return (
             <div>
             <Navbar/>
+            <br></br>
+            <ContractorCard/>
             <br></br>
             <ClientCard/>
             {this.state.clients.map(client => (
