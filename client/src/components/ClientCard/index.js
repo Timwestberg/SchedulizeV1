@@ -107,7 +107,7 @@ class ClientCard extends React.Component {
                   <AppBar position="static" className={classes.cardHeader}>
                       <Toolbar>
                           <Typography variant="h6" color="inherit" className={classes.grow}>
-                              Contractor Contact Card
+                              Client Contact Card
                                 </Typography>
                           <Button color="inherit">Edit</Button>
                       </Toolbar>
