@@ -13,8 +13,13 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import { white } from "@material-ui/core/colors";
 
 const styles = theme => ({
+    cardHeader: {
+        background: `#4caf50`,
+        color: white
+      },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -78,7 +83,7 @@ const contractorStand = [
     },
 ];
 
-class ContractorCard extends React.Component {
+class ContractCard extends React.Component {
 
     state = {
         contractorStand: "",
@@ -98,10 +103,10 @@ class ContractorCard extends React.Component {
             <div>
                 <Card className={classes.card}>
                     <CardContent>
-                        <AppBar position="static">
+                        <AppBar position="static" className={classes.cardHeader}>
                             <Toolbar>
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
-                                    Contractor Card
+                                    Contractor Contact Card
                                       </Typography>
                                 <Button color="inherit">Edit</Button>
                             </Toolbar>
@@ -330,8 +335,8 @@ class ContractorCard extends React.Component {
 };
 
 
-ContractorCard.propTypes = {
+ContractCard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContractorCard);
+export default withStyles(styles)(ContractCard);

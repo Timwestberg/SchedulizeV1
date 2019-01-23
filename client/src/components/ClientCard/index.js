@@ -13,9 +13,14 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import { white } from "@material-ui/core/colors";
 
 
 const styles = theme => ({
+  cardHeader: {
+    background: `#4caf50`,
+    color: white
+  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -100,7 +105,7 @@ class ClientCard extends React.Component {
       <Grid container item xs={12}>
         <Card className={classes.card}>
           <CardContent>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.cardHeader}>
               <Toolbar>
                 <Typography variant="h6" color="inherit" className={classes.grow}>
                   Client Card

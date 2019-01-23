@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import ClientCard from "../components/ClientCard";
-import ContractorCard from "../components/ContractorCard";
+import ContractCard from "../components/ContractCard";
 import API from "../utils/API";
 
 
@@ -76,7 +76,7 @@ class Address extends Component {
             <div>
             <Navbar/>
             <br></br>
-            <ContractorCard/>
+            <ContractCard/>
             <br></br>
             <ClientCard/>
             {this.state.clients.map(client => (
