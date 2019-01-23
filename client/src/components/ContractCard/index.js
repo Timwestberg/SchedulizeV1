@@ -193,6 +193,7 @@ class ContractCard extends React.Component {
                                             </MenuItem>
                                         ))}
                                     </TextField>
+                                    <W9CheckBox />
                                 </Grid>
                                 <Grid item xs={4}>
                                     <TextField
@@ -328,7 +329,6 @@ class ContractCard extends React.Component {
                                 </Grid>
                             </Grid>
                         </form>
-                        <W9CheckBox />
                     </CardContent>
                 </Card>
             </div>
