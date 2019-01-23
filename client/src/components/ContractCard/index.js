@@ -196,8 +196,8 @@ class ContractCard extends React.Component {
                                 <Grid item xs={4}>
                                     <TextField
                                         id="outlined-full-width"
-                                        label="Company/Client Name"
-                                        placeholder="Company/Client Name"
+                                        label="Type of Certifcation / Numbers"
+                                        placeholder="Type of Certifcation / Numbers"
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
@@ -207,8 +207,8 @@ class ContractCard extends React.Component {
                                     />
                                     <TextField
                                         id="outlined-full-width"
-                                        label="Position"
-                                        placeholder="Position"
+                                        label="Pricing"
+                                        placeholder="Pricing"
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
