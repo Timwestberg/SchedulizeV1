@@ -2,8 +2,8 @@ import React, {
     Component
   } from 'react';
   import Appointmentform from "../components/AppointmentForm"
-  import ContractorCard from "../components/contractor/contractorCard"
-  import ApptCard from "../components/ApptCard"
+  import ContractorCard from "../components/contractor"
+  import ApptCard from "../components/Appointments/ApptCard"
   import Navbar from "../components/Navbar"
   // import './App.css';
   
