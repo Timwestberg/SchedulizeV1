@@ -14,12 +14,13 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { white } from "@material-ui/core/colors";
+import W9CheckBox from "../contractor/form/W9CheckBox";
 
 const styles = theme => ({
     cardHeader: {
         background: `#4caf50`,
         color: white
-      },
+    },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -132,7 +133,7 @@ class ContractCard extends React.Component {
                                             value={this.props.name}
                                             margin="normal"
                                             variant="outlined"
-                                            // fullWidth
+                                        // fullWidth
                                         />
                                         <Grid item xs>
                                             <TextField
@@ -327,6 +328,7 @@ class ContractCard extends React.Component {
                                 </Grid>
                             </Grid>
                         </form>
+                        <W9CheckBox />
                     </CardContent>
                 </Card>
             </div>
