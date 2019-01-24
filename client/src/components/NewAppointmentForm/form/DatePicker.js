@@ -1,41 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React, { PureComponent } from 'react';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { TimePicker } from 'material-ui-pickers';
+import { DatePicker } from 'material-ui-pickers';
+import { DateTimePicker } from 'material-ui-pickers';
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-});
+export default class App extends PureComponent {
+  state = {
+    selectedDate: new Date(),
+  };
 
-function DatePickers(props) {
-  const { classes } = props;
+  handleDateChange = date => {
+    this.setState({ selectedDate: date });
+  };
 
-  return (
-    <form className={classes.container} noValidate>
-      <TextField
-        id="date"
-        label="Date assignment is being taken"
-        type="date"
-        defaultValue="Current date"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-    </form>
-  );
+  render() {
+    const { selectedDate } = this.state;
+
+    return (
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <DatePicker
+                    label="Date Assigned"
+                    // helperText="Select Date"
+                    showTodayButton
+                    variant="outlined"
+                     value={selectedDate} 
+                     onChange={this.handleDateChange} 
+                    />
+      </MuiPickersUtilsProvider>
+    );
+  }
 }
-
-DatePickers.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(DatePickers);

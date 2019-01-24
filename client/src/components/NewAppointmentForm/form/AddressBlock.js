@@ -41,13 +41,14 @@ class addressBlock extends React.Component {
     const { classes } = this.props;
     return (
 
-          <Grid container>
+      <Grid container item xs={12}>
             <form className={classes.input} autoComplete="off">
+            <Grid container spacing={16}>
 
 
 
             {/* Assignment location information */}
-            <Grid item xs={2}>
+            <Grid item xs={12}>
                   <TextField
                     id="outlined-helperText"
                     label="Location Name"
@@ -56,7 +57,8 @@ class addressBlock extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={2}>
+
+                <Grid item xs={6}>
                   <TextField
                     id="outlined-helperText"
                     label="Street Address"
@@ -67,7 +69,7 @@ class addressBlock extends React.Component {
                 </Grid>
                
                
-                <Grid item xs={2}>
+                <Grid item xs={6}>
                   <TextField
                     id="outlined-helperText"
                     label="City"
@@ -76,7 +78,7 @@ class addressBlock extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={6}>
                   <TextField
                     id="outlined-helperText"
                     label="State/Province"
@@ -85,7 +87,7 @@ class addressBlock extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={6}>
 
                     <TextField
                       id="outlined-helperText"
@@ -99,7 +101,7 @@ class addressBlock extends React.Component {
 
 
 
-
+                </Grid>
             </form>
           </Grid>
     )

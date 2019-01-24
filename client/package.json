@@ -9,7 +9,7 @@
     "@material-ui/icons": "^3.0.2",
     "autocomplete-js": "^2.7.1",
     "axios": "^0.18.0",
-    "date-fns": "latest",
+    "date-fns": "^2.0.0-alpha.25",
     "google-maps-react": "^2.0.2",
     "hover.css": "^2.3.2",
     "material-ui-pickers": "^2.1.1",

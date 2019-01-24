@@ -1,21 +1,11 @@
-import 'date-fns';
-import React from 'react';
-import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import DateFnsUtils from 'date-fns';
-import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
+import React, { PureComponent } from 'react';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { DateTimePicker } from 'material-ui-pickers';
 
-const styles = {
-  grid: {
-    width: '60%',
-  },
-};
-
-class MaterialUIPickers extends React.Component {
+export default class DateTime extends PureComponent {
   state = {
-    // The first commit of Material-UI
-    selectedDate: new Date('2014-08-18T21:11:54'),
+    selectedDate: new Date(),
   };
 
   handleDateChange = date => {
@@ -23,32 +13,19 @@ class MaterialUIPickers extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { selectedDate } = this.state;
 
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container className={classes.grid} justify="space-around">
-          <DatePicker
-            margin="normal"
-            label="Date picker"
-            value={selectedDate}
-            onChange={this.handleDateChange}
-          />
-          <TimePicker
-            margin="normal"
-            label="Time picker"
-            value={selectedDate}
-            onChange={this.handleDateChange}
-          />
-        </Grid>
+        <DateTimePicker
+                    label="Date of Appointment"
+                    keyboard
+                    showTodayButton
+                    variant="outlined"
+                     value={selectedDate} 
+                     onChange={this.handleDateChange} 
+                    />
       </MuiPickersUtilsProvider>
     );
   }
 }
-
-MaterialUIPickers.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(MaterialUIPickers);

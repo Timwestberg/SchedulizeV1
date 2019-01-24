@@ -7,12 +7,13 @@ import React, {
   import Navbar from "../components/Navbar"
   import NewAppoointmentForm from "../components/NewAppointmentForm/NewAppointment"
   // import './App.css';
-  
+  import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
   class Cards extends Component {
     render() {
       return ( 
-        <
-        div className = "App" >
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <div className = "App" >
         <Navbar/>
         <Appointmentform />
   
@@ -22,6 +23,8 @@ import React, {
   
   
         </div>
+
+        </MuiPickersUtilsProvider>
       );
     }
   }
