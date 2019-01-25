@@ -6,7 +6,6 @@ import React, {
   // import ApptCard from "../components/ApptCard"
   import Navbar from "../components/Navbar"
   import NewAppoointmentForm from "../components/NewAppointmentForm/NewAppointment"
-  import ClientForm from "../components/ClientForm/index";
   // import './App.css';
   import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
@@ -22,7 +21,6 @@ import { MuiPickersUtilsProvider } from 'material-ui-pickers';
   
         <NewAppoointmentForm />
   
-        <ClientForm />
   
         </div>
 

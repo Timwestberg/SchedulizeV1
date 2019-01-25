@@ -25,13 +25,6 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "morgan": "^1.9.1",
-    "prettier": "^1.13.7",
-    "bcryptjs": "^2.4.3",
-    "connect-flash": "^0.1.1",
-    "ejs": "^2.6.1",
-    "express-ejs-layouts": "^2.5.0",
-    "express-session": "^1.15.6",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "prettier": "^1.13.7"
   }
 }
