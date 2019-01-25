@@ -1,11 +1,7 @@
 const router = require("express").Router();
-const clientRoutes = require("./schedulize");
-const apptRoutes = require("./schedulize")
-const contractorRoutes = require("./schedulize");
+const bookRoutes = require("./schedulize");
 
 // Book routes
-router.use("/clients", clientRoutes);
-router.use("/appointments", apptRoutes);
-router.use("/contractors", contractorRoutes);
+router.use("/books", bookRoutes);
 
 module.exports = router;
