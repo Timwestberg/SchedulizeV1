@@ -14,6 +14,11 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import ClientName from "./form/ClientName";
+import Addressblock from "./form/AddressBlock";
+import Email from './form/Email';
+import PhoneNumber from './form/PhoneNumber';
+import Header from './form/formheader';
+
 
 
 const styles = theme => ({
@@ -118,19 +123,11 @@ class ClientCard extends React.Component {
                 </Grid>
 
                 <Grid item xs={4}>
-                  <TextField
-                    id="outlined-full-width"
-                    label="Company/Client Name"
-                    placeholder="Company/Client Name"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
+
+      <ClientName />
+
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={9} align="center">
                   <TextField
                     id="outlined-read-only-input"
                     defaultValue="Billing Information"
@@ -143,31 +140,12 @@ class ClientCard extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={2}>
-                  <TextField
-                    id="outlined-number"
-                    label="Phone Number"
-                    value="555-555-5555"
-                    type="Phone Number"
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    margin="normal"
-                    variant="outlined"
-                  />
+                <Grid item xs={6}>
+   
+                    <Addressblock />
                 </Grid>
                 <Grid item xs={2}>
-                  <TextField
-                    id="outlined-email-input"
-                    label="Email"
-                    className={classes.textField}
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    margin="normal"
-                    variant="outlined"
-                  />
+                    <Email />
                 </Grid>
                 <Grid item xs={4}>
                   <TextField
@@ -182,28 +160,7 @@ class ClientCard extends React.Component {
                     }}
                   />
                 </Grid>
-                <Grid item xs={2}>
-                  <TextField
-                    id="outlined-helperText"
-                    label="Location Name"
-                    defaultValue="Location Name"
-                    // fullWidth
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={2}>
-                  <TextField
-                    id="outlined-helperText"
-                    label="Street Address"
-                    defaultValue="Street Address"
-                    // fullWidth
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </Grid>
+               
                 <Grid item xs={4}>
                   <TextField
                     select
@@ -243,74 +200,8 @@ class ClientCard extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={2}>
-                  <TextField
-                    id="outlined-helperText"
-                    label="City"
-                    defaultValue="City"
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={2}>
-                  <TextField
-                    id="outlined-helperText"
-                    label="State/Province"
-                    defaultValue="State/Province"
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs>
-                  <Grid
-                    container
-                    direction="row-reverse"
-                    justify="flex-start"
-                    alignItems="baseline"
-                  >
-                    <TextField
-                      id="outlined-helperText"
-                      label="Postal / Zip Code"
-                      defaultValue="Zip Code"
-                      className={classes.textField}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid>
-                </Grid>
-                <Grid item xs={2}>
-                  <Grid
-                    container
-                    direction="row-reverse"
-                    justify="flex-start"
-                    alignItems="baseline"
-                  >
-                    <TextField
-                      id="outlined-select-currency"
-                      select
-                      label="Country"
-                      className={classes.textField}
-                      value={this.state.country}
-                      onChange={this.handleChange('country')}
-                      SelectProps={{
-                        MenuProps: {
-                          className: classes.menu,
-                        },
-                      }}
-                      helperText="Please select your country"
-                      margin="normal"
-                      variant="outlined"
-                    >
-                      {countries.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.value}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </Grid>
-                </Grid>
+            
+              
               </Grid>
             </form>
           </CardContent>

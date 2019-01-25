@@ -35,9 +35,6 @@ mongoose
   .catch(err => console.log(err));
 
 
-const db = mongoose.connect;
-
-
 // Express session
 app.use(
   session({
