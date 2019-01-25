@@ -78,10 +78,10 @@ const contractorSchema = new Schema({
       maxlength: 5,
     }
   }],
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  // date: {
+  //   type: Date,
+  //   default: Date.now
+  // }
 });
 
 const Contractor = mongoose.model("Contractor", contractorSchema);

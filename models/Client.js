@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ClientSchema = new Schema({
+const clientSchema = new Schema({
+  //company name
   name: {
     type: String,
     required: true,
@@ -128,6 +129,6 @@ const ClientSchema = new Schema({
   }]
 });
 
-const Client = mongoose.model("Client", ClientSchema);
+const Client = mongoose.model("Client", clientSchema);
 
 module.exports = Client;

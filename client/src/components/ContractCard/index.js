@@ -130,7 +130,7 @@ class ContractCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.props.name}
+                                            value={this.props.ConFirstName}
                                             margin="normal"
                                             variant="outlined"
                                         // fullWidth
@@ -140,7 +140,7 @@ class ContractCard extends React.Component {
                                                 id="outlined-name"
                                                 label="Last Name"
                                                 className={classes.textField}
-                                                value={this.props.name}
+                                                value={this.props.ConLastName}
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
@@ -150,7 +150,7 @@ class ContractCard extends React.Component {
                                     <TextField
                                         id="outlined-number"
                                         label="Phone Number"
-                                        value="555-555-5555"
+                                        value={this.props.ConPhone}
                                         type="Phone Number"
                                         className={classes.textField}
                                         InputLabelProps={{
@@ -169,6 +169,7 @@ class ContractCard extends React.Component {
                                         autoComplete="email"
                                         margin="normal"
                                         variant="outlined"
+                                        value={this.props.conEmail}
                                     />
                                     <TextField
                                         select
@@ -176,7 +177,7 @@ class ContractCard extends React.Component {
                                         label="Contractor Standing"
                                         className={classes.textField}
                                         fullWidth
-                                        value={this.state.contractorStand}
+                                        value={this.state.conStand}
                                         onChange={this.handleChange('contractorStand')}
                                         SelectProps={{
                                             MenuProps: {
@@ -200,6 +201,7 @@ class ContractCard extends React.Component {
                                         id="outlined-full-width"
                                         label="Type of Certifcation / Numbers"
                                         placeholder="Type of Certifcation / Numbers"
+                                        value={this.state.conCert}
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
@@ -211,6 +213,7 @@ class ContractCard extends React.Component {
                                         id="outlined-full-width"
                                         label="Pricing"
                                         placeholder="Pricing"
+                                        value={this.props.conPrice}
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
@@ -250,6 +253,7 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
+                                        value={this.props.conLocationName}
                                     />
                                     <TextField
                                         id="outlined-helperText"
@@ -259,6 +263,7 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
+                                        value={this.props.conStreetNumber + " " + this.props.conStreetName}
                                     />
                                     <Grid
                                         container
@@ -273,6 +278,7 @@ class ContractCard extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
+                                            value={this.props.conCity}
                                         />
                                         <Grid item xs>
                                             <TextField
@@ -283,6 +289,7 @@ class ContractCard extends React.Component {
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
+                                                value={this.props.conState}
                                             />
                                         </Grid>
                                     </Grid>
@@ -299,6 +306,7 @@ class ContractCard extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
+                                            value={this.props.conZipCode}
                                         />
                                         <Grid item xs>
                                             <TextField

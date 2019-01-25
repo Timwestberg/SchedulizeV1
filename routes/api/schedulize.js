@@ -5,7 +5,7 @@ const appointmentsController = require("../../controllers/appointmentsController
 
 
 // Matches with "/api/books"
-router.route("/")
+router.route("/api")
   .get(clientsController.findAll)
   .post(clientsController.create);
 

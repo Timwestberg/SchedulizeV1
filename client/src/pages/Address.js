@@ -8,9 +8,9 @@ import API from "../utils/API";
 class Address extends Component {
     state = {
         clients: [],
-        name: "",
-        phone: "",
-        email: "",
+        clientName: "",
+        clientPhone: "",
+        clientEmail: "",
         clientType: [],
         contactName: "",
         contactPhone: "",
@@ -19,12 +19,12 @@ class Address extends Component {
         ctName: "",
         ctEmail: "",
         ctPosition: "",
-        locationName: "",
-        streetName: "",
-        streetName: "",
-        cityName: "",
-        state: "",
-        zipCode: ""
+        clientLocationName: "",
+        clientStreetNunmber: "",
+        clientStreetName: "",
+        clientCity: "",
+        clientState: "",
+        clientZipCode: ""
     };
     
     componentDidMount() {
@@ -36,9 +36,9 @@ class Address extends Component {
           .then(res =>
             this.setState({ 
                 clients: res.data, 
-                name: "",
-                phone: "",
-                email: "",
+                clientName: "",
+                clientPhone: "",
+                clientEmail: "",
                 contactName: "",
                 contactPhone: "",
                 contactEmail: "",
@@ -46,12 +46,12 @@ class Address extends Component {
                 ctName: "",
                 ctEmail: "",
                 ctPosition: "",
-                locationName: "",
-                streetName: "",
-                streetName: "",
-                cityName: "",
-                state: "",
-                zipCode: ""
+                clientLocationName: "",
+                clientStreetNumber: "",
+                clientStreetName: "",
+                clientCity: "",
+                clientState: "",
+                clientZipCode: ""
             })
             )
             .catch(err => console.log(err));
@@ -78,10 +78,23 @@ class Address extends Component {
             <br></br>
             <ContractCard/>
             <br></br>
-            <ClientCard/>
+            <ClientCard
+            clientName="Tony"
+            clientPhone="555-555-5555"
+            clientEmail="schedulized@gmail.com"
+            clientType="investigation"
+            clientStreetNumber="10228"
+            clientStreetName="Keoki"
+            />
             {this.state.clients.map(client => (
             <ClientCard 
-            name={client.name}
+            clientPhone={client.clientPhone}
+            clientEmail={client.clientEmail}
+            clientStreetNumber={client.clientStreetNumber}
+            clientStreetName={client.clientStreetName}
+            clientCity={client.clientCity}
+            clientState={client.clientState}
+            clientZipCode={client.clientZipCode}
             />
             ))}
             </div>
