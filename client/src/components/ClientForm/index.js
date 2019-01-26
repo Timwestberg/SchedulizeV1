@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import ClientName from "./form/ClientName";
+import PhoneNumber from "./form/PhoneNumber";
 
 
 const styles = theme => ({
@@ -130,7 +131,7 @@ class ClientCard extends React.Component {
                     }}
                   />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={9}>
                   <TextField
                     id="outlined-read-only-input"
                     defaultValue="Billing Information"
@@ -143,20 +144,11 @@ class ClientCard extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
+
                 <Grid item xs={2}>
-                  <TextField
-                    id="outlined-number"
-                    label="Phone Number"
-                    value="555-555-5555"
-                    type="Phone Number"
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    margin="normal"
-                    variant="outlined"
-                  />
+                 <PhoneNumber />
                 </Grid>
+
                 <Grid item xs={2}>
                   <TextField
                     id="outlined-email-input"

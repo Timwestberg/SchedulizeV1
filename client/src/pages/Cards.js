@@ -9,6 +9,7 @@ import React, {
   // import './App.css';
   import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import ClientForm from "../components/ClientForm/index"
   class Cards extends Component {
     render() {
       return ( 
@@ -21,6 +22,7 @@ import { MuiPickersUtilsProvider } from 'material-ui-pickers';
   
         <NewAppoointmentForm />
   
+        <ClientForm />
   
         </div>
 
