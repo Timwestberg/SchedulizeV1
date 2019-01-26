@@ -11,6 +11,6 @@ router
   .route("/:id")
   .get(contractorsController.findById)
   .put(contractorsController.update)
-  .delete(contractorssController.remove);
+  .delete(contractorsController.remove);
 
 module.exports = router;

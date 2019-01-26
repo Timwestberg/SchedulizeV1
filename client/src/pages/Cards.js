@@ -8,6 +8,7 @@ import React, {
   import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import ClientForm from "../components/ClientForm/index"
+import ContractorCard from "../components/contractor/"
   class Cards extends Component {
     render() {
       return ( 
@@ -16,7 +17,7 @@ import ClientForm from "../components/ClientForm/index"
         <Navbar/>
         <Appointmentform />
   
-        {/* <ContractorCard /> */}
+        <ContractorCard />
   
         <NewAppoointmentForm />
   

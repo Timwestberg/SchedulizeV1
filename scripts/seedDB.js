@@ -17,7 +17,7 @@ mongoose.connect(
             {
               firstName: "Tony",
               lastName: "Phakasoum",
-              phone: "555-555-5555",
+              phone: "555-888-999",
               email: "tp@schedulize.com",
               position: "Grunt",
             },
@@ -50,7 +50,7 @@ mongoose.connect(
         contactPerson: 
           {
             firstName: "Tim",
-            lastName: "W",
+            lastName: "Westberg",
             phone: "555-888-5555",
             email: "tw@schedulize.com",
             position: "CEO",
@@ -59,7 +59,7 @@ mongoose.connect(
           {
             contactPerson:
               {
-                name: "Tim W",
+                name: "Tim Westberg",
                 phone: "555-775-7755",
                 email: "TW@schedulize.com",
                 position: "COO",
@@ -80,8 +80,8 @@ mongoose.connect(
   const contractorSeed = [
     {
       firstName: "Miranda",
-      lastName: "S",
-      phone: "555-777-0000",
+      lastName: "Swartwood",
+      phone: "555-777-1290",
       email: "miranda@schedulize.com",
       certification: "9999999",
       standing: "Good",
@@ -99,7 +99,7 @@ mongoose.connect(
     },
     {
       firstName: "Paul",
-      lastName: "T",
+      lastName: "Tamayo",
       phone: "555-988-9999",
       email: "paul@schedulize.com",
       certification: "777777",

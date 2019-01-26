@@ -147,8 +147,7 @@ class ClientCard extends React.Component {
                                             />
                                         </Grid>
                                     </Grid>
-                                    <FormattedInputs/>
-                                    {/* <TextField
+                                    <TextField
                                         id="outlined-number"
                                         label="Phone Number"
                                         value={this.props.clientPhone}
@@ -159,7 +158,7 @@ class ClientCard extends React.Component {
                                         }}
                                         margin="normal"
                                         variant="outlined"
-                                    /> */}
+                                    />
                                     <TextField
                                         id="outlined-email-input"
                                         label="Email"
