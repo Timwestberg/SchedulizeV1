@@ -8,7 +8,7 @@
     "@material-ui/icons": "^3.0.2",
     "autocomplete-js": "^2.7.1",
     "axios": "^0.18.0",
-    "google-maps-react": "^2.0.2",
+    "google-map-react": "^1.1.2",
     "hover.css": "^2.3.2",
     "react": "^16.7.0",
     "react-big-scheduler": "^0.2.5",
