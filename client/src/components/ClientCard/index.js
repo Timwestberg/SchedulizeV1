@@ -130,7 +130,7 @@ class ClientCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.props.clientName}
+                                            value={this.props.clientFirstName}
                                             margin="normal"
                                             variant="outlined"
                                         // fullWidth
@@ -140,7 +140,7 @@ class ClientCard extends React.Component {
                                                 id="outlined-name"
                                                 label="Last Name"
                                                 className={classes.textField}
-                                                value={this.props.clientName}
+                                                value={this.props.clientLastName}
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
@@ -177,7 +177,7 @@ class ClientCard extends React.Component {
                                         label="Type of Client"
                                         className={classes.textField}
                                         fullWidth
-                                        value={this.props.clientType}
+                                        value={this.state.clientType}
                                         onChange={this.handleChange('clientType')}
                                         SelectProps={{
                                             MenuProps: {
@@ -200,7 +200,7 @@ class ClientCard extends React.Component {
                                         id="outlined-full-width"
                                         label="Company / Client Name"
                                         placeholder="Company / Client Name"
-                                        value={this.props.company}
+                                        value={this.props.companyName}
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
@@ -247,7 +247,7 @@ class ClientCard extends React.Component {
                                     <TextField
                                         id="outlined-helperText"
                                         label="Contact Name"
-                                        Value="Contact Name"
+                                        Value={this.props.billContact}
                                         fullWidth
                                         className={classes.textField}
                                         margin="normal"

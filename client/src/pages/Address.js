@@ -8,52 +8,40 @@ import API from "../utils/API";
 class Address extends Component {
     state = {
         clients: [],
-        clientName: "",
-        clientPhone: "",
-        clientEmail: "",
-        clientType: [],
-        contactName: "",
-        contactPhone: "",
-        contactEmail: "",
-        contactPosition: "",
-        ctName: "",
-        ctEmail: "",
-        ctPosition: "",
-        clientLocationName: "",
-        clientStreetNunmber: "",
-        clientStreetName: "",
-        clientCity: "",
-        clientState: "",
-        clientZipCode: ""
+        contractors: []
     };
     
     componentDidMount() {
+        this.loadContractors();
         this.loadClients();
-    }
+    };
 
     loadClients = () => {
         API.getClients()
-          .then(res =>
+          .then(res => {
+            console.log("client", res.data)
             this.setState({ 
                 clients: res.data, 
-                clientName: "",
-                clientPhone: "",
-                clientEmail: "",
-                contactName: "",
-                contactPhone: "",
-                contactEmail: "",
-                contactPosition: "",
-                ctName: "",
-                ctEmail: "",
-                ctPosition: "",
-                clientLocationName: "",
-                clientStreetNumber: "",
-                clientStreetName: "",
-                clientCity: "",
-                clientState: "",
-                clientZipCode: ""
             })
-            )
+        })
+        // API.getContractors()
+        // .then(res => 
+        //   console.log(res.data)
+        //   this.setState({ 
+        //       contractors: res.data, 
+        //     })
+        // })
+            .catch(err => console.log(err));
+    };
+
+    loadContractors = () => {
+        API.getContractors()
+          .then(res => {
+            console.log("contractor ", res.data)
+            this.setState({ 
+                contractors: res.data, 
+            })
+        })
             .catch(err => console.log(err));
     };
 
@@ -72,29 +60,34 @@ class Address extends Component {
       };
 
     render() {
+        console.log("State: ", this.state)
         return (
             <div>
             <Navbar/>
             <br></br>
-            <ContractCard/>
-            <br></br>
-            <ClientCard
-            clientName="Tony"
-            clientPhone="555-555-5555"
-            clientEmail="schedulized@gmail.com"
-            clientType="investigation"
-            clientStreetNumber="10228"
-            clientStreetName="Keoki"
+            {this.state.contractors.map(contractor => (
+            <ContractCard
+            // conStreetNumber={contractor.location.streetNumber}
+            // conStreetName={contractor.location.streetName}
             />
+            ))}
+            <br></br>
             {this.state.clients.map(client => (
             <ClientCard 
-            clientPhone={client.clientPhone}
-            clientEmail={client.clientEmail}
-            clientStreetNumber={client.clientStreetNumber}
-            clientStreetName={client.clientStreetName}
-            clientCity={client.clientCity}
-            clientState={client.clientState}
-            clientZipCode={client.clientZipCode}
+            companyName={client.name}
+            clientPhone={client.phone}
+            clientEmail={client.email}
+            position={client.position}
+            clientFirstName={client.contactPerson.firstName}
+            clientLastName={client.contactPerson.lastName}
+            billContact={client.billing.contactPerson.name}
+            clientStreetName={client.billing.location.streetName}
+            clientStreetNumber={client.billing.location.streetNumber}
+            billPhone={client.billing.contactPerson.phone}
+            billEmail={client.billing.contactPerson.email}
+            clientCity={client.billing.location.cityName}
+            clientZipCode={client.billing.location.zipCode}
+            clientState={client.billing.location.state}
             />
             ))}
             </div>

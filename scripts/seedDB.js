@@ -12,26 +12,25 @@ mongoose.connect(
           phone: "555-555-5555",
           email: "schedualize@schedulize.com",
           position: "Grunt",
-          contactPerson: [
+          contactPerson: 
             {
-              name: "Tony Phakasoum",
+              firstName: "Tony",
+              lastName: "Phakasoum",
               phone: "555-555-5555",
               email: "tp@schedulize.com",
               position: "Grunt",
-            }
-          ],
-          billing: [
+            },
+          billing:
             {
-              contactPerson: [
+              contactPerson: 
                 {
-                  name: "TP",
+                  name: "Tony Phakasoum",
                   phone: "555-655-6655",
                   email: "tony@schedulize.com",
                   position: "Peon",
 
-                }
-              ],
-              location: [
+                },
+              location:
                 {
                   locationName: "Schedulize Main Office",
                   streetNumber: "7777",
@@ -40,35 +39,32 @@ mongoose.connect(
                   state: "CA",
                   zipCode: "92111"
                 }
-              ]
-            }
-          ],
+            },
       },
       {
         name: "Schedulize Main",
         phone: "555-777-7777",
         email: "schedualizeMain@schedulize.com",
         position: "Busy Bee",
-        contactPerson: [
+        contactPerson: 
           {
-            name: "Tim W",
+            firstName: "Tim",
+            lastName: "W",
             phone: "555-888-5555",
             email: "tw@schedulize.com",
             position: "CEO",
-          }
-        ],
-        billing: [
+          },
+        billing:
           {
-            contactPerson: [
+            contactPerson:
               {
-                name: "TW",
+                name: "Tim W",
                 phone: "555-775-7755",
                 email: "TW@schedulize.com",
                 position: "COO",
 
-              }
-            ],
-            location: [
+              },
+            location: 
               {
                 streetNumber: "8888",
                 streetName: "ScehdulizeHQ Lane",
@@ -76,9 +72,7 @@ mongoose.connect(
                 state: "CA",
                 zipCode: "92111"
               }
-            ]
-          }
-        ],
+          },
     },
   ]
 
@@ -92,7 +86,7 @@ mongoose.connect(
       standing: "Good",
       pricing: "$500",
       notes: "good standing",
-      location: [
+      location:
         {
           locationName: "Miranda LLC",
           streetNumber: "8888",
@@ -101,7 +95,6 @@ mongoose.connect(
           state: "CA",
           zipCode: "92113"
         }
-      ]
     },
     {
       firstName: "Paul",
@@ -112,7 +105,7 @@ mongoose.connect(
       standing: "Good",
       pricing: "$666",
       notes: "Awesome",
-      location: [
+      location: 
         {
           locationName: "Paul T LLC",
           streetNumber: "7777",
@@ -121,7 +114,6 @@ mongoose.connect(
           state: "CA",
           zipCode: "92114"
         }
-      ]
     },
   ]
 
@@ -137,3 +129,16 @@ mongoose.connect(
     console.error(err);
     process.exit(1);
   });
+
+  // db.Contractor
+  // .remove({})
+  // .then(() => db.Contractor.collection.insertMany(contractorSeed))
+  // .then(data => {
+  //   console.log(data.result.n + " records inserted!");
+  //   process.exit(0);
+  // })
+  // .catch(err => {
+  //   console.error(err);
+  //   process.exit(1);
+  // });
+  
