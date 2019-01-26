@@ -86,7 +86,7 @@ mongoose.connect(
       certification: "9999999",
       standing: "Good",
       pricing: 500,
-      notes: "good standing",
+      notes: "Good Standing",
       location:
         {
           locationName: "Miranda LLC",
@@ -114,6 +114,63 @@ mongoose.connect(
           cityName: "San Diego",
           state: "CA",
           zipCode: 92114
+        }
+    },
+    {
+      firstName: "John",
+      lastName: "Doe",
+      phone: "555-777-1290",
+      email: "JD@schedulize.com",
+      certification: "9999999",
+      standing: "Good",
+      pricing: 500,
+      notes: "Good Standing",
+      location:
+        {
+          locationName: "JD LLC",
+          streetNumber: "8888",
+          streetName: "JD Lane",
+          cityName: "San Diego",
+          state: "CA",
+          zipCode: 92113
+        }
+    },
+    {
+      firstName: "Jane",
+      lastName: "Doe",
+      phone: "555-777-1290",
+      email: "JDoe@schedulize.com",
+      certification: "9999999",
+      standing: "Good",
+      pricing: 500,
+      notes: "Good Standing",
+      location:
+        {
+          locationName: "Jane Doe LLC",
+          streetNumber: "8888",
+          streetName: "JDoe Lane",
+          cityName: "San Diego",
+          state: "CA",
+          zipCode: 92113
+        }
+    },
+    {
+      firstName: "Dwayne",
+      lastName: "Johnson",
+      phone: "555-777-1290",
+      email: "DJ@schedulize.com",
+      certification: "9999999",
+      standing: "Good",
+      pricing: 500,
+      notes: "Good Standing",
+      location:
+        {
+          locationName: "The Rock LLC",
+          streetNumber: "8888",
+          streetName: "Rock Lane",
+          cityName: "San Diego",
+          state: "CA",
+          zipCode: 92113
         }
     },
   ]
