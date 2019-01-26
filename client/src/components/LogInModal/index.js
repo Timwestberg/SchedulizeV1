@@ -1,23 +1,3 @@
-// import React from "react";
-
-// // This component lets us use a bootstrap input element without worrying about class names
-// // or manually wrapping the input with a form-group div
-// // All of the props passed to this component are spread onto the input element
-// function LogInModal(props) {
-//   return (
-//     <form>
-//       {/* switch for log in modal */}
-//    {/*   <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-//             }
-//             label={auth ? 'Logout' : 'Login'}
-//           /> */}
-//   </form>
-  
-//   );
-// }
-
-// export default LogInModal;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
@@ -35,7 +15,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   main: {
-    width: 'auto',
+    width: '80%',
     display: 'block', // Fix IE 11 issue.
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
