@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+
 
 const styles = theme => ({
   container: {
@@ -88,6 +90,7 @@ class FormattedInputs extends React.Component {
             onChange={this.handleChange('textmask')}
             id="formatted-text-mask-input"
             inputComponent={TextMaskCustom}
+            variant="outlined"
           />
         </FormControl>
 

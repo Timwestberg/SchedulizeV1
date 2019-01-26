@@ -13,10 +13,10 @@ const contractorSchema = new Schema({
     trim: true,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
     trim: true,
-    maxlength: 10
+    maxlength: 12
   },
   email: {
     type: String,
@@ -44,7 +44,7 @@ const contractorSchema = new Schema({
   notes: {
     type: String
   },
-  location: [{
+  location: {
     locationName: {
       type: String,
       required: true,
@@ -77,11 +77,11 @@ const contractorSchema = new Schema({
       minlength: 5,
       maxlength: 5,
     }
-  }],
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  },
+  // date: {
+  //   type: Date,
+  //   default: Date.now
+  // }
 });
 
 const Contractor = mongoose.model("Contractor", contractorSchema);

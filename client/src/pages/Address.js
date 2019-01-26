@@ -8,52 +8,33 @@ import API from "../utils/API";
 class Address extends Component {
     state = {
         clients: [],
-        name: "",
-        phone: "",
-        email: "",
-        clientType: [],
-        contactName: "",
-        contactPhone: "",
-        contactEmail: "",
-        contactPosition: "",
-        ctName: "",
-        ctEmail: "",
-        ctPosition: "",
-        locationName: "",
-        streetName: "",
-        streetName: "",
-        cityName: "",
-        state: "",
-        zipCode: ""
+        contractors: []
     };
     
     componentDidMount() {
+        this.loadContractors();
         this.loadClients();
-    }
+    };
 
     loadClients = () => {
         API.getClients()
-          .then(res =>
+          .then(res => {
+            console.log(res.data)
             this.setState({ 
                 clients: res.data, 
-                name: "",
-                phone: "",
-                email: "",
-                contactName: "",
-                contactPhone: "",
-                contactEmail: "",
-                contactPosition: "",
-                ctName: "",
-                ctEmail: "",
-                ctPosition: "",
-                locationName: "",
-                streetName: "",
-                streetName: "",
-                cityName: "",
-                state: "",
-                zipCode: ""
             })
-            )
+        })
+            .catch(err => console.log(err));
+    };
+
+    loadContractors = () => {
+        API.getContractors()
+          .then(res => {
+            console.log("contractor ", res.data)
+            this.setState({ 
+                contractors: res.data, 
+            })
+        })
             .catch(err => console.log(err));
     };
 
@@ -72,16 +53,46 @@ class Address extends Component {
       };
 
     render() {
+        console.log("State: ", this.state)
         return (
             <div>
             <Navbar/>
             <br></br>
-            <ContractCard/>
+            {this.state.contractors.map(contractor => (
+            <ContractCard
+            conStreetNumber={contractor.location.streetNumber}
+            conStreetName={contractor.location.streetName}
+            conFirstName={contractor.firstName}
+            conLastName={contractor.lastName}
+            conPhone={contractor.phone}
+            conEmail={contractor.email}
+            conStand
+            conCert={contractor.certification}
+            conPrice={contractor.pricing}
+            conNotes={contractor.notes}
+            conLocationName={contractor.location.locationName}
+            conCity={contractor.location.cityName}
+            conState={contractor.location.state}
+            conZipCode={contractor.location.zipCode}
+            />
+            ))}
             <br></br>
-            <ClientCard/>
             {this.state.clients.map(client => (
             <ClientCard 
-            name={client.name}
+            companyName={client.name}
+            clientPhone={client.phone}
+            clientEmail={client.email}
+            position={client.position}
+            clientFirstName={client.contactPerson.firstName}
+            clientLastName={client.contactPerson.lastName}
+            billContact={client.billing.contactPerson.name}
+            clientStreetName={client.billing.location.streetName}
+            clientStreetNumber={client.billing.location.streetNumber}
+            billPhone={client.billing.contactPerson.phone}
+            billEmail={client.billing.contactPerson.email}
+            clientCity={client.billing.location.cityName}
+            clientZipCode={client.billing.location.zipCode}
+            clientState={client.billing.location.state}
             />
             ))}
             </div>

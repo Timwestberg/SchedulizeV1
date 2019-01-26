@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ClientSchema = new Schema({
+const clientSchema = new Schema({
+  //company name
   name: {
     type: String,
     required: true,
     trim: true
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
-    maxlength: 10,
+    maxlength: 12,
     minlength: 9,
     trim: true
   },
@@ -22,16 +23,21 @@ const ClientSchema = new Schema({
     index: true,
     trim: true
   },
-  contactPerson: [{
-    name: {
+  contactPerson: {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    lastName: {
       type: String,
       required: true,
       trim: true
     },
     phone: {
-      type: Number,
+      type: String,
       required: true,
-      maxlength: 10,
+      maxlength: 12,
       minlength: 9,
       trim: true
     },
@@ -48,25 +54,24 @@ const ClientSchema = new Schema({
       required: true,
       trim: true
     },
-    type: Array
-  }],
+  },
   type: {
     type: String,
     required: true,
     trim: true
   },
   // Billing aray containing two arrays contact person || and billing Location
-  billing: [{
-    contactPerson: [{
+  billing: {
+    contactPerson: {
       name: {
         type: String,
         required: true,
         trim: true
       },
       phone: {
-        type: Number,
+        type: String,
         required: true,
-        maxlength: 10,
+        maxlength: 12,
         minlength: 9,
         trim: true
       },
@@ -83,10 +88,8 @@ const ClientSchema = new Schema({
         required: true,
         trim: true
       },
-
-      type: Array
-    }],
-    location: [{
+    },
+    location: {
       locationName: {
         type: String,
         required: true,
@@ -124,10 +127,10 @@ const ClientSchema = new Schema({
         minlength: 5,
         trim: true
       }
-    }]
-  }]
+    }
+  }
 });
 
-const Client = mongoose.model("Client", ClientSchema);
+const Client = mongoose.model("Client", clientSchema);
 
 module.exports = Client;
