@@ -34,16 +34,16 @@ class Address extends Component {
             .catch(err => console.log(err));
     };
 
-    loadContractors = () => {
-        API.getContractors()
-          .then(res => {
-            console.log("contractor ", res.data)
-            this.setState({ 
-                contractors: res.data, 
-            })
-        })
-            .catch(err => console.log(err));
-    };
+    // loadContractors = () => {
+    //     API.getContractors()
+    //       .then(res => {
+    //         console.log("contractor ", res.data)
+    //         this.setState({ 
+    //             contractors: res.data, 
+    //         })
+    //     })
+    //         .catch(err => console.log(err));
+    // };
 
     removeClient = (id) => {
         //remove the card and not deleting from database

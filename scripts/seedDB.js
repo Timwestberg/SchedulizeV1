@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
+
 mongoose.connect(
     process.env.MONGODB_URI ||
     "mongodb://localhost/schedulizeDB"
@@ -120,7 +121,7 @@ mongoose.connect(
   db.Client
   .remove({})
   .then(() => db.Client.collection.insertMany(clientSeed))
-  .then(() => db.Contractor.collection.insertMany(contractorSeed))
+  // .then(() => db.Contractor.collection.insertMany(contractorSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
@@ -130,15 +131,15 @@ mongoose.connect(
     process.exit(1);
   });
 
-  // db.Contractor
-  // .remove({})
-  // .then(() => db.Contractor.collection.insertMany(contractorSeed))
-  // .then(data => {
-  //   console.log(data.result.n + " records inserted!");
-  //   process.exit(0);
-  // })
-  // .catch(err => {
-  //   console.error(err);
-  //   process.exit(1);
-  // });
+  db.Contractor
+  .remove({})
+  .then(() => db.Contractor.collection.insertMany(contractorSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
   
