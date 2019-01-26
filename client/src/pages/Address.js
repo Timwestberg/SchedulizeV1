@@ -12,7 +12,7 @@ class Address extends Component {
     };
     
     componentDidMount() {
-        this.loadContractors();
+        // this.loadContractors();
         this.loadClients();
     };
 

@@ -16,7 +16,7 @@ import ClientForm from "../components/ClientForm/index"
         <Navbar/>
         <Appointmentform />
   
-        <ContractorCard />
+        {/* <ContractorCard /> */}
   
         <NewAppoointmentForm />
   

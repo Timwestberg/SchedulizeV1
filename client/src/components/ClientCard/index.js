@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { white } from "@material-ui/core/colors";
-
+import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
 
 const styles = theme => ({
     cardHeader: {
@@ -147,7 +147,8 @@ class ClientCard extends React.Component {
                                             />
                                         </Grid>
                                     </Grid>
-                                    <TextField
+                                    <FormattedInputs/>
+                                    {/* <TextField
                                         id="outlined-number"
                                         label="Phone Number"
                                         value={this.props.clientPhone}
@@ -158,7 +159,7 @@ class ClientCard extends React.Component {
                                         }}
                                         margin="normal"
                                         variant="outlined"
-                                    />
+                                    /> */}
                                     <TextField
                                         id="outlined-email-input"
                                         label="Email"
