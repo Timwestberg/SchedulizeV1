@@ -85,7 +85,7 @@ mongoose.connect(
       email: "miranda@schedulize.com",
       certification: "9999999",
       standing: "Good",
-      pricing: "$500",
+      pricing: 500,
       notes: "good standing",
       location:
         {
@@ -94,7 +94,7 @@ mongoose.connect(
           streetName: "Miranda Lane",
           cityName: "San Diego",
           state: "CA",
-          zipCode: "92113"
+          zipCode: 92113
         }
     },
     {
@@ -104,7 +104,7 @@ mongoose.connect(
       email: "paul@schedulize.com",
       certification: "777777",
       standing: "Good",
-      pricing: "$666",
+      pricing: 666,
       notes: "Awesome",
       location: 
         {
@@ -113,7 +113,7 @@ mongoose.connect(
           streetName: "Paul Lane",
           cityName: "San Diego",
           state: "CA",
-          zipCode: "92114"
+          zipCode: 92114
         }
     },
   ]

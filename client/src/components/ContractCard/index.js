@@ -130,7 +130,7 @@ class ContractCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.props.ConFirstName}
+                                            value={this.props.conFirstName}
                                             margin="normal"
                                             variant="outlined"
                                         // fullWidth
@@ -140,7 +140,7 @@ class ContractCard extends React.Component {
                                                 id="outlined-name"
                                                 label="Last Name"
                                                 className={classes.textField}
-                                                value={this.props.ConLastName}
+                                                value={this.props.conLastName}
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
@@ -150,7 +150,7 @@ class ContractCard extends React.Component {
                                     <TextField
                                         id="outlined-number"
                                         label="Phone Number"
-                                        value={this.props.ConPhone}
+                                        value={this.props.conPhone}
                                         type="Phone Number"
                                         className={classes.textField}
                                         InputLabelProps={{
@@ -201,7 +201,7 @@ class ContractCard extends React.Component {
                                         id="outlined-full-width"
                                         label="Type of Certifcation / Numbers"
                                         placeholder="Type of Certifcation / Numbers"
-                                        value={this.state.conCert}
+                                        value={this.props.conCert}
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
@@ -231,6 +231,7 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
+                                        value={this.props.conNotes}
                                     />
                                 </Grid>
                                 <Grid item xs={3}>
@@ -296,8 +297,8 @@ class ContractCard extends React.Component {
                                     <Grid
                                         container
                                         direction="row"
-                                        justify="flex-end"
-                                        alignItems="flex-start"
+                                        // justify="flex-end"
+                                        // alignItems="flex-start"
                                     >
                                         <TextField
                                             id="outlined-helperText"
@@ -308,7 +309,7 @@ class ContractCard extends React.Component {
                                             variant="outlined"
                                             value={this.props.conZipCode}
                                         />
-                                        <Grid item xs>
+                                        {/* <Grid item xs>
                                             <TextField
                                                 id="outlined-select-currency"
                                                 select
@@ -332,7 +333,7 @@ class ContractCard extends React.Component {
                                                     </MenuItem>
                                                 ))}
                                             </TextField>
-                                        </Grid>
+                                        </Grid> */}
                                     </Grid>
                                 </Grid>
                             </Grid>

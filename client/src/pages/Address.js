@@ -12,7 +12,7 @@ class Address extends Component {
     };
     
     componentDidMount() {
-        // this.loadContractors();
+        this.loadContractors();
         this.loadClients();
     };
 
@@ -24,26 +24,19 @@ class Address extends Component {
                 clients: res.data, 
             })
         })
-        // API.getContractors()
-        // .then(res => 
-        //   console.log(res.data)
-        //   this.setState({ 
-        //       contractors: res.data, 
-        //     })
-        // })
             .catch(err => console.log(err));
     };
 
-    // loadContractors = () => {
-    //     API.getContractors()
-    //       .then(res => {
-    //         console.log("contractor ", res.data)
-    //         this.setState({ 
-    //             contractors: res.data, 
-    //         })
-    //     })
-    //         .catch(err => console.log(err));
-    // };
+    loadContractors = () => {
+        API.getContractors()
+          .then(res => {
+            console.log("contractor ", res.data)
+            this.setState({ 
+                contractors: res.data, 
+            })
+        })
+            .catch(err => console.log(err));
+    };
 
     removeClient = (id) => {
         //remove the card and not deleting from database
@@ -67,8 +60,20 @@ class Address extends Component {
             <br></br>
             {this.state.contractors.map(contractor => (
             <ContractCard
-            // conStreetNumber={contractor.location.streetNumber}
-            // conStreetName={contractor.location.streetName}
+            conStreetNumber={contractor.location.streetNumber}
+            conStreetName={contractor.location.streetName}
+            conFirstName={contractor.firstName}
+            conLastName={contractor.lastName}
+            conPhone={contractor.phone}
+            conEmail={contractor.email}
+            conStand
+            conCert={contractor.certification}
+            conPrice={contractor.pricing}
+            conNotes={contractor.notes}
+            conLocationName={contractor.location.locationName}
+            conCity={contractor.location.cityName}
+            conState={contractor.location.state}
+            conZipCode={contractor.location.zipCode}
             />
             ))}
             <br></br>
