@@ -2,6 +2,8 @@ import React, {
     Component
   } from 'react';
   import Appointmentform from "../components/AppointmentForm"
+  import ContractorCard from "../components/contractor"
+  import ApptCard from "../components/ApptCard"
   import Navbar from "../components/Navbar"
   import NewAppoointmentForm from "../components/NewAppointmentForm/NewAppointment"
   // import './App.css';
@@ -16,7 +18,12 @@ import ContractorCard from "../components/contractor/"
         <div className = "App" >
         <Navbar/>
         <Appointmentform />
-  
+
+ // ContractorCard -  this is firing an error - ./src/pages/Cards.js
+// Module not found: Can't resolve '../components/contractor/contractorCard' 
+// in 
+// 'C:\Users\mpmks\Desktop\3\Schedulize\client\src\pages' 
+// UPDATED to file directory - '..components/contractor' -ms 1/22/2019
         <ContractorCard />
   
         <NewAppoointmentForm />

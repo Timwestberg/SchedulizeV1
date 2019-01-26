@@ -1,15 +1,3 @@
-// import React from "react";
-// import "./style.css";
-
-// function Nav() {
-
-//   return (
-//     <nav className="navbar navbar-light bg-success">
-//       <h3 href="/">Schedulize</h3>
-//          </nav>
-//   );
-// }
-
 // export default Nav;
 
 import React from 'react';
@@ -19,33 +7,34 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import './nav.css'
 // need these to import color scheme
+// import white from '@material-ui/core/colors';
+// import { createMuiTheme, withTheme } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
-
-const bar = green[500]; // #4caf50  
 
 
-// eslint-disable-next-line no-unused-vars
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#9A0307',
-      contrastText: '#F9F9F9 ',
+      light: '#B0C4DE', //light blue
+      main: '#4caf50', //green 
+      dark: '#336699', //dark blue
     },
     secondary: {
-      main: '#4caf50',
-      contrastText: '#F9F9F9 ',
+      light: '#dfafea', //light-purple
+      main: '#9A0307', //bright-red
+      dark: '#8D858C', //Grey
+      contrastText: '#110d03', //black
     },
   },
 });
 
-
 function Nav () {
   return (
     <div>
-      <AppBar className ="AppBar" color = {bar}>
+      <AppBar className ="AppBar" color = {theme.palette.primary.main}>
         <Toolbar>
-          <Typography>
+          <Typography variant="h6" color = 'default'>
             Schedulize
           </Typography>
         </Toolbar>

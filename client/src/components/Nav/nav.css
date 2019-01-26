@@ -1,24 +1,12 @@
-.MuiToolbar-root-37 {
+ .MuiToolbar-root-37 {
   margin-bottom: 0;
   background: #4caf50;
-};
- .Typography {
-  margin-bottom: 0;
-};
- .Toolbar {
-  margin-bottom: 0;
-  background: #4caf50
-}
-header{
-  color: green;
-}
-body{
-  color: orange;
-}
+}; 
+/*
 .App-header {
   background : url('https://wallpapertag.com/wallpaper/full/5/0/6/128441-high-resolution-desktop-wallpaper-1920x1200-for-iphone-6.jpg');
   overflow: hidden;
-}
+} */
 /* add in slider effect w/ more pictures */
 /* 
 @keyframes slide{
