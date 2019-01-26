@@ -19,7 +19,7 @@ class Address extends Component {
     loadClients = () => {
         API.getClients()
           .then(res => {
-            console.log("client", res.data)
+            console.log(res.data)
             this.setState({ 
                 clients: res.data, 
             })
