@@ -13,6 +13,7 @@ class SimpleMap extends Component {
   };
  
   render() {
+    console.log("State: ", this.state)
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>

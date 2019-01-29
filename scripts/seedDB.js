@@ -94,7 +94,9 @@ mongoose.connect(
           streetName: "Miranda Lane",
           cityName: "San Diego",
           state: "CA",
-          zipCode: 92113
+          zipCode: 92113,
+          lat: "32.861726",
+          lng: "117.223370"
         }
     },
     {
@@ -109,11 +111,13 @@ mongoose.connect(
       location: 
         {
           locationName: "Paul T LLC",
-          streetNumber: "7777",
-          streetName: "Paul Lane",
+          streetNumber: "4089",
+          streetName: "Genessee Ave",
           cityName: "San Diego",
           state: "CA",
-          zipCode: 92114
+          zipCode: 92111,
+          lat: "32.817031",
+          lng: "-117.180160"
         }
     },
     {
@@ -128,11 +132,13 @@ mongoose.connect(
       location:
         {
           locationName: "JD LLC",
-          streetNumber: "8888",
-          streetName: "JD Lane",
+          streetNumber: "7708",
+          streetName: "Regents Rd",
           cityName: "San Diego",
           state: "CA",
-          zipCode: 92113
+          zipCode: 92122,
+          lat: "32.861728",
+          lng: "-117.223366"
         }
     },
     {
@@ -147,11 +153,13 @@ mongoose.connect(
       location:
         {
           locationName: "Jane Doe LLC",
-          streetNumber: "8888",
-          streetName: "JDoe Lane",
+          streetNumber: "3810",
+          streetName: "Valley Centre Dr",
           cityName: "San Diego",
           state: "CA",
-          zipCode: 92113
+          zipCode: 92113,
+          lat: "32.938572",
+          lng: "-117.230389",
         }
     },
     {
@@ -166,11 +174,13 @@ mongoose.connect(
       location:
         {
           locationName: "The Rock LLC",
-          streetNumber: "8888",
-          streetName: "Rock Lane",
+          streetNumber: "10631",
+          streetName: "Camino Ruiz",
           cityName: "San Diego",
           state: "CA",
-          zipCode: 92113
+          zipCode: 92126,
+          lat: "32.911650",
+          lng: "-117.143575"
         }
     },
   ]
@@ -192,7 +202,7 @@ mongoose.connect(
   .remove({})
   .then(() => db.Contractor.collection.insertMany(contractorSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + " datas inserted!");
     process.exit(0);
   })
   .catch(err => {
