@@ -6,22 +6,23 @@ import Address from "./pages/Address";
 import NoMatch from "./pages/NoMatch";
 import Cards from "./pages/Cards";
 import Login from "./pages/Login";
+import NewAppointment from "./components/NewAppointmentForm";
 
 function App() {
   return (
-    <Router>
+    // <Router>
     <div>
-      <Switch>
+      {/* <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/map" component={MapPage} />
         <Route exact path="/forms" component={Cards} />
         <Route exact path="/addressbook" component={Address} />
         <Route component={NoMatch}/>
-      </Switch>
+      </Switch> */}
+      <NewAppointment />
     </div>
-    </Router>
+    // {/* </Router> */}
   );
 }
 export default App;
-

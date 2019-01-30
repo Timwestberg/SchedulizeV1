@@ -5,7 +5,7 @@ import React, {
   import ContractorCard from "../components/contractor"
   import ApptCard from "../components/ApptCard"
   import Navbar from "../components/Navbar"
-  import NewAppoointmentForm from "../components/NewAppointmentForm/NewAppointment"
+  import NewAppoointmentForm from "../components/NewAppointmentForm"
   // import './App.css';
   import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';

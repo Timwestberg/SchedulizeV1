@@ -64,7 +64,7 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-class FormattedInputs extends React.Component {
+class PhoneNumber extends React.Component {
   state = {
     textmask: '(   )    -    ',
     numberformat: '(1  )    -    ',
@@ -99,8 +99,8 @@ class FormattedInputs extends React.Component {
   }
 }
 
-FormattedInputs.propTypes = {
+PhoneNumber.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FormattedInputs);
+export default withStyles(styles)(PhoneNumber);
