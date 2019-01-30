@@ -100,7 +100,6 @@ mongoose.connect(
             lat: 32.861726,
             lng: -117.223370
           }
-
         }
     },
     {
@@ -120,8 +119,11 @@ mongoose.connect(
           cityName: "San Diego",
           state: "CA",
           zipCode: 92111,
-          lat: "32.817031",
-          lng: "-117.180160"
+          coords: 
+          {
+            lat: 32.817031,
+            lng: -117.180160
+          }
         }
     },
     {
@@ -141,8 +143,11 @@ mongoose.connect(
           cityName: "San Diego",
           state: "CA",
           zipCode: 92122,
-          lat: "32.861728",
-          lng: "-117.223366"
+          coords: 
+          {
+            lat: 32.861728,
+            lng: -117.223366
+          }
         }
     },
     {
@@ -162,8 +167,11 @@ mongoose.connect(
           cityName: "San Diego",
           state: "CA",
           zipCode: 92113,
-          lat: "32.938572",
-          lng: "-117.230389",
+          coords:
+          {
+            lat: 32.938572,
+            lng: -117.230389,
+          }
         }
     },
     {
@@ -183,8 +191,11 @@ mongoose.connect(
           cityName: "San Diego",
           state: "CA",
           zipCode: 92126,
-          lat: "32.911650",
-          lng: "-117.143575"
+          coords:
+          {
+            lat: 32.911650,
+            lng: -117.143575
+          }
         }
     },
   ]
