@@ -33,12 +33,17 @@ export class TestMap extends Component {
             .catch(err => console.log(err));
     };
 
-    onMarkerClick = (props, marker, e) =>
+    onMarkerClick = (props, marker, e) => {
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
             showingInfoWindow: true,
         });
+    }
+
+    onClickAssign = () => {
+        console.log("assigned");
+    }
 
     onMapClicked = (props) => {
         if (this.state.showingInfoWindow) {
@@ -68,18 +73,20 @@ export class TestMap extends Component {
                         name={contractor.location.locationName}
                         title={contractor.firstName + " "+ contractor.lastName}
                         position={contractor.location.coords}
-
+                        CID={contractor._id}
                     />
                 ))}
                 <InfoWindow
+    
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}>
                     <div>
                         <h1>{this.state.selectedPlace.name}</h1>
                         <p>{this.state.selectedPlace.title}</p>
                     </div>
-                    {/* in info windo - button assign contractor to appt  */}
-                    <Button> Assign </Button>
+                    {/* in info window - button assign contractor to appt  */}
+                    <Button onClick={this.onClickAssign()}>
+                     Assign </Button>
                 </InfoWindow>
             </Map>
         );
