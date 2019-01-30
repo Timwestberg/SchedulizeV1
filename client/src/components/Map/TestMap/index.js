@@ -68,6 +68,7 @@ export class TestMap extends Component {
                         name={contractor.location.locationName}
                         title={contractor.firstName + " "+ contractor.lastName}
                         position={contractor.location.coords}
+
                     />
                 ))}
                 <InfoWindow
