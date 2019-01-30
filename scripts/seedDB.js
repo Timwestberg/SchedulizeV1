@@ -95,8 +95,12 @@ mongoose.connect(
           cityName: "San Diego",
           state: "CA",
           zipCode: 92113,
-          lat: "32.861726",
-          lng: "117.223370"
+          coords:
+          {
+            lat: 32.861726,
+            lng: -117.223370
+          }
+
         }
     },
     {
