@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import API from "../../../utils/API";
+import Button from '@material-ui/core/Button';
 
 const style = {
     width: "100",
@@ -76,6 +77,8 @@ export class TestMap extends Component {
                         <h1>{this.state.selectedPlace.name}</h1>
                         <p>{this.state.selectedPlace.title}</p>
                     </div>
+                    {/* in info windo - button assign contractor to appt  */}
+                    <Button> Assign </Button>
                 </InfoWindow>
             </Map>
         );
