@@ -53,21 +53,20 @@ export class TestMap extends Component {
         return (
             <Map
                 google={this.props.google}
-                zoom={14}
+                zoom={12}
                 style={style}
                 initialCenter={{
-                    lat: 32.71,
-                    lng: -117.16
+                    lat: 32.852721,
+                    lng: -117.182762
                 }}
                 onClick={this.onMapClicked}
             >
                 {this.state.contractors.map(contractor => (
                     <Marker
                         onClick={this.onMarkerClick}
-                        name={this.props.contractorName}
-                        title={this.props.contractorLocation}
-                        position={this.props.contractorCoords}
-                    // { lat: 32.817031, lng: -117.180160 }
+                        name={contractor.location.locationName}
+                        title={contractor.firstName + " "+ contractor.lastName}
+                        position={contractor.location.coords}
                     />
                 ))}
                 <InfoWindow

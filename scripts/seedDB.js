@@ -90,15 +90,15 @@ mongoose.connect(
       location:
         {
           locationName: "Miranda LLC",
-          streetNumber: "8888",
-          streetName: "Miranda Lane",
+          streetNumber: "3737",
+          streetName: "Murphy Canyon Rd",
           cityName: "San Diego",
           state: "CA",
-          zipCode: 92113,
+          zipCode: 92123,
           coords:
           {
-            lat: 32.861726,
-            lng: -117.223370
+            lat: 32.809641,
+            lng: -117.115324
           }
         }
     },
