@@ -89,6 +89,7 @@ class ContractCard extends React.Component {
     state = {
         contractorStand: "",
         country: ""
+        
     }
 
     handleChange = name => event => {

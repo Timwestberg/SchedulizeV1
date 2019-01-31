@@ -42,13 +42,54 @@ const styles = {
 
 class NewAppointmentCard extends React.Component {
   state = {
-    checked: "",
-    name: ""
+    // apptInfo: {
+    //   dateInput: "",
+    //   apptDate: "",
+    //   assignee: {
+    //     firstName: "",
+    //     lastName: "",
+    //     phone: ""
+    //   },
+    //   adjuster: {
+    //     firstName: "",
+    //     lastName: "",
+    //     phone: ""
+    //   },
+    //   refName: {
+    //     firstName: "",
+    //     lastName: ""
+    //   },
+    //   refType: "",
+    //   language: "",
+    //   notes: "",
+    //   location: {
+    //     name: "",
+    //     adress: "",
+    //     city: "",
+    //     state: "",
+    //     zip: ""
+    //   },
+    //   contractor: {
+    //     firstName: "",
+    //     lastName: "",
+    //     phone: ""
+    //   },
+    //   dateAccepted: "",
+    //   employeeAssign: ""
+    // }
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
+  // handleChange = event => {
+  //   const field = event.target.name;
+
+  //   const apptInfo = this.state.apptInfo;
+
+  //   apptInfo[field] = event.target.value;
+
+  //   this.setState({
+  //     apptInfo
+  //   });
+  // };
 
   handleClose = () => {
     this.setState({ open: false });
@@ -58,11 +99,12 @@ class NewAppointmentCard extends React.Component {
     this.setState({ open: true });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    API.saveAppt();
-    alert(`Form submitted`);
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   API.saveAppt(this.state.apptInfo);
+  //   alert(`Form submitted`);
+  //   console.log(this.state);
+  // };
 
   render() {
     const { classes } = this.props;
@@ -71,7 +113,11 @@ class NewAppointmentCard extends React.Component {
         <CardHeader title="New Appointment" className={classes.cardHeader} />
         <CardContent>
           <Grid container item xs={12}>
-            <Form submit={this.handleFormSubmit}/>
+            <Form
+              // apptInfo={this.state.apptInfo}
+              // change={this.handleChange}
+              // submit={this.handleFormSubmit}
+            />
           </Grid>
         </CardContent>
       </Card>

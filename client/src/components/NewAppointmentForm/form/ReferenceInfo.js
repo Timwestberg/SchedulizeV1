@@ -1,12 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-} from "@material-ui/core";
-
+import { TextField } from "@material-ui/core";
 
 const styles = {
-
   input: {
     minWidth: "100%"
   },
@@ -22,8 +18,6 @@ const styles = {
 };
 
 class ContractorCovering extends React.Component {
-
-
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
@@ -37,29 +31,29 @@ class ContractorCovering extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, value } = this.props;
     return (
+      <div>
+        <TextField
+          id="RefName"
+          label="Reference Name"
+          className={classes.textField}
+          name="firstName"
+          value={value.firstName}
+          margin="normal"
+          variant="outlined"
+        />
 
-        <div>
-              <TextField
-                    id="RefName"
-                    label="Reference Name"
-                    className={classes.textField}
-                    value={this.props.name}
-                    margin="normal"
-                    variant="outlined"
-                  />
-
-<TextField
-                    id="RefNumber"
-                    label="Reference Number"
-                    className={classes.textField}
-                    value={this.props.name}
-                    margin="normal"
-                    variant="outlined"
-                  />
-</div>
-    )
+        <TextField
+          id="RefNumber"
+          label="Reference Number"
+          className={classes.textField}
+          name="phone"
+          margin="normal"
+          variant="outlined"
+        />
+      </div>
+    );
   }
 }
 

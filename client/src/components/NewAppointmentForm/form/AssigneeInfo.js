@@ -1,12 +1,9 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import PhoneNumber from "./PhoneNumber";
 
 const styles = {
-
   input: {
     minWidth: "100%"
   },
@@ -22,46 +19,35 @@ const styles = {
 };
 
 class ContractorCovering extends React.Component {
-
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
   render() {
-    const { classes } = this.props;
+    const { classes, change, firstName, lastName } = this.props;
     return (
+      <div>
+        <TextField
+          id="assigneeFirstName"
+          label="Assignee's First Name"
+          className={classes.textField}
+          name="firstName"
+          value={firstName}
+          margin="normal"
+          variant="outlined"
+          onChange={change}
+        />
 
-        <div>
-                <TextField
-                    id="assigneeFirstName"
-                    label="Assignee's First Name"
-                    className={classes.textField}
-                    value={this.props.name}
-                    margin="normal"
-                    variant="outlined"
-                  />
+        <TextField
+          id="assigneeLastName"
+          label="Assignee's Last Name"
+          className={classes.textField}
+          name="lastName"
+          value={lastName}
+          margin="normal"
+          variant="outlined"
+          onChange={change}
+        />
 
-                    <TextField
-                    id="assigneeLastName"
-                    label="Assignee's Last Name"
-                    className={classes.textField}
-                    value={this.props.name}
-                    margin="normal"
-                    variant="outlined"
-                  />
-
-                  <PhoneNumber />
-</div>
-    )
+        <PhoneNumber />
+      </div>
+    );
   }
 }
 
