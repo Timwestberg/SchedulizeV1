@@ -75,12 +75,21 @@ export class TestMap extends Component {
     }
 
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+
     render() {
         console.log("State: ", this.state)
         return (
             <div>
                 <Navbar
                 onClick={this.addressSearch}
+                onChange={this.handleInputChange}
                 >
                 Submit
                 </Navbar>
