@@ -8,8 +8,6 @@ const style = {
     hieght: "100%"
 }
 
-
-
 export class TestMap extends Component {
     state = {
         showingInfoWindow: false,
@@ -40,6 +38,11 @@ export class TestMap extends Component {
             showingInfoWindow: true,
         });
     }
+
+    //need to bind? to get the info into assigned button 
+   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+//     Const CID = boundGetX.bind(state.selectedPlace);
+//  console.log(boundGetX(this.CID));
 
     onClickAssign = () => {
         console.log("assigned");
@@ -86,6 +89,7 @@ export class TestMap extends Component {
                     </div>
                     {/* in info window - button assign contractor to appt  */}
                     <Button onClick={this.onClickAssign()}>
+                    {/* <button onClick={this.CID.bind(this, id)}>Delete Row</button> */}
                      Assign </Button>
                 </InfoWindow>
             </Map>
