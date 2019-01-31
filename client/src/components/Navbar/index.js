@@ -1,7 +1,20 @@
 import React from "react";
+import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import "./style.css";
 
-function Navbar() {
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+})
+
+function Navbar({props, onClick, children, onChange}) {
+
   return (
   <div className="topnav">
   <a href="/">Home</a>
@@ -11,14 +24,15 @@ function Navbar() {
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
   <div className="search-container">
-    <form action="/action_page.php">
-    {/* need to make input component */}
-      <input type="text" placeholder="Search.." name="search"/>
-      {/* Need to make button component */}
-      <button type="submit">Submit</button>
-    </form>
+      <input type="text" placeholder="Search.." name="search" {...props} onChange={onChange}/>
+      <button onClick={onClick} type="submit">{children}</button>
   </div>
 </div>
   );
+
 }
-export default Navbar;
+
+Navbar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+export default withStyles(styles)(Navbar);

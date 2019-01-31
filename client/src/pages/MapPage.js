@@ -3,20 +3,24 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import API from "../utils/API";
 import Navbar from "../components/Navbar";
 import Button from '@material-ui/core/Button';
+import Geocode from "react-geocode";
+
+
+Geocode.setApiKey("AIzaSyBqnB1s-zvouH1_skf3WKRjE6uhq_5M3rI");
+
 
 const style = {
     width: "100",
     hieght: "100%"
 }
 
-
-
 export class TestMap extends Component {
     state = {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        contractors: []
+        contractors: [],
+        coords: []
     };
 
     componentDidMount() {
@@ -46,7 +50,7 @@ export class TestMap extends Component {
         console.log("assigned");
     }
 
-    onMapClicked = (props) => {
+    onMapClicked = () => {
         if (this.state.showingInfoWindow) {
             this.setState({
                 showingInfoWindow: false,
@@ -55,12 +59,30 @@ export class TestMap extends Component {
         }
     };
 
+    addressSearch = () => {
+        Geocode.fromAddress("6256 Greenwich Dr, San Diego, CA 92122").then(
+            response => {
+              const { lat, lng } = response.results[0].geometry.location;
+              this.setState({
+                  coords: {lat, lng}
+              });
+              console.log(lat, lng);
+            },
+            error => {
+              console.error(error);
+            }
+          );
+    }
+
+
     render() {
         console.log("State: ", this.state)
         return (
             <div>
-                <Navbar>
-                    {/* imput button and input component */}
+                <Navbar
+                onClick={this.addressSearch}
+                >
+                Submit
                 </Navbar>
                 <Map
                     google={this.props.google}
@@ -72,25 +94,32 @@ export class TestMap extends Component {
                     }}
                     onClick={this.onMapClicked}
                 >
+                <Marker
+                position={this.state.coords}
+                />
                     {this.state.contractors.map(contractor => (
                         <Marker
                             onClick={this.onMarkerClick}
                             name={contractor.location.locationName}
                             title={contractor.firstName + " " + contractor.lastName}
                             position={contractor.location.coords}
+                            location={contractor.location.streetNumber + " " + 
+                            contractor.location.streetName + " " + 
+                            contractor.location.cityName + " " + 
+                            contractor.location.state + " " + contractor.location.zipCode}
                             CID={contractor._id}
                         />
                     ))}
                     <InfoWindow
-
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}>
                         <div>
                             <h1>{this.state.selectedPlace.name}</h1>
                             <p>{this.state.selectedPlace.title}</p>
+                            <p>{this.state.selectedPlace.location}</p>
                         </div>
                         {/* in info window - button assign contractor to appt  */}
-                        <Button onClick={this.onClickAssign()}>
+                        <Button onClick={this.onClickAssign}>
                             Assign </Button>
                     </InfoWindow>
                 </Map>

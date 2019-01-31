@@ -32,13 +32,14 @@
     margin-top: 8px;
     font-size: 17px;
     border: none;
+    margin-right: 20px;  
   }
   
   .topnav .search-container button {
     float: right;
     padding: 6px 10px;
     margin-top: 8px;
-    margin-right: 16px;
+    margin-right: 50px;
     background: #ddd;
     font-size: 17px;
     border: none;
