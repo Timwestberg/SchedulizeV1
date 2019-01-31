@@ -59,7 +59,9 @@ export class TestMap extends Component {
         console.log("State: ", this.state)
         return (
             <div>
-                <Navbar />
+                <Navbar>
+                    {/* imput button and input component */}
+                </Navbar>
                 <Map
                     google={this.props.google}
                     zoom={12}
