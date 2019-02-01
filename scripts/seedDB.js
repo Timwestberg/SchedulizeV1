@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-
 mongoose.connect(
     process.env.MONGODB_URI ||
     "mongodb://localhost/schedulizeDB"
@@ -225,3 +224,4 @@ mongoose.connect(
     process.exit(1);
   });
   
+  //does this not need to be exported?

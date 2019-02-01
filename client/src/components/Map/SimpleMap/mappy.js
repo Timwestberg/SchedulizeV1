@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import GoogleMapReact from 'google-maps-react';
 import API from "../../../utils/API";
  
+=======
+import GoogleMapReact from 'google-map-react';
+
+>>>>>>> fc81006726b7bba81514240f4327f56c61ccf1e0
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
 class SimpleMap extends Component {
