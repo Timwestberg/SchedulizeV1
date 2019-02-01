@@ -17,12 +17,7 @@ import ClientForm from "../components/ClientForm/index"
         <div className = "App" >
         <Navbar/>
         <Appointmentform />
-
- // ContractorCard -  this is firing an error - ./src/pages/Cards.js
-// Module not found: Can't resolve '../components/contractor/contractorCard' 
-// in 
-// 'C:\Users\mpmks\Desktop\3\Schedulize\client\src\pages' 
-// UPDATED to file directory - '..components/contractor' -ms 1/22/2019
+        
         <ContractorCard />
   
         <NewAppoointmentForm />

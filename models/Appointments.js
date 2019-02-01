@@ -17,7 +17,7 @@ const apptSchema = new Schema({
         trim: true
     },
     //name of appt booker --- required
-    booker_name: [{
+    booker_name: {
         first: {
             type: String,
             required: true,
@@ -27,17 +27,16 @@ const apptSchema = new Schema({
             type: String,
             required: true,
             trim: true
+        },
+        number: {
+            type: Number,
+            maxlength: 10,
+            trim: true
         }
-    }],
-    //phone number of booker
-    booker_num: {
-        type: Number,
-        maxlength: 10,
-        trim: true
     },
     billing: [{
-        contactPerson: [{
-            name: [{
+        contactPerson: {
+            name: {
                 first: {
                     type: String,
                     required: true,
@@ -48,7 +47,7 @@ const apptSchema = new Schema({
                     required: true,
                     trim: true
                 }
-            }],
+            },
             phone: {
                 type: Number,
                 required: true,
@@ -69,10 +68,8 @@ const apptSchema = new Schema({
                 required: true,
                 trim: true
             },
-
-            type: Array
-        }],
-        location: [{
+        },
+        location: {
             locationName: {
                 type: String,
                 required: true,
@@ -110,7 +107,7 @@ const apptSchema = new Schema({
                 minlength: 5,
                 trim: true
             }
-        }]
+        }
     }],
     //who appt is for --- required
     appt_name: [{
