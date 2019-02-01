@@ -29,9 +29,9 @@ class Standing extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, value } = this.props;
     return (
-      <FormControl className={classes.input}>
+      <FormControl className={classes.input} fullWidth>
         <InputLabel htmlFor="demo-controlled-open-select">Standing</InputLabel>
         <Select
           open={this.state.open}
@@ -43,6 +43,7 @@ class Standing extends React.Component {
             name: "age",
             id: "demo-controlled-open-select"
           }}
+          fullWidth
         >
           <MenuItem value="">
             <em>None</em>
