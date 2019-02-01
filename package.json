@@ -24,6 +24,7 @@
     "express": "^4.16.3",
     "google-maps-react": "^2.0.2",
     "if-env": "^1.0.4",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.3.16",
     "morgan": "^1.9.1",
     "prettier": "^1.13.7"

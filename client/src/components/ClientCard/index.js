@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar";
+// import Navbar from "../Navbar";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { white } from "@material-ui/core/colors";
-import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
+// import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
 
 const styles = theme => ({
     cardHeader: {

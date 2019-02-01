@@ -3,6 +3,7 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
+    //ms 1/29/2019 wouldnt this be contractors plural?
     db.Contractor
       .find(req.query)
       // .sort({ date: -1 })
