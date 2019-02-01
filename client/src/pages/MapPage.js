@@ -11,6 +11,9 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
     },
+    container: {
+        gridGap: `${theme.spacing.unit * 3}px`,
+    },
     paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
@@ -23,8 +26,10 @@ function Googlemappy(props) {
 
     return (
         <div>
-            <Navbar />
             <Grid container spacing={24}>
+            <Grid item xs={24} sm={12}>
+            <Navbar />
+            </Grid>
                 <Grid item xs={6} sm={3}>
                     <ContractCard className={classes.paper}>xs=6 sm=3</ContractCard>
                 </Grid>
