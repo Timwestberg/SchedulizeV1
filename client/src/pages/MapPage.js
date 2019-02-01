@@ -20,7 +20,7 @@ export class TestMap extends Component {
         activeMarker: {},
         selectedPlace: {},
         contractors: [],
-        coords: []
+        coords: {}
     };
 
     componentDidMount() {
@@ -90,6 +90,7 @@ export class TestMap extends Component {
                 <Navbar
                 onClick={this.addressSearch}
                 onChange={this.handleInputChange}
+                //search is equivalent to name but push through props
                 value={this.state.search}
                 >
                 Submit
@@ -117,6 +118,7 @@ export class TestMap extends Component {
                             contractor.location.streetName + " " + 
                             contractor.location.cityName + " " + 
                             contractor.location.state + " " + contractor.location.zipCode}
+                            key={contractor._id}
                             CID={contractor._id}
                         />
                     ))}
