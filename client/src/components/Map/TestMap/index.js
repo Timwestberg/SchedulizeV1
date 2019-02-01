@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import API from "../../../utils/API";
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const style = {
-    width: "100",
-    hieght: "100%"
+    width: "50%",
+    hieght: "50%"
 }
 
 export class TestMap extends Component {
@@ -40,9 +41,9 @@ export class TestMap extends Component {
     }
 
     //need to bind? to get the info into assigned button 
-   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
-//     Const CID = boundGetX.bind(state.selectedPlace);
-//  console.log(boundGetX(this.CID));
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+    //     Const CID = boundGetX.bind(state.selectedPlace);
+    //  console.log(boundGetX(this.CID));
 
     onClickAssign = () => {
         console.log("assigned");
@@ -58,41 +59,49 @@ export class TestMap extends Component {
     };
 
     render() {
+
         console.log("State: ", this.state)
         return (
-            <Map
-                google={this.props.google}
-                zoom={12}
-                style={style}
-                initialCenter={{
-                    lat: 32.852721,
-                    lng: -117.182762
-                }}
-                onClick={this.onMapClicked}
-            >
-                {this.state.contractors.map(contractor => (
-                    <Marker
-                        onClick={this.onMarkerClick}
-                        name={contractor.location.locationName}
-                        title={contractor.firstName + " "+ contractor.lastName}
-                        position={contractor.location.coords}
-                        CID={contractor._id}
-                    />
-                ))}
-                <InfoWindow
-    
-                    marker={this.state.activeMarker}
-                    visible={this.state.showingInfoWindow}>
-                    <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
-                        <p>{this.state.selectedPlace.title}</p>
-                    </div>
-                    {/* in info window - button assign contractor to appt  */}
-                    <Button onClick={this.onClickAssign()}>
-                    {/* <button onClick={this.CID.bind(this, id)}>Delete Row</button> */}
-                     Assign </Button>
-                </InfoWindow>
-            </Map>
+            <Grid container spacing={8}>
+                <div> 
+                    <Grid item xs={12} sm={6}>
+                    <Button onClick={() => { debugger; this.onClickAssign() }}>
+                            Assign </Button>
+                        <Map
+                            google={this.props.google}
+                            zoom={12}
+                            style={style}
+                            initialCenter={{
+                                lat: 32.852721,
+                                lng: -117.182762
+                            }}
+                            onClick={this.onMapClicked}
+                        >
+                            {this.state.contractors.map(contractor => (
+                                <Marker
+                                    onClick={this.onMarkerClick}
+                                    name={contractor.location.locationName}
+                                    title={contractor.firstName + " " + contractor.lastName}
+                                    position={contractor.location.coords}
+                                    CID={contractor._id}
+                                />
+                            ))}
+                            <InfoWindow
+
+                                marker={this.state.activeMarker}
+                                visible={this.state.showingInfoWindow}>
+                                <div>
+                                    <h1>{this.state.selectedPlace.name}</h1>
+                                    <p>{this.state.selectedPlace.title}</p>
+                                </div>
+                                {/* in info window - button assign contractor to appt  */}
+                            </InfoWindow>
+                        </Map>
+                    </Grid>
+                </div>
+
+            </Grid>
+
         );
     }
 }
