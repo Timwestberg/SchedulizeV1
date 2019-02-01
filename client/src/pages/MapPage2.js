@@ -1,15 +1,30 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import API from "../../../utils/API";
-import Navbar from "../../Navbar";
+import API from "../utils/API";
+import Navbar from "../components/Navbar";
 import Button from '@material-ui/core/Button';
 import Geocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
-
+import ContractCard from '../components/ContractCard';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 
 Geocode.setApiKey("AIzaSyBqnB1s-zvouH1_skf3WKRjE6uhq_5M3rI");
 
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    container: {
+        gridGap: `${theme.spacing.unit * 3}px`,
+    },
+    // paper: {
+    //     padding: theme.spacing.unit * 2,
+    //     textAlign: 'center',
+    //     color: theme.palette.text.secondary,
+    // },
+});
 
 const style = {
     width: "50%",
@@ -17,6 +32,7 @@ const style = {
 }
 
 export class TestMap extends Component {
+
     state = {
         showingInfoWindow: false,
         activeMarker: {},
@@ -86,11 +102,28 @@ export class TestMap extends Component {
 
 
     render() {
+
+        const { classes } = this.props;
+
         console.log("State: ", this.state)
         return (
-            <Grid container spacing={8}>
+            <div>
+            <Grid container spacing={24}>
+            <Grid item xs={24} sm={12}>
+                <Navbar
+                    onClick={this.addressSearch}
+                    onChange={this.handleInputChange}
+                    //search is equivalent to name but push through props
+                    value={this.state.search}
+                    >
+                        Submit
+                    </Navbar>
+                    </Grid>
+                    <Grid item xs={6} sm={3}>
+                    <ContractCard>xs=6 sm=3</ContractCard>
+                </Grid>
                 <div>
-                    <Grid item xs={22} sm={12}>
+                    <Grid item xs={12} sm={6}>
                         <Button onClick={() => { debugger; this.onClickAssign() }}>
                             Select a Contractor on the map below, then select this button to assign. </Button>
                         <Map
@@ -135,14 +168,22 @@ export class TestMap extends Component {
                         </Map>
                     </Grid>
                 </div>
+                <Grid item xs={6} sm={3}>
+                    <ContractCard className={classes.paper}>xs=6 sm=3</ContractCard>
+                </Grid>
 
             </Grid>
+
+            </div>
 
         );
     }
 }
 
+TestMap.PropTypes = {
+    classes: PropTypes.object.isRequired,
+}
 
 export default GoogleApiWrapper({
     apiKey: "AIzaSyBqnB1s-zvouH1_skf3WKRjE6uhq_5M3rI"
-})(TestMap)
+})(TestMap);
