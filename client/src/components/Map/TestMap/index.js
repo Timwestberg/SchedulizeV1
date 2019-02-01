@@ -94,7 +94,6 @@ export class TestMap extends Component {
                                     <h1>{this.state.selectedPlace.name}</h1>
                                     <p>{this.state.selectedPlace.title}</p>
                                 </div>
-                                {/* in info window - button assign contractor to appt  */}
                             </InfoWindow>
                         </Map>
                     </Grid>
