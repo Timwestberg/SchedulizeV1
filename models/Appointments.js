@@ -197,7 +197,8 @@ const apptSchema = new Schema({
             maxlength: 10,
             minlength: 9,
             trim: true
-        }
+        }, 
+        
     }],
     //date accepted by contactor 
     date_accepted: {
@@ -207,7 +208,11 @@ const apptSchema = new Schema({
     employee_assign: {
         type: String,
         required: true
+    },
+    contractorID: {
+        type: String,
     }
+
 });
 
 const Appointment = mongoose.model("Appointment", apptSchema);
