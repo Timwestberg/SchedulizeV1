@@ -28,7 +28,9 @@ function Googlemappy(props) {
         <div>
             <Grid container spacing={24}>
             <Grid item xs={24} sm={12}>
-            <Navbar />
+            <Navbar>
+                Submit
+            </Navbar>    
             </Grid>
                 <Grid item xs={6} sm={3}>
                     <ContractCard className={classes.paper}>xs=6 sm=3</ContractCard>

@@ -202,7 +202,6 @@ mongoose.connect(
   db.Client
   .remove({})
   .then(() => db.Client.collection.insertMany(clientSeed))
-  // .then(() => db.Contractor.collection.insertMany(contractorSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
@@ -224,4 +223,15 @@ mongoose.connect(
     process.exit(1);
   });
   
+  // db.Appointment
+  // .remove({})
+  // .then(() => db.Appointment.collection.insertMany(appointmentSeed))
+  // .then(data => {
+  //   console.log(data.result.n + " datas inserted!");
+  //   process.exit(0);
+  // })
+  // .catch(err => {
+  //   console.error(err);
+  //   process.exit(1);
+  // });
   //does this not need to be exported?

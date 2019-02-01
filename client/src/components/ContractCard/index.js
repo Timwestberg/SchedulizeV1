@@ -15,6 +15,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { white } from "@material-ui/core/colors";
 import W9CheckBox from "../contractor/form/W9CheckBox";
+import ButtonBase from '@material-ui/core/ButtonBase';
 
 const styles = theme => ({
     cardHeader: {
@@ -88,12 +89,29 @@ class ContractCard extends React.Component {
 
     state = {
         contractorStand: "",
-        country: ""
+        country: "",
+        value: "",
+        editable: false,
+        conFirstName: this.props.conFirstName
     }
 
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
+        });
+    };
+
+    handleEditMode = () => {
+        this.setState ({
+            editable: true
+        })
+    }
+
+    handleInputChange = event => {
+        console.log("working")
+        const value = event.target;
+        this.setState({
+            [value]: event.target.value
         });
     };
 
@@ -109,7 +127,10 @@ class ContractCard extends React.Component {
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
                                     Contractor Contact Card
                                       </Typography>
-                                <Button color="inherit">Edit</Button>
+                                <Button color="inherit"
+                                    onClick={this.handleEditMode}
+                                >
+                                    Edit</Button>
                             </Toolbar>
                         </AppBar>
                         <form className={classes.container} noValidate autoComplete="off">
@@ -130,9 +151,12 @@ class ContractCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.props.conFirstName}
+                                            value={this.state.conFirstName}
+                                            name="conFirstName"
                                             margin="normal"
                                             variant="outlined"
+                                            disabled={!this.state.editable}
+                                            onChange={this.handleInputChange}
                                         // fullWidth
                                         />
                                         <Grid item xs>
@@ -297,8 +321,8 @@ class ContractCard extends React.Component {
                                     <Grid
                                         container
                                         direction="row"
-                                        // justify="flex-end"
-                                        // alignItems="flex-start"
+                                    // justify="flex-end"
+                                    // alignItems="flex-start"
                                     >
                                         <TextField
                                             id="outlined-helperText"

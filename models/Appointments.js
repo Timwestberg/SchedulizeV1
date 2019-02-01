@@ -27,13 +27,12 @@ const apptSchema = new Schema({
             type: String,
             required: true,
             trim: true
+        },
+        number: {
+            type: Number,
+            maxlength: 10,
+            trim: true
         }
-    },
-    //phone number of booker
-    booker_num: {
-        type: Number,
-        maxlength: 10,
-        trim: true
     },
     billing: [{
         contactPerson: {
@@ -69,8 +68,6 @@ const apptSchema = new Schema({
                 required: true,
                 trim: true
             },
-
-            type: Array
         },
         location: {
             locationName: {

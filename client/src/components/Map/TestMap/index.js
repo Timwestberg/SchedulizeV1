@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import API from "../../../utils/API";
+import Navbar from "../../Navbar";
 import Button from '@material-ui/core/Button';
+import Geocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
+
+
+
+Geocode.setApiKey("AIzaSyBqnB1s-zvouH1_skf3WKRjE6uhq_5M3rI");
+
 
 const style = {
     width: "50%",
@@ -14,7 +21,8 @@ export class TestMap extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        contractors: []
+        contractors: [],
+        coords: {}
     };
 
     componentDidMount() {
@@ -40,16 +48,11 @@ export class TestMap extends Component {
         });
     }
 
-    //need to bind? to get the info into assigned button 
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
-    //     Const CID = boundGetX.bind(state.selectedPlace);
-    //  console.log(boundGetX(this.CID));
-
     onClickAssign = () => {
         console.log("assigned");
     }
 
-    onMapClicked = (props) => {
+    onMapClicked = () => {
         if (this.state.showingInfoWindow) {
             this.setState({
                 showingInfoWindow: false,
@@ -58,15 +61,46 @@ export class TestMap extends Component {
         }
     };
 
-    render() {
+    addressSearch = () => {
+        Geocode.fromAddress(this.state.search).then(
+            response => {
+                const { lat, lng } = response.results[0].geometry.location;
+                this.setState({
+                    coords: { lat, lng }
+                });
+                console.log(lat, lng);
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    }
 
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+
+    render() {
         console.log("State: ", this.state)
         return (
             <Grid container spacing={8}>
-                <div> 
+                <div>
                     <Grid item xs={22} sm={12}>
-                    <Button onClick={() => { debugger; this.onClickAssign() }}>
+                        <Button onClick={() => { debugger; this.onClickAssign() }}>
                             Select a Contractor on the map below, then select this button to assign. </Button>
+                        {/* <Navbar
+                            onClick={this.addressSearch}
+                            onChange={this.handleInputChange}
+                            //search is equivalent to name but push through props
+                            value={this.state.search}
+                        >
+                            Submit
+                       </Navbar>Ï */}
                         <Map
                             google={this.props.google}
                             zoom={12}
@@ -77,12 +111,21 @@ export class TestMap extends Component {
                             }}
                             onClick={this.onMapClicked}
                         >
+                            <Marker
+                                position={this.state.coords}
+                            />
                             {this.state.contractors.map(contractor => (
                                 <Marker
                                     onClick={this.onMarkerClick}
                                     name={contractor.location.locationName}
                                     title={contractor.firstName + " " + contractor.lastName}
                                     position={contractor.location.coords}
+                                    location={contractor.location.streetNumber + " " +
+                                        contractor.location.streetName + " " +
+                                        contractor.location.cityName + " " +
+                                        contractor.location.state + " " + contractor.location.zipCode}
+                                    key={contractor._id}
+                                    CID={contractor._id}
                                     CID={contractor._id}
                                 />
                             ))}
@@ -93,6 +136,7 @@ export class TestMap extends Component {
                                 <div>
                                     <h1>{this.state.selectedPlace.name}</h1>
                                     <p>{this.state.selectedPlace.title}</p>
+                                    <p>{this.state.selectedPlace.location}</p>
                                 </div>
                             </InfoWindow>
                         </Map>
