@@ -84,7 +84,6 @@ export class TestMap extends Component {
         });
     };
 
-
     render() {
         console.log("State: ", this.state)
         return (
@@ -125,8 +124,8 @@ export class TestMap extends Component {
                                         contractor.location.cityName + " " +
                                         contractor.location.state + " " + contractor.location.zipCode}
                                     key={contractor._id}
-                                    CID={contractor._id}
-                                    CID={contractor._id}
+                                    contractorID={contractor._id}
+                                    contractorID={contractor._id}
                                 />
                             ))}
                             <InfoWindow
@@ -138,7 +137,6 @@ export class TestMap extends Component {
                                     <p>{this.state.selectedPlace.title}</p>
                                     <p>{this.state.selectedPlace.location}</p>
                                 </div>
-                                {/* in info window - button assign contractor to appt  */}
                             </InfoWindow>
                         </Map>
                     </Grid>
