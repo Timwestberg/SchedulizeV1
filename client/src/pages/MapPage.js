@@ -60,7 +60,7 @@ export class TestMap extends Component {
     };
 
     addressSearch = () => {
-        Geocode.fromAddress("6256 Greenwich Dr, San Diego, CA 92122").then(
+        Geocode.fromAddress(this.state.search).then(
             response => {
               const { lat, lng } = response.results[0].geometry.location;
               this.setState({
@@ -90,6 +90,7 @@ export class TestMap extends Component {
                 <Navbar
                 onClick={this.addressSearch}
                 onChange={this.handleInputChange}
+                value={this.state.search}
                 >
                 Submit
                 </Navbar>

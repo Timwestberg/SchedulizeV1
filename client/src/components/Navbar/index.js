@@ -13,7 +13,7 @@ const styles = theme => ({
   },
 })
 
-function Navbar({props, onClick, children, onChange}) {
+function Navbar(props) {
 
   return (
   <div className="topnav">
@@ -24,8 +24,8 @@ function Navbar({props, onClick, children, onChange}) {
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
   <div className="search-container">
-      <input type="text" placeholder="Search.." name="search" {...props} onChange={onChange}/>
-      <button onClick={onClick} type="submit">{children}</button>
+      <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
+      <button onClick={props.onClick} type="submit">{props.children}</button>
   </div>
 </div>
   );
