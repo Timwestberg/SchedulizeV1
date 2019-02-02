@@ -8,9 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
 
-
-
-const API_KEY =  googleMaps.key
+const API_KEY = googleMaps.key
 
 Geocode.setApiKey(API_KEY);
 
