@@ -8,20 +8,21 @@ import {
   CardContent,
   TextField,
   Grid,
-  Fab,
+  Fab
 } from "@material-ui/core";
 import Type from "./form/Type";
 import DateTime from "./form/Date&TimePicker";
 import Date from "./form/DatePicker";
 import PhoneNumber from "./form/PhoneNumber";
-import AddressBlock from "./form/AddressBlock";
 import EmployeeAssisting from "./form/Employee";
-import ContractorCovering from "./form/ContractorCovering";
-import Notes from '../Notes/index';
-import ReferenceInfo from "./form/ReferenceInfo";
-import AssigneeInfo from "./form/AssigneeInfo"
-import AdjusterInfo from "./form/AdjusterInfo";
-
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import API from "../../utils/API";
 
 const styles = {
   card: {
@@ -52,12 +53,36 @@ const styles = {
 
 class NewAppointmentCard extends React.Component {
   state = {
-    checked: "",
-    name: ""
+    // dateInput: "",
+    // apptDate: "",
+    assigneeFirstName: "",
+    assigneeLastName: "",
+    // assigneePhone: "",
+    adjusterFirstName: "",
+    adjusterLastName: "",
+    // adjusterPhone: "",
+    // assignementType: "",
+    // multiline: "",
+    refName: "",
+    refNumber: "",
+    locationName: "",
+    address: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    // employeeAssign: ""
   };
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
   };
 
   handleClose = () => {
@@ -68,107 +93,293 @@ class NewAppointmentCard extends React.Component {
     this.setState({ open: true });
   };
 
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.saveAppt({
+      // dateInput: this.state.dateInput,
+      // apptDate: this.state.apptDate,
+      assigneeFirstName: this.state.assigneeFirstName,
+      assigneeLastName: this.state.assigneeLastName,
+      // assigneePhone: this.state.assigneePhone,
+      adjusterFirstName: this.state.adjusterFirstName,
+      adjusterLastName: this.state.adjusterLastName,
+      // adjusterPhone: this.state.adjusterPhone,
+      // assignementType: this.state.assignementType,
+      // notes: this.state.multiline,
+      refName: this.state.refName,
+      refNumber: this.state.refNumber,
+      locationName: this.state.locationName,
+      address: this.state.address,
+      city: this.state.city,
+      state: this.state.state,
+      postalCode: this.state.postalCode,
+      // employeeAssign: this.state.employeeAssign
+    });
+    console.log(this.state)
+  };
+
   render() {
     const { classes } = this.props;
     return (
-      <Card className={classes.card}>
-       
-        <CardHeader title="New Appointment" className={classes.cardHeader} />
-        <CardContent>
-        <Grid container item xs={12}>
-            <form className={classes.input} autoComplete="off">
-            <Grid container spacing={16}>
+      <div>
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <AppBar position="static">
+              <Toolbar>
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                  className={classes.grow}
+                >
+                  New Appointment
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Grid container item xs={12}>
+              <form
+                className={classes.input}
+                autoComplete="off"
+                onSubmit={this.handleFormSubmit}
+              >
+                <Grid container spacing={16}>
+                  {/* Date the appointment was called in to be assigned */}
+                  {/* <Grid item xs={12}>
+                    <Date fullWidth />
+                  </Grid> */}
+                  {/* Date the assignment will be taking place on */}
 
-            {/* Date the appointment was called in to be assigned */}
-        <Grid item xs={12}>
-        <Date />
-        </Grid>
-              {/* Date the assignment will be taking place on */}
+                  {/* <Grid item xs={12}>
+                    <DateTime />
+                  </Grid> */}
 
-        <Grid item xs={12}>
-        <DateTime />
-        </Grid>
+                  {/* Who will is assigning the assignment */}
+                  {/* Assignee Last Name for searchability purposes */}
+                  <Grid item xs={12} md={6} lg={6}>
+                    <TextField
+                      fullWidth
+                      id="assigneeFirstName"
+                      label="Assignee&#39;s First Name"
+                      className={classes.textField}
+                      name="assigneeFirstName"
+                      value={this.state.assigneeFirstName}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid>
 
+                  <Grid item xs={12} md={6} lg={6}>
+                    <TextField
+                      id="assigneeLastName"
+                      fullWidth
+                      label="Assignee&#39;s Last Name"
+                      name="assigneeLastName"
+                      className={classes.textField}
+                      value={this.state.assigneeLastName}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid>
 
-              {/* Who will is assigning the assignment */}
-              {/* Assignee Last Name for searchability purposes */}
-              <Grid item xs={12} md={6} lg={6}>
+                  {/* <Grid item xs={12}>
+                    <PhoneNumber phone={this.state.assigneePhone} />
+                  </Grid> */}
+                  {/* Assignee's phone number to contact in case their our questions[???] */}
+                  <br />
 
-                <AssigneeInfo />
+                  {/* Contact information for person paying for the assignment {typically an adjuster} */}
 
-              </Grid>
-              {/* Assignee's phone number to contact in case their our questions[???] */}
-              <br />
+                  {/* Reference Name for the file || Name need in order to bill out the assignment */}
+                  {/* Reference Number to be able to easily search for the assignemnt if one is not assign give default */}
 
-              {/* Contact information for person paying for the assignment {typically an adjuster} */}
-              <Grid item xs={12} md={6} lg={6}>
+                  <Grid item xs={12} md={6} lg={6}>
+                    <TextField
+                      fullWidth
+                      id="adjusterFirstName"
+                      label="Adjuster&#39;s First Name"
+                      className={classes.textField}
+                      name="adjusterFirstName"
+                      value={this.state.adjusterFirstName}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid>
 
-                <AdjusterInfo />
+                  <Grid item xs={12} md={6} lg={6}>
+                    <TextField
+                      fullWidth
+                      id="adjusterLastName"
+                      label="Adjuster&#39;s Last Name"
+                      className={classes.textField}
+                      name="adjusterLastName"
+                      value={this.state.adjusterLastName}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid>
 
-              </Grid>
-              <br />
+                  {/* <Grid item xs={12}>
+                    <PhoneNumber />
+                  </Grid> */}
 
-              {/* Reference Name for the file || Name need in order to bill out the assignment */}
-              {/* Reference Number to be able to easily search for the assignemnt if one is not assign give default */}
-              <Grid item xs={12} md={6} lg={6}>
+                  <br />
 
-              <ReferenceInfo />
+                  {/* Drop down selector with types off appointments to choose from */}
+                  {/* <Grid item xs={12}>
+                    <Type />
+                  </Grid> */}
+                  <br />
 
-              </Grid>
+                  {/* Notes section in case the client has special requests that need to be followed */}
 
-              <br />
+                  {/* <Grid item xs={8}>
+                    <TextField
+                      id="outlined-multiline-flexible"
+                      label="Notes"
+                      multiline
+                      fullWidth
+                      rowsMax="2"
+                      name="multiline"
+                      value={this.state.multiline}
+                      onChange={this.handleChange("multiline")}
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid> */}
 
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      id="Refname"
+                      label="Reference Name"
+                      className={classes.textField}
+                      name="refName"
+                      value={this.state.refName}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid>
 
-              {/* Drop down selector with types off appointments to choose from */}
-              <Grid item xs={12} >
-              
-              <Type />
-              
-              </Grid>
-              <br />
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      id="Refname"
+                      label="Reference Number"
+                      className={classes.textField}
+                      name="refNumber"
+                      value={this.state.refNumber}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                    />
+                  </Grid>
 
+                  {/* Assignment location information */}
 
-              {/* Notes section in case the client has special requests that need to be followed */}
-              <Grid item xs={6}>
+                  {/* Assignment location information */}
+                  <Grid item xs={12}>
+                    <TextField
+                      id="outlined-helperText"
+                      label="Location Name"
+                      fullWidth
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                      name="locationName"
+                      value={this.state.locationName}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      id="outlined-helperText"
+                      label="Street Address"
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                      name="address"
+                      value={this.state.adress}
 
-              <Notes />
+                    />
+                  </Grid>
 
-              </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      id="outlined-helperText"
+                      label="City"
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                      name="city"
+                      value={this.state.city}
+                    />
+                  </Grid>
 
-              {/* Assignment location information */}
-              <Grid item xs={12}>
-              <AddressBlock />
-              </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      id="outlined-helperText"
+                      label="State/Province"
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                      name="state"
+                      value={this.state.state}
+                    />
+                  </Grid>
 
-              {/* Which contractor will be covering the assignment */}
-              {/* Date the contractor accepted the job || to avoid future problems */}
-              <Grid item xs={6}>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      id="outlined-helperText"
+                      label="Postal / Zip Code"
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.handleInputChange}
+                      name="postalCode"
+                      value={this.state.postalCode}
+                    />
+                  </Grid>
 
-              <ContractorCovering />
+                  {/* Which contractor will be covering the assignment */}
+                  {/* Date the contractor accepted the job || to avoid future problems */}
 
-              </Grid>
+                  {/* Name of the employee who assisted in taking the assignment */}
+                  <Grid item xs={12}>
+                    {/* <EmployeeAssisting /> */}
+                  </Grid>
 
-              {/* Name of the employee who assisted in taking the assignment */}
-              <Grid item xs={6}>
-
-              <EmployeeAssisting />
-
-              </Grid>
-
-
-              {/* Add Button to save the assignment to the database */}
-              <Grid item xs={6}>
-                <Fab color="danger" aria-label="Add" className={classes.fab}>
-                  <AddIcon />
-                </Fab>
-              </Grid>
-
-              </Grid>
-            </form>
-          </Grid>
-          
-        </CardContent>
-      </Card>
+                  {/* Add Button to save the assignment to the database */}
+                  <Grid item xs={6}>
+                    <Fab
+                      color="danger"
+                      aria-label="Add"
+                      className={classes.fab}
+                      type="submit"
+                    >
+                      <AddIcon />
+                    </Fab>
+                  </Grid>
+                </Grid>
+              </form>
+            </Grid>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </div>
     );
   }
 }

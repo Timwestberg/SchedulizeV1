@@ -3,7 +3,7 @@ const appointmentsController = require("../../controllers/appointmentsController
 
 router.route("/")
   .get(appointmentsController.findAll)
-  .post(appoointmentsController.create)
+  .post(appointmentsController.create)
   
 
 // Matches with "/api/books/:id"
