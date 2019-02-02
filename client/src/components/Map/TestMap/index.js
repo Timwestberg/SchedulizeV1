@@ -22,7 +22,7 @@ export class TestMap extends Component {
         activeMarker: {},
         selectedPlace: {},
         contractors: [],
-        coords: {}
+        // coords: {}
     };
 
     componentDidMount() {
@@ -87,6 +87,13 @@ export class TestMap extends Component {
     render() {
         console.log("State: ", this.state)
         return (
+            <div>
+            {/* <Navbar
+            onClick={this.addressSearch}
+            onChange={this.handleInputChange}
+            //search is equivalent to name but push through props
+            value={this.state.search}
+            /> */}
             <Grid container spacing={8}>
                 <div>
                     <Grid item xs={22} sm={12}>
@@ -103,7 +110,7 @@ export class TestMap extends Component {
                             onClick={this.onMapClicked}
                         >
                             <Marker
-                                position={this.state.coords}
+                                position={this.state.position}
                             />
                             {this.state.contractors.map(contractor => (
                                 <Marker
@@ -135,6 +142,7 @@ export class TestMap extends Component {
                 </div>
 
             </Grid>
+            </div>
 
         );
     }

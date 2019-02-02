@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/calendar" component={Calendar} />
-        <Route exact path="/map" component={MapPage} />
+        <Route exact path="/map" component={MapPage2} />
         <Route exact path="/forms" component={Cards} />
         <Route exact path="/addressbook" component={Address} />
         <Route component={NoMatch}/>
