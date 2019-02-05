@@ -127,23 +127,23 @@ class ClientCard extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-            API.updateClient({
-                clientFirstName: this.state.clientFirstName,
-                clientLastName: this.state.clientLastName,
-                billContact: this.state.billContact,
-                clientPhone: this.state.clientPhone,
-                clientEmail: this.state.clientEmail,
-                companyName: this.state.companyName,
-                position: this.state.position,
-                billPhone: this.state.billPhone,
-                billEmail: this.state.billEmail,
-                clientCity: this.state.clientCity,
-                clientState: this.state.clientState,
-                clientStreetNumber: this.state.clientStreetNumber,
-                clientStreetName: this.state.clientStreetName
-            })
-                .then(res => console.log("Information updated"))
-                .catch(err => console.log(err));
+        API.updateClient({
+            clientFirstName: this.state.clientFirstName,
+            clientLastName: this.state.clientLastName,
+            billContact: this.state.billContact,
+            clientPhone: this.state.clientPhone,
+            clientEmail: this.state.clientEmail,
+            companyName: this.state.companyName,
+            position: this.state.position,
+            billPhone: this.state.billPhone,
+            billEmail: this.state.billEmail,
+            clientCity: this.state.clientCity,
+            clientState: this.state.clientState,
+            clientStreetNumber: this.state.clientStreetNumber,
+            clientStreetName: this.state.clientStreetName
+        })
+            .then(res => console.log("Information updated"))
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -163,7 +163,7 @@ class ClientCard extends React.Component {
                                 >Edit</Button>
                                 <Button color="inherit"
                                     onClick={this.handleFormSubmit}
-                                    disabled={!(this.state.clientFirstName && 
+                                    disabled={!(this.state.clientFirstName &&
                                         this.state.clientLastName &&
                                         this.state.clientFirstName &&
                                         this.state.clientLastName &&
