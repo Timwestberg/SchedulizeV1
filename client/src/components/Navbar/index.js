@@ -25,7 +25,7 @@ function Navbar(props) {
   <a href="/">Logout</a>
   <div className="search-container">
       <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
-      <button onClick={props.onClick} type="submit">{props.children}</button>
+      <button onClick={props.onClick} type="submit">Submit</button>
   </div>
 </div>
   );
