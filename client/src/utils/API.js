@@ -17,6 +17,9 @@ export default {
     saveClient: function(clientData) {
         return axios.post("/api/clients", clientData);
     },
+    updateClient: function(_id) {
+        return axios.put("/api/client/" + _id);
+    },
     // Gets all appts
     getAppts: function() {
         return axios.get("/api/appointments");

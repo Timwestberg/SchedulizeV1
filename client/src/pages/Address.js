@@ -93,6 +93,7 @@ class Address extends Component {
             clientCity={client.billing.location.cityName}
             clientZipCode={client.billing.location.zipCode}
             clientState={client.billing.location.state}
+            clientType={client.typeClient}
             />
             ))}
             </div>
