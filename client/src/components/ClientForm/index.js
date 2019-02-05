@@ -89,6 +89,7 @@ class ClientCard extends React.Component {
     // phone: "",
     // email: "",
     position: "",
+    notes:"",
     contactPerson: {
       firstName: "",
       lastName: "",
@@ -121,9 +122,9 @@ class ClientCard extends React.Component {
       [name]: value
     });
 
-    setTimeout(() => {
-      console.log(this.state);
-    }, 500);
+    // setTimeout(() => {
+      // console.log(this.state);
+    // }, 500);
   };
 
   handleContactChange = event => {
@@ -136,7 +137,7 @@ class ClientCard extends React.Component {
     this.setState({
       contactPerson
     });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   handleBillingChange = event => {
@@ -148,7 +149,7 @@ class ClientCard extends React.Component {
     location[field] = event.target.value;
 
     this.setState({ billing: { contactBilling, location } });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   handleFormSubmit = event => {
@@ -161,6 +162,7 @@ class ClientCard extends React.Component {
       // phone: this.state.phone,
       // email: this.state.email,
       position: this.state.position,
+      notes: this.state.notes,
       contactPerson: {
         firstName: this.state.contactPerson.firstName,
         lastName: this.state.contactPerson.lastName,
@@ -190,6 +192,7 @@ class ClientCard extends React.Component {
         // phone: "",
         // email: "",
         position: "",
+        notes:"",
         contactPerson: {
           firstName: "",
           lastName: "",
@@ -370,9 +373,12 @@ class ClientCard extends React.Component {
                         shrink: true
                       }}
                     />
-                    {/* <TextField
+                    <TextField
                       id="outlined-multiline-static"
                       label="Notes"
+                      name="notes"
+                      value={this.state.notes}
+                      onChange={this.handleChange()}
                       multiline
                       fullWidth
                       rows="10"
@@ -380,7 +386,7 @@ class ClientCard extends React.Component {
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
-                    /> */}
+                    />
                   </Grid>
                   <Grid item xs={3}>
                     <TextField
