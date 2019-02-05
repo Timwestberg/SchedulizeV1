@@ -85,20 +85,36 @@ const clientType = [
 
 class ClientCard extends React.Component {
   state = {
-    client: {
+    clientName: "",
+    // phone: "",
+    // email: "",
+    position: "",
+    contactPerson: {
       firstName: "",
       lastName: "",
-      phone: ""
+      phone: "",
+      email: ""
+      // position: ""
     },
-    company: "",
+    clientType: "",
     billing: {
-      
+      contactBilling: {
+        name: "",
+        phone: "",
+        email: ""
+        // position: ""
+      },
+      location: {
+        // locationName: "",
+        address: "",
+        city: "",
+        state: "",
+        zipCode: ""
+      }
     }
-    // clientType: "",
-    // country: ""
   };
 
-  handleInputChange = event => {
+  handleChange = name => event => {
     const { name, value } = event.target;
 
     this.setState({
@@ -110,32 +126,94 @@ class ClientCard extends React.Component {
     }, 500);
   };
 
-  handleClientChange = event => {
+  handleContactChange = event => {
     const field = event.target.name;
 
-    const client = this.state.client;
+    const contactPerson = this.state.contactPerson;
 
-    client[field] = event.target.value;
+    contactPerson[field] = event.target.value;
 
     this.setState({
-      client
+      contactPerson
     });
+    console.log(this.state);
+  };
+
+  handleBillingChange = event => {
+    const field = event.target.name;
+    const billing = this.state.billing;
+    const { contactBilling, location } = billing;
+
+    contactBilling[field] = event.target.value;
+    location[field] = event.target.value;
+
+    this.setState({ billing: { contactBilling, location } });
     console.log(this.state);
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // const { client } = this.state;
+    // const { contactPerson } = this.state;
+    // const { contactBilling, location } = this.state.billing.;
     console.log(this.state);
     API.saveClient({
-      client: {
-        firstName: this.state.client.firstName,
-        lastName: this.state.client.lastName,
-        phone: this.state.client.phone
+      clientName: this.state.clientName,
+      // phone: this.state.phone,
+      // email: this.state.email,
+      position: this.state.position,
+      contactPerson: {
+        firstName: this.state.contactPerson.firstName,
+        lastName: this.state.contactPerson.lastName,
+        phone: this.state.contactPerson.phone,
+        email: this.state.contactPerson.email
+        // position: contactPerson.position
       },
-      companyName: this.state.company
+      clientType: this.state.clientType,
+      billing: {
+        contactBilling: {
+          name: this.state.billing.contactBilling.name,
+          phone: this.state.billing.contactBilling.phone,
+          email: this.state.billing.contactBilling.email
+          // position: contactBilling.position
+        },
+        location: {
+          address: this.state.billing.location.address,
+          city: this.state.billing.location.city,
+          state: this.state.billing.location.state,
+          zipCode: this.state.billing.location.zipCode
+        }
+      }
     }).then(res => {
       console.log(res.data);
+      this.setState({
+        clientName: "",
+        // phone: "",
+        // email: "",
+        position: "",
+        contactPerson: {
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: ""
+          // position: ""
+        },
+        clientType: "",
+        billing: {
+          contactBilling: {
+            name: " ",
+            phone: "",
+            email: ""
+            // position: ""
+          },
+          location: {
+            // locationName: "",
+            address: "",
+            city: " ",
+            state: "",
+            zipCode: ""
+          }
+        }
+      });
     });
 
     console.log(this.state);
@@ -143,22 +221,24 @@ class ClientCard extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { contactPerson } = this.state;
+    const { contactBilling, location } = this.state.billing;
 
     return (
       <div className={classes.root}>
         <Grid container item xs={12}>
           <Card className={classes.card}>
             <CardContent>
-              <AppBar position="static">
+              <AppBar position="static" className={classes.cardHeader}>
                 <Toolbar>
                   <Typography
                     variant="h6"
                     color="inherit"
                     className={classes.grow}
                   >
-                    Client Card
+                    Client Contact Card
                   </Typography>
-                  <Button color="inherit">Edit</Button>
+                  {/* <Button color="inherit">Edit</Button> */}
                 </Toolbar>
               </AppBar>
               <form
@@ -167,97 +247,75 @@ class ClientCard extends React.Component {
                 autoComplete="off"
                 onSubmit={this.handleFormSubmit}
               >
-                <Grid container spacing={16}>
-                  <Grid item xs={12}>
-                    <ClientName
-                      client={this.state.client}
-                      change={this.handleClientChange}
-                    />
-                  </Grid>
+                <Grid
+                  container
+                  spacing={24}
+                  direction="row"
+                  justify="center"
+                  alignItems="flex-start"
+                >
+                  <Grid item xs={4}>
+                    <Grid
+                      container
+                      direction="row"
+                      justify="flex-end"
+                      alignItems="flex-start"
+                    >
+                      <Grid item xs={6}>
+                        <TextField
+                          id="outlined-name"
+                          label="First Name"
+                          className={classes.textField}
+                          name="firstName"
+                          value={contactPerson.firstName}
+                          onChange={this.handleContactChange}
+                          margin="normal"
+                          variant="outlined"
+                          fullWidth
+                        />
+                      </Grid>
 
-                  <Grid item xs={12}>
+                      <Grid item xs={6}>
+                        <TextField
+                          id="outlined-name"
+                          label="Last Name"
+                          className={classes.textField}
+                          name="lastName"
+                          value={contactPerson.lastName}
+                          onChange={this.handleContactChange}
+                          margin="normal"
+                          variant="outlined"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
                     <TextField
-                      id="outlined-full-width"
-                      name="company"
-                      value={this.state.company}
-                      onChange={this.handleInputChange}
-                      label="Company/Client Name"
-                      placeholder="Company/Client Name"
-                      fullWidth
-                      margin="normal"
-                      variant="outlined"
+                      id="outlined-number"
+                      label="Phone Number"
+                      name="phone"
+                      value={contactPerson.phone}
+                      onChange={this.handleContactChange}
+                      type="Phone Number"
+                      className={classes.textField}
                       InputLabelProps={{
                         shrink: true
                       }}
-                    />
-                  </Grid>
-                  <Grid item xs={9}>
-                    <TextField
-                      id="outlined-read-only-input"
-                      name=""
-                      defaultValue="Billing Information"
-                      className={classes.textField}
-                      fullWidth
                       margin="normal"
-                      InputProps={{
-                        readOnly: true
-                      }}
                       variant="outlined"
                     />
-                  </Grid>
-
-                  <Grid item xs={2}>
-                    <PhoneNumber />
-                  </Grid>
-
-                  {/* <Grid item xs={2}>
                     <TextField
                       id="outlined-email-input"
                       label="Email"
                       className={classes.textField}
+                      fullWidth
                       type="email"
                       name="email"
+                      value={contactPerson.email}
+                      onChange={this.handleContactChange}
                       autoComplete="email"
                       margin="normal"
                       variant="outlined"
                     />
-                  </Grid> */}
-                  {/* <Grid item xs={4}>
-                    <TextField
-                      id="outlined-full-width"
-                      label="Position"
-                      placeholder="Position"
-                      fullWidth
-                      margin="normal"
-                      variant="outlined"
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </Grid> */}
-                  {/* <Grid item xs={2}>
-                    <TextField
-                      id="outlined-helperText"
-                      label="Location Name"
-                      defaultValue="Location Name"
-                      // fullWidth
-                      className={classes.textField}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid> */}
-                  {/* <Grid item xs={2}>
-                    <TextField
-                      id="outlined-helperText"
-                      label="Street Address"
-                      defaultValue="Street Address"
-                      // fullWidth
-                      className={classes.textField}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid> */}
-                  {/* <Grid item xs={4}>
                     <TextField
                       select
                       id="outlined-with-placeholder"
@@ -265,7 +323,8 @@ class ClientCard extends React.Component {
                       className={classes.textField}
                       fullWidth
                       value={this.state.clientType}
-                      onChange={this.handleInputChange("clientType")}
+                      name="clientType"
+                      onChange={this.handleChange("clientType")}
                       SelectProps={{
                         MenuProps: {
                           className: classes.menu
@@ -281,98 +340,198 @@ class ClientCard extends React.Component {
                         </MenuItem>
                       ))}
                     </TextField>
-                  </Grid> */}
-                  {/* <Grid item xs={4}>
+                  </Grid>
+                  <Grid item xs={4}>
                     <TextField
-                      id="outlined-multiline-flexible"
+                      id="clientName"
+                      label="Company / Client Name"
+                      placeholder="Company / Client Name"
+                      name="clientName"
+                      value={this.state.clientName}
+                      onChange={this.handleChange()}
+                      fullWidth
+                      margin="normal"
+                      variant="outlined"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                    />
+                    <TextField
+                      id="outlined-full-width"
+                      label="Position"
+                      placeholder="Position"
+                      fullWidth
+                      margin="normal"
+                      variant="outlined"
+                      name="position"
+                      value={this.state.position}
+                      onChange={this.handleChange()}
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                    />
+                    {/* <TextField
+                      id="outlined-multiline-static"
                       label="Notes"
                       multiline
                       fullWidth
-                      rowsMax="2"
-                      value={this.state.multiline}
-                      onChange={this.handleInputChange("multiline")}
+                      rows="10"
+                      defaultValue="Default Value"
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
+                    /> */}
+                  </Grid>
+                  <Grid item xs={3}>
+                    <TextField
+                      id="outlined-read-only-input"
+                      defaultValue="Billing Information"
+                      className={classes.textField}
+                      fullWidth
+                      margin="normal"
+                      InputProps={{
+                        readOnly: true
+                      }}
+                      variant="outlined"
                     />
-                  </Grid> */}
-                  {/* <Grid item xs={2}>
                     <TextField
                       id="outlined-helperText"
-                      label="City"
-                      defaultValue="City"
+                      label="Contact Name"
+                      name="name"
+                      value={contactBilling.name}
+                      onChange={this.handleBillingChange}
+                      fullWidth
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
                     />
-                  </Grid> */}
-                  {/* <Grid item xs={2}>
+
+                    <TextField
+                      id="outlined-number"
+                      label="Billing Phone Number"
+                      name="phone"
+                      value={contactBilling.phone}
+                      onChange={this.handleBillingChange}
+                      type="Phone Number"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                      margin="normal"
+                      variant="outlined"
+                    />
+
+                    <TextField
+                      id="outlined-email-input"
+                      label="Billing Email"
+                      className={classes.textField}
+                      fullWidth
+                      type="email"
+                      name="email"
+                      value={contactBilling.email}
+                      onChange={this.handleBillingChange}
+                      autoComplete="email"
+                      margin="normal"
+                      variant="outlined"
+                    />
+
                     <TextField
                       id="outlined-helperText"
-                      label="State/Province"
-                      defaultValue="State/Province"
+                      label="Street Address"
+                      defaultValue="Street Address"
+                      fullWidth
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
+                      name="address"
+                      value={location.address}
+                      onChange={this.handleBillingChange}
                     />
-                  </Grid> */}
-                  {/* <Grid item xs>
                     <Grid
                       container
-                      direction="row-reverse"
-                      justify="flex-start"
-                      alignItems="baseline"
+                      direction="row"
+                      justify="flex-end"
+                      alignItems="flex-start"
                     >
                       <TextField
                         id="outlined-helperText"
-                        label="Postal / Zip Code"
-                        defaultValue="Zip Code"
+                        label="City"
+                        defaultValue="City"
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
+                        name="city"
+                        value={location.city}
+                        onChange={this.handleBillingChange}
                       />
+                      <Grid item xs>
+                        <TextField
+                          id="outlined-helperText"
+                          label="State/Province"
+                          defaultValue="State"
+                          className={classes.textField}
+                          margin="normal"
+                          variant="outlined"
+                          fullWidth
+                          name="state"
+                          value={location.state}
+                          onChange={this.handleBillingChange}
+                        />
+                      </Grid>
                     </Grid>
-                  </Grid> */}
-                  {/* <Grid item xs={2}>
                     <Grid
                       container
-                      direction="row-reverse"
-                      justify="flex-start"
-                      alignItems="baseline"
+                      direction="row"
+                      justify="flex-end"
+                      alignItems="flex-start"
                     >
-                      <TextField
-                        id="outlined-select-currency"
-                        select
-                        label="Country"
-                        className={classes.textField}
-                        value={this.state.country}
-                        onChange={this.handleInputChange("country")}
-                        SelectProps={{
-                          MenuProps: {
-                            className: classes.menu
-                          }
-                        }}
-                        helperText="Please select your country"
-                        margin="normal"
-                        variant="outlined"
-                      >
-                        {countries.map(option => (
-                          <MenuItem key={option.value} value={option.value}>
-                            {option.value}
-                          </MenuItem>
-                        ))}
-                      </TextField>
+                      <Grid item xs>
+                        <TextField
+                          id="outlined-helperText"
+                          label="Postal / Zip Code"
+                          defaultValue="Zip Code"
+                          className={classes.textField}
+                          margin="normal"
+                          variant="outlined"
+                          name="zipCode"
+                          value={location.zipCode}
+                          onChange={this.handleBillingChange}
+                        />
+                        {/* <TextField
+                                          id="outlined-select-currency"
+                                          select
+                                          label="Country"
+                                          className={classes.textField}
+                                          value={this.state.country}
+                                          onChange={this.handleChange('country')}
+                                          fullWidth
+                                          SelectProps={{
+                                              MenuProps: {
+                                                  className: classes.menu,
+                                              },
+                                          }}
+                                          helperText="Please select your country"
+                                          margin="normal"
+                                          variant="outlined"
+                                      >
+                                          {countries.map(option => (
+                                              <MenuItem key={option.value} value={option.value}>
+                                                  {option.value}
+                                              </MenuItem>
+                                          ))}
+                                      </TextField> */}
+                      </Grid>
+                      <Grid item xs>
+                        <Button
+                          type="primary"
+                          variant="contained"
+                          color="inherit"
+                          type="submit"
+                        >
+                          Submit
+                        </Button>
+                      </Grid>
                     </Grid>
-                  </Grid> */}
-                  <Grid item xs={6}>
-                    <Fab
-                      color="danger"
-                      aria-label="Add"
-                      className={classes.fab}
-                      type="submit"
-                    >
-                      <AddIcon />
-                    </Fab>
                   </Grid>
                 </Grid>
               </form>
