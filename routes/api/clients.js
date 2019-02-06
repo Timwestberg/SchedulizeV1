@@ -8,11 +8,15 @@ const clientsController = require("../../controllers/clientsController");
 router.route("/")
   .get(clientsController.findAll)
   .post(clientsController.create)
-  
 
+  router
+  .route("/Params")
+  .get(clientsController.findByParams)
+
+  
 // Matches with "/api/books/:id"
 router
-  .route("/:id")
+  .route("/one/:id")
   .get(clientsController.findById)
   .put(clientsController.update)
   .delete(clientsController.remove);

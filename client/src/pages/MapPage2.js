@@ -7,6 +7,7 @@ import Geocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
 import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
+import FloatButtons from "../components/FloatButtons";
 
 
 
@@ -46,7 +47,7 @@ export class TestMap extends Component {
     componentDidMount() {
         this.loadContractors();
     };
-
+   
     loadContractors = () => {
         API.getContractors()
             .then(res => {
@@ -166,8 +167,13 @@ export class TestMap extends Component {
                 </InfoWindow>
             </Map>
             </Grid>
+
+        
             <Grid item xs={6} sm={3}>
-            <ContractCard />
+            <FloatButtons/> //add contractors and appts - also fix "messedup" div
+            </Grid>
+            <Grid item xs={6} sm={3}>
+            <ContractCard/>
             </Grid>
             </Grid>
             </div>

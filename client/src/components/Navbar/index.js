@@ -1,8 +1,10 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
+import Search from "../Searchy";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import "./style.css";
+
 
 const styles = theme => ({
   button: {
@@ -23,10 +25,12 @@ function Navbar(props) {
   <a href="/map">Map</a>
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
-  <div className="search-container">
+  <br/>
+  <Search />
+  {/* <div className="search-container">
       <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
       <button onClick={props.onClick} type="submit">Submit</button>
-  </div>
+  </div> */}
 </div>
   );
 

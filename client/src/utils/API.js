@@ -49,5 +49,6 @@ export default {
     saveContractor: function(apptData) {
         return axios.post("/api/contractors", apptData);
     },
+    //FOR THE MAP FUNCTIONALITY - WE WILL NEED TO ADD AN AXIOS UPDATE
       
 };
