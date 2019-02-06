@@ -22,7 +22,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    //console log to see if postman is contaacting route
+    //console log to see if postman is reaching update route
     console.log("reached update")
     db.Client
       .findOneAndUpdate({ _id: req.params._id }, req.body)

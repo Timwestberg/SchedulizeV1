@@ -134,8 +134,6 @@ class ClientCard extends React.Component {
         const { name, value } = event.target;
         this.setState({
             [name]: value,
-            // idToUpdate: this.state.client._id,
-            // updateToApply: event.target.value
         });
     };
 
