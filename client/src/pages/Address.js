@@ -79,13 +79,13 @@ class Address extends Component {
         {contractors.map(contractor => (
           <ContractCard
             // conStreetNumber={contractor.location.streetNumber}
-            conStreetName={contractor.address}
+            conStreetAddress={contractor.address}
             conFirstName={contractor.firstName}
             conLastName={contractor.lastName}
             conPhone={contractor.phone}
             conEmail={contractor.email}
             // conStand
-            // conCert={contractor.certification}
+            conCert={contractor.certification}
             conPrice={contractor.pricing}
             conNotes={contractor.notes}
             conLocationName={contractor.locationName}
@@ -101,15 +101,15 @@ class Address extends Component {
             clientPhone={client.phone}
             clientEmail={client.email}
             position={client.position}
-            clientFirstName={client.contactPerson.firstName}
-            clientLastName={client.contactPerson.lastName}
-            billContact={client.billing.contactBilling.name}
-            clientStreetName={client.billing.location.address}
-            billPhone={client.billing.contactBilling.phone}
-            billEmail={client.billing.contactBilling.email}
-            clientCity={client.billing.location.cityName}
-            clientZipCode={client.billing.location.zipCode}
-            clientState={client.billing.location.state}
+            clientFirstName={client.firstName}
+            clientLastName={client.lastName}
+            billContact={client.billing.name}
+            clientStreetName={client.billing.address}
+            billPhone={client.billing.phone}
+            billEmail={client.billing.email}
+            clientCity={client.billing.city}
+            clientZipCode={client.billing.zipCode}
+            clientState={client.billing.state}
             clientType={client.typeClient}
             idToUpdate={client._id}
           />

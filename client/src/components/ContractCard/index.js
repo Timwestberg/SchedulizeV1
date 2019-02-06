@@ -326,7 +326,7 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.state.conStreetNumber + " " + this.state.conStreetName}
+                                        value={this.state.conStreetAddress}
                                         name="conStreetAddress"
                                         disabled={!this.state.editable}
                                         onChange={this.handleInputChange}
