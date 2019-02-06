@@ -29,7 +29,11 @@ const clientSeed = [
         streetName: "Scehdulize Lane",
         cityName: "San Diego",
         state: "CA",
-        zipCode: "92111"
+        zipCode: "92111",
+        coords: {
+          lat: 32.853103,
+          lng: -117.182880
+        }
       }
     }
   },
@@ -53,11 +57,16 @@ const clientSeed = [
         position: "COO"
       },
       location: {
+        locationName: "Schedulize SD Branch",
         streetNumber: "8888",
         streetName: "ScehdulizeHQ Lane",
         cityName: "San Diego",
         state: "CA",
-        zipCode: "92111"
+        zipCode: "92111",
+        coords: {
+          lat: 32.881923,
+          lng: -117.243544
+        }
       }
     }
   }

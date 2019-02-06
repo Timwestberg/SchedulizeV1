@@ -92,7 +92,8 @@ class ContractCard extends React.Component {
         country: "",
         value: "",
         editable: false,
-        // conFirstName: this.props.conFirstName
+        conFirstName: this.props.conFirstName,
+        conLastName: this.props.conLastName
     }
 
     handleChange = name => event => {
@@ -102,16 +103,23 @@ class ContractCard extends React.Component {
     };
 
     handleEditMode = () => {
-        this.setState ({
+        this.setState({
             editable: true
         })
     }
 
+    // handleInputChange = event => {
+    //     console.log("working")
+    //     const value = event.target;
+    //     this.setState({
+    //         [value]: event.target.value
+    //     });
+    // };
+
     handleInputChange = event => {
-        console.log("working")
-        const value = event.target;
+        const { name, value } = event.target;
         this.setState({
-            [value]: event.target.value
+            [name]: value
         });
     };
 
@@ -164,10 +172,13 @@ class ContractCard extends React.Component {
                                                 id="outlined-name"
                                                 label="Last Name"
                                                 className={classes.textField}
-                                                value={this.props.conLastName}
+                                                value={this.state.conLastName}
+                                                name="conLastName"
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
+                                                disabled={!this.state.editable}
+                                                onChange={this.handleInputChange}
                                             />
                                         </Grid>
                                     </Grid>
