@@ -120,75 +120,6 @@ export class TestMap extends Component {
         console.log("State: ", this.state)
         return (
             <div>
-<<<<<<< HEAD
-            <Grid container spacing={24}>
-            <Grid item xs={24} sm={12}>
-
-            <Navbar
-                onClick={this.addressSearch}
-                onChange={this.handleInputChange}
-                //search is equivalent to name but push through props
-                value={this.state.search}
-            />
-            </Grid>
-
-                <Grid item xs={6} sm={3}>
-            <ContractCard />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-            <Button onClick={() => { debugger; this.onClickAssign() }}>
-                Select a Contractor on the map below, then select this button to assign. </Button>
-            <Map
-                google={this.props.google}
-                zoom={12}
-                style={style}
-                initialCenter={{
-                    lat: 32.852721,
-                    lng: -117.182762
-                }}
-                onClick={this.onMapClicked}
-            >
-                <Marker
-                    position={this.state.coords}
-                />
-                {this.state.contractors.map(contractor => (
-                    <Marker
-                        onClick={this.onMarkerClick}
-                        name={contractor.location.locationName}
-                        title={contractor.firstName + " " + contractor.lastName}
-                        position={contractor.location.coords}
-                        location={contractor.location.streetNumber + " " +
-                            contractor.location.streetName + " " +
-                            contractor.location.cityName + " " +
-                            contractor.location.state + " " + contractor.location.zipCode}
-                        key={contractor._id}
-                        contractorID={contractor._id}
-                        contractorID={contractor._id}
-                    />
-                ))}
-                <InfoWindow
-
-                    marker={this.state.activeMarker}
-                    visible={this.state.showingInfoWindow}>
-                    <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
-                        <p>{this.state.selectedPlace.title}</p>
-                        <p>{this.state.selectedPlace.location}</p>
-                    </div>
-                </InfoWindow>
-            </Map>
-            </Grid>
-
-        
-            <Grid item xs={6} sm={3}>
-            <FloatButtons/> //add contractors and appts - also fix "messedup" div
-            </Grid>
-            <Grid item xs={6} sm={3}>
-            <ContractCard/>
-            </Grid>
-            </Grid>
-=======
                 <Grid container spacing={24}>
                     <Grid item xs={24} sm={12}>
 
@@ -263,7 +194,6 @@ export class TestMap extends Component {
                         <ContractCard />
                     </Grid>
                 </Grid>
->>>>>>> 7492d9dfd5cdd6f420d971c328abae41254e0edf
             </div>
         );
     }
