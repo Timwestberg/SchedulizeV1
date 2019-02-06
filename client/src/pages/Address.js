@@ -18,6 +18,10 @@ class Address extends Component {
     this.loadAppointments();
   }
 
+  // componentDidUpdate() {
+  //   this.loadAppointments();
+  // }
+
   loadClients = () => {
     API.getClients()
       .then(res => {
@@ -74,20 +78,20 @@ class Address extends Component {
         <br />
         {contractors.map(contractor => (
           <ContractCard
-            conStreetNumber={contractor.location.streetNumber}
-            conStreetName={contractor.location.streetName}
+            // conStreetNumber={contractor.location.streetNumber}
+            conStreetName={contractor.address}
             conFirstName={contractor.firstName}
             conLastName={contractor.lastName}
             conPhone={contractor.phone}
             conEmail={contractor.email}
-            conStand
-            conCert={contractor.certification}
+            // conStand
+            // conCert={contractor.certification}
             conPrice={contractor.pricing}
             conNotes={contractor.notes}
-            conLocationName={contractor.location.locationName}
-            conCity={contractor.location.cityName}
-            conState={contractor.location.state}
-            conZipCode={contractor.location.zipCode}
+            conLocationName={contractor.locationName}
+            conCity={contractor.city}
+            conState={contractor.state}
+            conZipCode={contractor.postalCode}
           />
         ))}
         <br />
@@ -99,11 +103,10 @@ class Address extends Component {
             position={client.position}
             clientFirstName={client.contactPerson.firstName}
             clientLastName={client.contactPerson.lastName}
-            billContact={client.billing.contactPerson.name}
-            clientStreetName={client.billing.location.streetName}
-            clientStreetNumber={client.billing.location.streetNumber}
-            billPhone={client.billing.contactPerson.phone}
-            billEmail={client.billing.contactPerson.email}
+            billContact={client.billing.contactBilling.name}
+            clientStreetName={client.billing.location.address}
+            billPhone={client.billing.contactBilling.phone}
+            billEmail={client.billing.contactBilling.email}
             clientCity={client.billing.location.cityName}
             clientZipCode={client.billing.location.zipCode}
             clientState={client.billing.location.state}
