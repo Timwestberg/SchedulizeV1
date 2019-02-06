@@ -16,7 +16,11 @@ router.route("/")
   
 // Matches with "/api/books/:id"
 router
+<<<<<<< HEAD
   .route("/one/:id")
+=======
+  .route("/:_id")
+>>>>>>> 7492d9dfd5cdd6f420d971c328abae41254e0edf
   .get(clientsController.findById)
   .put(clientsController.update)
   .delete(clientsController.remove);

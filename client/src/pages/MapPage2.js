@@ -9,11 +9,9 @@ import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
 import FloatButtons from "../components/FloatButtons";
 
+const API_KEY2 = googleMaps.key
 
-
-const API_KEY =  googleMaps.key
-
-Geocode.setApiKey(API_KEY);
+Geocode.setApiKey(API_KEY2);
 
 
 const style = {
@@ -41,11 +39,13 @@ export class TestMap extends Component {
         activeMarker: {},
         selectedPlace: {},
         contractors: [],
+        clients: [],
         coords: {}
     };
 
     componentDidMount() {
         this.loadContractors();
+        this.loadClients();
     };
    
     loadContractors = () => {
@@ -54,6 +54,17 @@ export class TestMap extends Component {
                 console.log("contractor ", res.data)
                 this.setState({
                     contractors: res.data,
+                })
+            })
+            .catch(err => console.log(err));
+    };
+
+    loadClients = () => {
+        API.getClients()
+            .then(res => {
+                console.log("client ", res.data)
+                this.setState({
+                    clients: res.data,
                 })
             })
             .catch(err => console.log(err));
@@ -109,6 +120,7 @@ export class TestMap extends Component {
         console.log("State: ", this.state)
         return (
             <div>
+<<<<<<< HEAD
             <Grid container spacing={24}>
             <Grid item xs={24} sm={12}>
 
@@ -176,6 +188,82 @@ export class TestMap extends Component {
             <ContractCard/>
             </Grid>
             </Grid>
+=======
+                <Grid container spacing={24}>
+                    <Grid item xs={24} sm={12}>
+
+                        <Navbar
+                            onClick={this.addressSearch}
+                            onChange={this.handleInputChange}
+                            //search is equivalent to name but push through props
+                            value={this.state.search}
+                        />
+                    </Grid>
+
+                    <Grid item xs={6} sm={3}>
+                        <ContractCard />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                        <Button onClick={() => { debugger; this.onClickAssign() }}>
+                            Select a Contractor on the map below, then select this button to assign. </Button>
+                        <Map
+                            google={this.props.google}
+                            zoom={12}
+                            style={style}
+                            initialCenter={{
+                                lat: 32.852721,
+                                lng: -117.182762
+                            }}
+                            onClick={this.onMapClicked}
+                        >
+                            <Marker
+                                position={this.state.coords}
+                            />
+                            {this.state.clients.map(client => (
+                                <Marker
+                                    onClick={this.onMarkerClick}
+                                    name={client.billing.location.locationName}
+                                    title={client.contactPerson.firstName + " " + client.contactPerson.lastName}
+                                    position={client.billing.location.coords}
+                                    key={client._id}
+                                    clientID={client._id}
+                                    clientID={client._id}
+                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                                />
+                            ))}
+                            {this.state.contractors.map(contractor => (
+                                <Marker
+                                    onClick={this.onMarkerClick}
+                                    name={contractor.location.locationName}
+                                    title={contractor.firstName + " " + contractor.lastName}
+                                    position={contractor.location.coords}
+                                    location={contractor.location.streetNumber + " " +
+                                        contractor.location.streetName + " " +
+                                        contractor.location.cityName + " " +
+                                        contractor.location.state + " " + contractor.location.zipCode}
+                                    key={contractor._id}
+                                    contractorID={contractor._id}
+                                    contractorID={contractor._id}
+                                    icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                />
+                            ))}
+                            <InfoWindow
+                                marker={this.state.activeMarker}
+                                visible={this.state.showingInfoWindow}>
+                                <div>
+                                    <h1>{this.state.selectedPlace.name}</h1>
+                                    <p>{this.state.selectedPlace.title}</p>
+                                    <p>{this.state.selectedPlace.location}</p>
+                                </div>
+                            </InfoWindow>
+                        </Map>
+                    </Grid>
+                    <Grid item xs={6} sm={3}>
+                        <ContractCard />
+                    </Grid>
+                </Grid>
+>>>>>>> 7492d9dfd5cdd6f420d971c328abae41254e0edf
             </div>
         );
     }
@@ -183,5 +271,5 @@ export class TestMap extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: API_KEY
+    apiKey: API_KEY2
 })(TestMap)

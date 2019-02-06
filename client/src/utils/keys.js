@@ -1,5 +1,5 @@
 require("dotenv").config();
 
 exports.googleMaps = {
-  key: process.env.API_KEY
+  key: process.env.API_KEY2
 };

@@ -1,12 +1,9 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-} from "@material-ui/core";
+import { TextField, Grid } from "@material-ui/core";
 import PhoneNumber from "./PhoneNumber";
 
 const styles = {
-
   input: {
     minWidth: "100%"
   },
@@ -22,46 +19,62 @@ const styles = {
 };
 
 class ClientName extends React.Component {
+  // handleChange = name => event => {
+  //   this.setState({ [name]: event.target.checked });
+  // };
 
+  // handleClose = () => {
+  //   this.setState({ open: false });
+  // };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
+  // handleOpen = () => {
+  //   this.setState({ open: true });
+  // };
 
   render() {
-    const { classes } = this.props;
+    const { classes, client, change, name } = this.props;
     return (
+      <div>
+          <TextField
+            id="ClientFirstName"
+            type="text"
+            label="Client's First Name"
+            className={classes.textField}
+            name="firstName"
+            value={client.firstName}
+            onChange={change}
+            margin="normal"
+            variant="outlined"
+            // fullWidth
+          />
+          <TextField
+            id="ClientLastName"
+            type="text"
+            label="Client's Last Name"
+            className={classes.textField}
+            name="lastName"
+            value={client.lastName}
+            onChange={change}
+            margin="normal"
+            variant="outlined"
+            // fullWidth
+          />
+          <TextField
+            id="clientPhone"
+            type="text"
+            label="Client's Phone Number"
+            className={classes.textField}
+            name="phone"
+            value={client.phone}
+            onChange={change}
+            margin="normal"
+            variant="outlined"
+            // fullWidth 
+          />
 
-        <div>
-                <TextField
-                    id="ClientFirstName"
-                    label="Client's First Name"
-                    className={classes.textField}
-                    value={this.props.name}
-                    margin="normal"
-                    variant="outlined"
-                  />
-
-                    <TextField
-                    id="ClientLastName"
-                    label="Client's Last Name"
-                    className={classes.textField}
-                    value={this.props.name}
-                    margin="normal"
-                    variant="outlined"
-                  />
-
-                  <PhoneNumber />
-</div>
-    )
+        {/* <PhoneNumber /> */}
+      </div>
+    );
   }
 }
 
