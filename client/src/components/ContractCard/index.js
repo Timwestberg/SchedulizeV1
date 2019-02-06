@@ -159,7 +159,7 @@ class ContractCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.state.conFirstName}
+                                            value={this.props.conFirstName}
                                             name="conFirstName"
                                             margin="normal"
                                             variant="outlined"
