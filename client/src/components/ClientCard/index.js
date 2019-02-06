@@ -88,6 +88,7 @@ const clientType = [
 class ClientCard extends React.Component {
 
     state = {
+        clients: [],
         clientType: this.props.clientType,
         country: "",
         editable: false,
@@ -103,8 +104,25 @@ class ClientCard extends React.Component {
         clientCity: this.props.clientCity,
         clientState: this.props.clientState,
         clientStreetNumber: this.props.clientStreetNumber,
-        clientStreetName: this.props.clientStreetName
+        clientStreetName: this.props.clientStreetName,
+        idToUpdate: this.props.idToUpdate,
+        objectToUpdate: {}
     }
+
+    componentDidMount() {
+        this.loadClients();
+    };
+
+    loadClients = () => {
+        API.getClients()
+          .then(res => {
+            console.log(res.data)
+            this.setState({ 
+                clients: res.data, 
+            })
+        })
+            .catch(err => console.log(err));
+    };
 
     handleChange = name => event => {
         this.setState({
@@ -115,7 +133,9 @@ class ClientCard extends React.Component {
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
-            [name]: value
+            [name]: value,
+            // idToUpdate: this.state.client._id,
+            // updateToApply: event.target.value
         });
     };
 
@@ -123,6 +143,24 @@ class ClientCard extends React.Component {
         this.setState({
             editable: true
         })
+    };
+
+    updateDB = (idToUpdate, ) => {
+        // console.log(idToUpdate, this.state)
+        let objIdToUpdate = null;
+        this.state.clients.forEach(client => {
+            if (client.id == idToUpdate) {
+                objIdToUpdate = client._id;
+            }
+        });
+        console.log({
+            id: idToUpdate,
+            objectToUpdate: this.state 
+        })
+        API.updateClient({
+            id: objIdToUpdate,
+            objectToUpdate: this.state 
+        });
     };
 
     handleFormSubmit = event => {
@@ -162,7 +200,10 @@ class ClientCard extends React.Component {
                                     onClick={this.handleEditMode}
                                 >Edit</Button>
                                 <Button color="inherit"
-                                    onClick={this.handleFormSubmit}
+                                    // onClick={this.handleFormSubmit}
+                                    onClick={() =>
+                                        this.updateDB(this.state.idToUpdate, this.state.updateToApply)
+                                    }
                                     disabled={!(this.state.clientFirstName &&
                                         this.state.clientLastName &&
                                         this.state.clientFirstName &&
@@ -178,7 +219,6 @@ class ClientCard extends React.Component {
                                         this.state.clientState &&
                                         this.state.clientStreetNumber &&
                                         this.state.clientStreetName)}
-
                                 >Submit</Button>
                             </Toolbar>
                         </AppBar>
@@ -206,6 +246,8 @@ class ClientCard extends React.Component {
                                             name="clientFirstName"
                                             disabled={!this.state.editable}
                                             onChange={this.handleInputChange}
+                                            // onChange={() => this.setState({ idToUpdate: this.state.client._id })}
+                                            // onChange={e => this.setState({ updateToApply: e.target.value })}
                                         // fullWidth
                                         />
                                         <Grid item xs>

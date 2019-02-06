@@ -94,6 +94,7 @@ class Address extends Component {
             clientZipCode={client.billing.location.zipCode}
             clientState={client.billing.location.state}
             clientType={client.typeClient}
+            idToUpdate={client._id}
             />
             ))}
             </div>
