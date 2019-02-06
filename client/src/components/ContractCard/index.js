@@ -93,7 +93,17 @@ class ContractCard extends React.Component {
         value: "",
         editable: false,
         conFirstName: this.props.conFirstName,
-        conLastName: this.props.conLastName
+        conLastName: this.props.conLastName,
+        conPhone: this.props.conPhone,
+        conEmail: this.props.conEmail,
+        conCert: this.props.conCert,
+        conPrice: this.props.conPrice,
+        conNotes: this.props.conNotes,
+        conLocationName: this.props.conLocationName,
+        conStreetAddress: this.props.conStreetAddress,
+        conCity: this.props.conCity,
+        conState: this.props.conState,
+        conZipCode: this.props.conZipCode
     }
 
     handleChange = name => event => {
@@ -185,7 +195,8 @@ class ContractCard extends React.Component {
                                     <TextField
                                         id="outlined-number"
                                         label="Phone Number"
-                                        value={this.props.conPhone}
+                                        value={this.state.conPhone}
+                                        name="conPhone"
                                         type="Phone Number"
                                         className={classes.textField}
                                         InputLabelProps={{
@@ -193,6 +204,8 @@ class ContractCard extends React.Component {
                                         }}
                                         margin="normal"
                                         variant="outlined"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         id="outlined-email-input"
@@ -200,11 +213,13 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         fullWidth
                                         type="email"
-                                        name="email"
+                                        name="conEmail"
                                         autoComplete="email"
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.conEmail}
+                                        value={this.state.conEmail}
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         select
@@ -236,25 +251,31 @@ class ContractCard extends React.Component {
                                         id="outlined-full-width"
                                         label="Type of Certifcation / Numbers"
                                         placeholder="Type of Certifcation / Numbers"
-                                        value={this.props.conCert}
+                                        value={this.state.conCert}
+                                        name="conCert"
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         id="outlined-full-width"
                                         label="Pricing"
                                         placeholder="Pricing"
-                                        value={this.props.conPrice}
+                                        value={this.state.conPrice}
+                                        name="conPrice"
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         id="outlined-multiline-static"
@@ -266,7 +287,10 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.conNotes}
+                                        value={this.state.conNotes}
+                                        name="conNotes"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                 </Grid>
                                 <Grid item xs={3}>
@@ -289,7 +313,10 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.conLocationName}
+                                        value={this.state.conLocationName}
+                                        name="conLocationName"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         id="outlined-helperText"
@@ -299,7 +326,10 @@ class ContractCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.conStreetNumber + " " + this.props.conStreetName}
+                                        value={this.state.conStreetAddress}
+                                        name="conStreetAddress"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <Grid
                                         container
@@ -314,7 +344,10 @@ class ContractCard extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
-                                            value={this.props.conCity}
+                                            value={this.state.conCity}
+                                            name="conCity"
+                                            disabled={!this.state.editable}
+                                            onChange={this.handleInputChange}
                                         />
                                         <Grid item xs>
                                             <TextField
@@ -325,7 +358,10 @@ class ContractCard extends React.Component {
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
-                                                value={this.props.conState}
+                                                value={this.state.conState}
+                                                name="conState"
+                                                disabled={!this.state.editable}
+                                                onChange={this.handleInputChange}
                                             />
                                         </Grid>
                                     </Grid>
@@ -342,7 +378,10 @@ class ContractCard extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
-                                            value={this.props.conZipCode}
+                                            value={this.state.conZipCode}
+                                            name="conZipCode"
+                                            disabled={!this.state.editable}
+                                            onChange={this.handleInputChange}
                                         />
                                         {/* <Grid item xs>
                                             <TextField

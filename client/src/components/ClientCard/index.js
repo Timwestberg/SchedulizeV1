@@ -132,6 +132,12 @@ class ClientCard extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
+        [name]: value,
+    });
+};
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
       [name]: value
       // idToUpdate: this.state.client._id,
       // updateToApply: event.target.value
@@ -405,12 +411,9 @@ class ClientCard extends React.Component {
                   {/* <TextField
                                         id="outlined-helperText"
                                         label="Contact Name"
-<<<<<<< HEAD
+                                        value={this.state.billContact}
                                         value={this.props.billContact}
-=======
-                                        Value={this.state.billContact}
                                         name="billContact"
->>>>>>> f806fa881655525f46439d49db36b40b57219040
                                         fullWidth
                                         className={classes.textField}
                                         margin="normal"
