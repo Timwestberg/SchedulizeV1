@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { white } from "@material-ui/core/colors";
+import API from "../../utils/API";
 // import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
 
 const styles = theme => ({
@@ -87,14 +88,100 @@ const clientType = [
 class ClientCard extends React.Component {
 
     state = {
-        clientType: "",
-        country: ""
+        clients: [],
+        clientType: this.props.clientType,
+        country: "",
+        editable: false,
+        clientFirstName: this.props.clientFirstName,
+        clientLastName: this.props.clientLastName,
+        billContact: this.props.billContact,
+        clientPhone: this.props.clientPhone,
+        clientEmail: this.props.clientEmail,
+        companyName: this.props.companyName,
+        position: this.props.position,
+        billPhone: this.props.billPhone,
+        billEmail: this.props.billEmail,
+        clientCity: this.props.clientCity,
+        clientState: this.props.clientState,
+        clientStreetNumber: this.props.clientStreetNumber,
+        clientStreetName: this.props.clientStreetName,
+        idToUpdate: this.props.idToUpdate,
+        objectToUpdate: {}
     }
+
+    componentDidMount() {
+        this.loadClients();
+    };
+
+    loadClients = () => {
+        API.getClients()
+          .then(res => {
+            console.log(res.data)
+            this.setState({ 
+                clients: res.data, 
+            })
+        })
+            .catch(err => console.log(err));
+    };
 
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
         });
+    };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value,
+            // idToUpdate: this.state.client._id,
+            // updateToApply: event.target.value
+        });
+    };
+
+    handleEditMode = () => {
+        this.setState({
+            editable: true
+        })
+    };
+
+    updateDB = (idToUpdate, ) => {
+        // console.log(idToUpdate, this.state)
+        let objIdToUpdate = null;
+        this.state.clients.forEach(client => {
+            if (client.id == idToUpdate) {
+                objIdToUpdate = client._id;
+            }
+        });
+        console.log({
+            id: idToUpdate,
+            objectToUpdate: this.state 
+        })
+        API.updateClient({
+            id: objIdToUpdate,
+            objectToUpdate: this.state 
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        API.updateClient({
+            clientFirstName: this.state.clientFirstName,
+            clientLastName: this.state.clientLastName,
+            billContact: this.state.billContact,
+            clientPhone: this.state.clientPhone,
+            clientEmail: this.state.clientEmail,
+            companyName: this.state.companyName,
+            position: this.state.position,
+            billPhone: this.state.billPhone,
+            billEmail: this.state.billEmail,
+            clientCity: this.state.clientCity,
+            clientState: this.state.clientState,
+            clientStreetNumber: this.state.clientStreetNumber,
+            clientStreetName: this.state.clientStreetName
+        })
+            .then(res => console.log("Information updated"))
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -109,7 +196,30 @@ class ClientCard extends React.Component {
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
                                     Client Contact Card
                                 </Typography>
-                                <Button color="inherit">Edit</Button>
+                                <Button color="inherit"
+                                    onClick={this.handleEditMode}
+                                >Edit</Button>
+                                <Button color="inherit"
+                                    // onClick={this.handleFormSubmit}
+                                    onClick={() =>
+                                        this.updateDB(this.state.idToUpdate, this.state.updateToApply)
+                                    }
+                                    disabled={!(this.state.clientFirstName &&
+                                        this.state.clientLastName &&
+                                        this.state.clientFirstName &&
+                                        this.state.clientLastName &&
+                                        this.state.billContact &&
+                                        this.state.clientPhone &&
+                                        this.state.clientEmail &&
+                                        this.state.companyName &&
+                                        this.state.position &&
+                                        this.state.billPhone &&
+                                        this.state.billEmail &&
+                                        this.state.clientCity &&
+                                        this.state.clientState &&
+                                        this.state.clientStreetNumber &&
+                                        this.state.clientStreetName)}
+                                >Submit</Button>
                             </Toolbar>
                         </AppBar>
                         <form className={classes.container} noValidate autoComplete="off">
@@ -130,9 +240,14 @@ class ClientCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.props.clientFirstName}
+                                            value={this.state.clientFirstName}
                                             margin="normal"
                                             variant="outlined"
+                                            name="clientFirstName"
+                                            disabled={!this.state.editable}
+                                            onChange={this.handleInputChange}
+                                            // onChange={() => this.setState({ idToUpdate: this.state.client._id })}
+                                            // onChange={e => this.setState({ updateToApply: e.target.value })}
                                         // fullWidth
                                         />
                                         <Grid item xs>
@@ -140,17 +255,20 @@ class ClientCard extends React.Component {
                                                 id="outlined-name"
                                                 label="Last Name"
                                                 className={classes.textField}
-                                                value={this.props.clientLastName}
+                                                value={this.state.clientLastName}
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
+                                                name="clientLastName"
+                                                disabled={!this.state.editable}
+                                                onChange={this.handleInputChange}
                                             />
                                         </Grid>
                                     </Grid>
                                     <TextField
                                         id="outlined-number"
                                         label="Phone Number"
-                                        value={this.props.clientPhone}
+                                        value={this.state.clientPhone}
                                         type="Phone Number"
                                         className={classes.textField}
                                         InputLabelProps={{
@@ -158,6 +276,9 @@ class ClientCard extends React.Component {
                                         }}
                                         margin="normal"
                                         variant="outlined"
+                                        name="clientPhone"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         id="outlined-email-input"
@@ -169,7 +290,10 @@ class ClientCard extends React.Component {
                                         autoComplete="email"
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.clientEmail}
+                                        value={this.state.clientEmail}
+                                        name="clientEmail"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <TextField
                                         select
@@ -200,10 +324,13 @@ class ClientCard extends React.Component {
                                         id="outlined-full-width"
                                         label="Company / Client Name"
                                         placeholder="Company / Client Name"
-                                        value={this.props.companyName}
+                                        value={this.state.companyName}
+                                        name="companyName"
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
@@ -215,7 +342,10 @@ class ClientCard extends React.Component {
                                         fullWidth
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.position}
+                                        value={this.state.position}
+                                        name="position"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
@@ -226,7 +356,6 @@ class ClientCard extends React.Component {
                                         multiline
                                         fullWidth
                                         rows="10"
-                                        defaultValue="Default Value"
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
@@ -245,21 +374,41 @@ class ClientCard extends React.Component {
                                         variant="outlined"
                                     />
                                     <TextField
+                                        id="outlined-full-width"
+                                        label="Billing Contact Person"
+                                        placeholder="Billing Contact Person"
+                                        value={this.state.billContact}
+                                        name="billContact"
+                                        fullWidth
+                                        margin="normal"
+                                        variant="outlined"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                    />
+                                    {/* <TextField
                                         id="outlined-helperText"
                                         label="Contact Name"
-                                        Value={this.props.billContact}
+                                        Value={this.state.billContact}
+                                        name="billContact"
                                         fullWidth
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                    />
-
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
+                                    /> */}
                                     <TextField
                                         id="outlined-number"
                                         label="Billing Phone Number"
                                         value={this.props.billPhone}
+                                        name="billPhone"
                                         type="Phone Number"
                                         className={classes.textField}
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
@@ -273,11 +422,13 @@ class ClientCard extends React.Component {
                                         className={classes.textField}
                                         fullWidth
                                         type="email"
-                                        name="email"
+                                        name="billEmail"
                                         autoComplete="email"
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.billEmail}
+                                        value={this.state.billEmail}
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
 
                                     <TextField
@@ -288,7 +439,11 @@ class ClientCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.clientStreetNumber + " " + this.props.clientStreetName}
+                                        //have to make street number and name one property to make it editable
+                                        value={this.state.clientStreetNumber + " " + this.state.clientStreetName}
+                                        name="clientStreetNumber clientStreeName"
+                                        disabled={!this.state.editable}
+                                        onChange={this.handleInputChange}
                                     />
                                     <Grid
                                         container
@@ -303,7 +458,10 @@ class ClientCard extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
-                                            value={this.props.clientCity}
+                                            value={this.state.clientCity}
+                                            name="clientCity"
+                                            disabled={!this.state.editable}
+                                            onChange={this.handleInputChange}
                                         />
                                         <Grid item xs>
                                             <TextField
@@ -314,7 +472,10 @@ class ClientCard extends React.Component {
                                                 margin="normal"
                                                 variant="outlined"
                                                 fullWidth
-                                                value={this.props.clientState}
+                                                value={this.state.clientState}
+                                                name="clientState"
+                                                disabled={!this.state.editable}
+                                                onChange={this.handleInputChange}
                                             />
                                         </Grid>
                                     </Grid>
@@ -331,7 +492,10 @@ class ClientCard extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
-                                            value={this.props.clientZipCode}
+                                            value={this.state.clientZipCode}
+                                            name="clienZipCode"
+                                            disabled={!this.state.editable}
+                                            onChange={this.handleInputChange}
                                         />
                                         <Grid item xs>
                                             {/* <TextField
