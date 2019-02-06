@@ -2,64 +2,78 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import ClientCard from "../components/ClientCard";
 import ContractCard from "../components/ContractCard";
+import AppointmentCard from "../components/AppointmentCard";
 import API from "../utils/API";
 
-
 class Address extends Component {
-    state = {
-        clients: [],
-        contractors: []
-    };
-    
-    componentDidMount() {
-        this.loadContractors();
-        this.loadClients();
-    };
+  state = {
+    clients: [],
+    contractors: [],
+    appointments: []
+  };
 
-    loadClients = () => {
-        API.getClients()
-          .then(res => {
-            console.log(res.data)
-            this.setState({ 
-                clients: res.data, 
-            })
-        })
-            .catch(err => console.log(err));
-    };
+  componentDidMount() {
+    this.loadContractors();
+    this.loadClients();
+    this.loadAppointments();
+  }
 
-    loadContractors = () => {
-        API.getContractors()
-          .then(res => {
-            console.log("contractor ", res.data)
-            this.setState({ 
-                contractors: res.data, 
-            })
-        })
-            .catch(err => console.log(err));
-    };
-
-    removeClient = (id) => {
-        //remove the card and not deleting from database
-    }
-
-    deleteClient = (id) => {
-        //deleting client from API
-    }
-
-    handleChange = name => event => {
+  loadClients = () => {
+    API.getClients()
+      .then(res => {
+        console.log(res.data);
         this.setState({
-          [name]: event.target.value,
+          clients: res.data
         });
-      };
+      })
+      .catch(err => console.log(err));
+  };
 
-    render() {
-        console.log("State: ", this.state)
-        return (
-            <div>
-            <Navbar/>
-            <br></br>
-            {this.state.contractors.map(contractor => (
-            <ContractCard
+  loadContractors = () => {
+    API.getContractors()
+      .then(res => {
+        console.log("contractor ", res.data);
+        this.setState({
+          contractors: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  loadAppointments = () => {
+    API.getAppts()
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          appointments: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  removeClient = id => {
+    //remove the card and not deleting from database
+  };
+
+  deleteClient = id => {
+    //deleting client from API
+  };
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    });
+  };
+
+  render() {
+    console.log("State: ", this.state);
+    const { contractors, clients, appointments } = this.state;
+    return (
+      <div>
+        <Navbar />
+        <br />
+        {contractors.map(contractor => (
+          <ContractCard
             conStreetNumber={contractor.location.streetNumber}
             conStreetName={contractor.location.streetName}
             conFirstName={contractor.firstName}
@@ -74,11 +88,11 @@ class Address extends Component {
             conCity={contractor.location.cityName}
             conState={contractor.location.state}
             conZipCode={contractor.location.zipCode}
-            />
-            ))}
-            <br></br>
-            {this.state.clients.map(client => (
-            <ClientCard 
+          />
+        ))}
+        <br />
+        {clients.map(client => (
+          <ClientCard
             companyName={client.name}
             clientPhone={client.phone}
             clientEmail={client.email}
@@ -93,16 +107,26 @@ class Address extends Component {
             clientCity={client.billing.location.cityName}
             clientZipCode={client.billing.location.zipCode}
             clientState={client.billing.location.state}
-            />
-            ))}
-            </div>
-        )
-
-
-
-
-    }
+          />
+        ))}
+        {appointments.map(appointment => (
+          <AppointmentCard
+            assigneeFirstName={appointment.assigneeFirstName}
+            assigneeLastName={appointment.assigneeLastName}
+            adjusterFirstName={appointment.adjusterFirstName}
+            adjusterLastName={appointment.adjusterLastName}
+            refName={appointment.refName}
+            refNumber={appointment.refNumber}
+            locationName={appointment.locationName}
+            address={appointment.address}
+            city={appointment.city}
+            state={appointment.state}
+            postalCode={appointment.postalCode}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
-
-    export default Address;
+export default Address;

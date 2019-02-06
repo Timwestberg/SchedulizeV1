@@ -3,17 +3,17 @@ const Schema = mongoose.Schema;
 
 const apptSchema = new Schema({
   //date apointment is put into db
-//   dateInput: {
-//     type: Date,
-//     default: Date.now,
-//     trim: true
-//   },
+  dateInput: {
+    type: Date,
+    default: Date.now,
+    trim: true
+  },
   //date of appt -- required
-//   apptDate: {
-//     type: Date,
-//     required: true,
-//     trim: true
-//   },
+  apptDate: {
+    type: Date,
+    // required: true,
+    trim: true
+  },
   //name of appt booker --- required
   assigneeFirstName: {
     type: String,
