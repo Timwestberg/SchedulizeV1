@@ -92,7 +92,7 @@ class ContractCard extends React.Component {
         country: "",
         value: "",
         editable: false,
-        conFirstName: this.props.conFirstName
+        // conFirstName: this.props.conFirstName
     }
 
     handleChange = name => event => {
@@ -151,7 +151,7 @@ class ContractCard extends React.Component {
                                             id="outlined-name"
                                             label="First Name"
                                             className={classes.textField}
-                                            value={this.state.conFirstName}
+                                            value={this.props.conFirstName}
                                             name="conFirstName"
                                             margin="normal"
                                             variant="outlined"

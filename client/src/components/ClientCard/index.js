@@ -97,6 +97,10 @@ class ClientCard extends React.Component {
         });
     };
 
+     // componentDidUpdate() {
+  //   this.loadAppointments();
+  // }
+
     render() {
         const { classes } = this.props;
 
@@ -247,7 +251,7 @@ class ClientCard extends React.Component {
                                     <TextField
                                         id="outlined-helperText"
                                         label="Contact Name"
-                                        Value={this.props.billContact}
+                                        value={this.props.billContact}
                                         fullWidth
                                         className={classes.textField}
                                         margin="normal"
@@ -288,7 +292,7 @@ class ClientCard extends React.Component {
                                         className={classes.textField}
                                         margin="normal"
                                         variant="outlined"
-                                        value={this.props.clientStreetNumber + " " + this.props.clientStreetName}
+                                        value={this.props.clientStreetName}
                                     />
                                     <Grid
                                         container
