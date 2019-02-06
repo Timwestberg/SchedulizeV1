@@ -17,8 +17,8 @@ export default {
     saveClient: function(clientData) {
         return axios.post("/api/clients", clientData);
     },
-    updateClient: function(_id) {
-        return axios.put("/api/client/" + _id);
+    updateClient: function(_id, changes) {
+        return axios.put("/api/clients/" + _id, changes);
     },
     // Gets all appts
     getAppts: function() {
