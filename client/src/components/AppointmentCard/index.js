@@ -9,8 +9,9 @@ import {
 	TextField,
 	Grid,
 	Fab,
-	withStyles
+	
 } from '@material-ui/core';
+import {withStyles} from "@material-ui/core/styles"
 import { white } from '@material-ui/core/colors';
 import { Add, ExpandMore } from '@material-ui/icons';
 import { DatePicker, DateTimePicker, MuiPickersUtilsProvider } from 'material-ui-pickers';
@@ -365,7 +366,7 @@ class NewAppointmentCard extends React.Component {
 
 									{/* Add Button to save the assignment to the database */}
 									<Grid item xs={6}>
-										<Fab color='danger' aria-label='Add' className={classes.fab} type='submit'>
+										<Fab aria-label='Add' className={classes.fab} type='submit'>
 											<Add />
 										</Fab>
 									</Grid>

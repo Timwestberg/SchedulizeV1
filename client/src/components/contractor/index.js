@@ -1,53 +1,47 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import { white } from '@material-ui/core/colors';
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import AddIcon from "@material-ui/icons/Add";
+import { white } from "@material-ui/core/colors";
 import {
-	Button,
-	Card,
-	CardHeader,
-	CardContent,
-	TextField,
-	Grid,
-	Fab,
-	Icon,
-	FormControl,
-	MenuItem,
-	Select,
-	InputLabel
-} from '@material-ui/core';
-import Standing from './form/Standing';
-import W9CheckBox from './form/W9CheckBox';
-import API from '../../utils/API';
+  Card,
+  CardHeader,
+  CardContent,
+  TextField,
+  Grid,
+  Fab,
+  MenuItem
+} from "@material-ui/core";
+import W9CheckBox from "./form/W9CheckBox";
+import API from "../../utils/API";
 
 const styles = {
-	card: {
-		minWidth: 300,
-		minHeight: 200
-		// justifyContent: "center",
-	},
-	cardHeader: {
-		background: `#4caf50`,
-		color: white
-	},
-	cardContent: {
-		width: '100%'
-	},
-	form: {
-		minWidth: '100%'
-	},
-	TextField: {
-		minWidth: '100%'
-	},
-	hCenter: {
-		display: 'flex'
-		// alignItems: "center"
-		// justifyContent: "center"
-	},
-	fab: {
-		display: 'flex'
-		// justifyContent:
-	}
+  card: {
+    minWidth: 300,
+    minHeight: 200
+    // justifyContent: "center",
+  },
+  cardHeader: {
+    background: `#4caf50`,
+    color: white
+  },
+  cardContent: {
+    width: "100%"
+  },
+  form: {
+    minWidth: "100%"
+  },
+  TextField: {
+    minWidth: "100%"
+  },
+  hCenter: {
+    display: "flex"
+    // alignItems: "center"
+    // justifyContent: "center"
+  },
+  fab: {
+    display: "flex"
+    // justifyContent:
+  }
 };
 
 const certification = [
@@ -60,7 +54,6 @@ const certification = [
 ];
 
 class ContractorCard extends React.Component {
-
   state = {
     firstName: "",
     lastName: "",
@@ -74,32 +67,32 @@ class ContractorCard extends React.Component {
     address: "",
     city: "",
     state: "",
-    postalCode: "",
+    postalCode: ""
     // standingComp: {
     //   age: "",
     //   open: false
     // }
   };
 
-	handleChange = (event) => {
-		const field = event.target.name;
+  handleChange = event => {
+    const field = event.target.name;
 
-		const standingComp = this.state.standingComp;
+    const standingComp = this.state.standingComp;
 
-		standingComp[field] = event.target.value;
+    standingComp[field] = event.target.value;
 
-		this.setState({
-			standingComp
-		});
-	};
+    this.setState({
+      standingComp
+    });
+  };
 
-	handleInputChange = (event) => {
-		const { name, value } = event.target;
+  handleInputChange = event => {
+    const { name, value } = event.target;
 
-		this.setState({
-			[name]: value
-		});
-	};
+    this.setState({
+      [name]: value
+    });
+  };
 
   handleCertChange = name => event => {
     const { name, value } = event.target;
@@ -108,14 +101,14 @@ class ContractorCard extends React.Component {
       [name]: value
     });
   };
-  
+
   handleClose = () => {
     this.setState({ open: false });
   };
 
-	handleOpen = () => {
-		this.setState({ open: true });
-	};
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -136,38 +129,45 @@ class ContractorCard extends React.Component {
     });
     console.log(this.state);
 
-		this.setState({
-			firstName: '',
-			lastName: '',
-			phone: '',
-			email: '',
-			certification: '',
-			standing: '',
-			pricing: '',
-			notes: '',
-			location: ''
-		});
-	};
+    this.setState({
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      certification: "",
+      standing: "",
+      pricing: "",
+      notes: "",
+      location: ""
+    });
+  };
 
   render() {
     const { classes } = this.props;
     // const { standingComp } = this.state;
     return (
+      // <Dialog
+      //   fullScreen={fullScreen}
+      //   open={this.props.open}
+      //   onClose={this.handleClose}
+      //   aria-labelledby="responsive-dialog-title"
+      // >
       <Card className={classes.card}>
         <CardHeader title="Contractor" className={classes.cardHeader} />
         <CardContent>
-          <Grid container>
-            <form
-              className={classes.form}
-              autoComplete="off"
-              onSubmit={this.handleFormSubmit}
-            >
+          <form
+            className={classes.form}
+            autoComplete="off"
+            onSubmit={this.handleFormSubmit}
+          >
+            <Grid container>
               <Grid item sm={12} md={12} lg={12}>
                 <TextField
                   id="contractorFirstName"
                   placeholder="First Name"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="First Name"
                   name="firstName"
                   value={this.state.firstName}
@@ -180,6 +180,7 @@ class ContractorCard extends React.Component {
                   placeholder="Last Name"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="LastName"
                   name="lastName"
                   value={this.state.lastName}
@@ -193,6 +194,7 @@ class ContractorCard extends React.Component {
                   type="tel"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="Phone #"
                   name="phone"
                   value={this.state.phone}
@@ -205,6 +207,7 @@ class ContractorCard extends React.Component {
                   placeholder="Email"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="Email"
                   name="email"
                   value={this.state.email}
@@ -217,7 +220,7 @@ class ContractorCard extends React.Component {
                   value={this.state.Standing}
                   onChange={this.handleInputChange}
                 /> */}
-							{/* <FormControl className={classes.input} fullWidth>
+                {/* <FormControl className={classes.input} fullWidth>
                   <InputLabel htmlFor="demo-controlled-open-select">
                     Standing
                   </InputLabel>
@@ -245,7 +248,8 @@ class ContractorCard extends React.Component {
                 <TextField
                   select
                   id="outlined-with-placeholder"
-                  label="Type of Client"
+                  variant="outlined"
+                  label="Certification Type"
                   className={classes.textField}
                   fullWidth
                   value={this.state.certification}
@@ -258,7 +262,6 @@ class ContractorCard extends React.Component {
                   }}
                   helperText="Choose one"
                   margin="normal"
-                  variant="outlined"
                 >
                   {certification.map(option => (
                     <MenuItem key={option.value} value={option.value}>
@@ -273,6 +276,7 @@ class ContractorCard extends React.Component {
                   placeholder="Pricing"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="Pricing"
                   name="pricing"
                   value={this.state.pricing}
@@ -282,10 +286,10 @@ class ContractorCard extends React.Component {
               <Grid item sm={12} md={12} lg={12}>
                 <TextField
                   id="contractorNotes"
+                  variant="outlined"
                   label="Notes"
                   multiline
                   rowsMax="4 md={12} lg={12}"
-                  value={this.state.multiline}
                   className={classes.TextField}
                   fullWidth
                   name="notes"
@@ -300,6 +304,7 @@ class ContractorCard extends React.Component {
                   placeholder="Location"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="Location"
                   name="locationName"
                   value={this.state.locationName}
@@ -312,6 +317,7 @@ class ContractorCard extends React.Component {
                   placeholder="Address"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="Address"
                   name="address"
                   value={this.state.address}
@@ -324,6 +330,7 @@ class ContractorCard extends React.Component {
                   placeholder="City"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="City"
                   name="city"
                   value={this.state.city}
@@ -336,6 +343,7 @@ class ContractorCard extends React.Component {
                   placeholder="State/Province"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="State/Province"
                   name="state"
                   value={this.state.state}
@@ -348,16 +356,17 @@ class ContractorCard extends React.Component {
                   placeholder="Postal Code"
                   className={classes.TextField}
                   fullWidth
+                  variant="outlined"
                   label="Postal Code"
                   name="postalCode"
                   value={this.state.postalCode}
                   onChange={this.handleInputChange}
                 />
               </Grid>
-              <Grid item sm={12} md={12} lg={12}>
+              <Grid item sm={6} md={6} >
                 <W9CheckBox />
               </Grid>
-              <Grid item sm={12} md={12} lg={12}>
+              <Grid item sm={6} md={6} >
                 <Fab
                   color="primary"
                   aria-label="Add"
@@ -367,10 +376,11 @@ class ContractorCard extends React.Component {
                   <AddIcon />
                 </Fab>
               </Grid>
-            </form>
-          </Grid>
+            </Grid>
+          </form>
         </CardContent>
       </Card>
+      // </Dialog>
     );
   }
 }
