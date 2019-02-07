@@ -153,9 +153,9 @@ export class TestMap extends Component {
                             {this.state.clients.map(client => (
                                 <Marker
                                     onClick={this.onMarkerClick}
-                                    name={client.billing.location.locationName}
-                                    title={client.contactPerson.firstName + " " + client.contactPerson.lastName}
-                                    position={client.billing.location.coords}
+                                    name={client.billing.name}
+                                    title={client.firstName + " " + client.lastName}
+                                    position={client.billing.coords}
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}
@@ -165,13 +165,12 @@ export class TestMap extends Component {
                             {this.state.contractors.map(contractor => (
                                 <Marker
                                     onClick={this.onMarkerClick}
-                                    name={contractor.location.locationName}
+                                    name={contractor.locationName}
                                     title={contractor.firstName + " " + contractor.lastName}
-                                    position={contractor.location.coords}
-                                    location={contractor.location.streetNumber + " " +
-                                        contractor.location.streetName + " " +
-                                        contractor.location.cityName + " " +
-                                        contractor.location.state + " " + contractor.location.zipCode}
+                                    position={contractor.coords}
+                                    location={contractor.address + " " +
+                                        contractor.city + " " +
+                                        contractor.state + " " + contractor.postalCode}
                                     key={contractor._id}
                                     contractorID={contractor._id}
                                     contractorID={contractor._id}
