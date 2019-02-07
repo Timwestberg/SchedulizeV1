@@ -17,6 +17,12 @@ import {
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  DatePicker,
+  DateTimePicker,
+  MuiPickersUtilsProvider
+} from "material-ui-pickers";
+import DateFnsUtils from "@date-io/date-fns";
 import API from "../../utils/API";
 
 const styles = {
@@ -48,8 +54,8 @@ const styles = {
 
 class NewAppointmentCard extends React.Component {
   state = {
-    // dateInput: "",
-    // apptDate: "",
+    dateInput: "",
+    apptDate: "",
     assigneeFirstName: "",
     assigneeLastName: "",
     // assigneePhone: "",
@@ -91,8 +97,8 @@ class NewAppointmentCard extends React.Component {
   handleFormSubmit = event => {
     event.preventDefault();
     API.saveAppt({
-      // dateInput: this.state.dateInput,
-      // apptDate: this.state.apptDate,
+      dateInput: this.state.dateInput,
+      apptDate: this.state.apptDate,
       assigneeFirstName: this.state.assigneeFirstName,
       assigneeLastName: this.state.assigneeLastName,
       // assigneePhone: this.state.assigneePhone,
@@ -140,14 +146,30 @@ class NewAppointmentCard extends React.Component {
               >
                 <Grid container spacing={16}>
                   {/* Date the appointment was called in to be assigned */}
-                  {/* <Grid item xs={12}>
-                    <Date fullWidth />
-                  </Grid> */}
+                  <Grid item xs={6}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      <DatePicker
+                        fullWidth
+                        showTodayButton
+                        label="Date Assigned"
+                        variant="outlined"
+                        value={this.props.dateInput}
+                      />
+                    </MuiPickersUtilsProvider>
+                  </Grid>
                   {/* Date the assignment will be taking place on */}
 
-                  {/* <Grid item xs={12}>
-                    <DateTime />
-                  </Grid> */}
+                  <Grid item xs={6}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      <DateTimePicker
+                        showTodayButton
+                        fullWidth
+                        label="Appointment Date"
+                        variant="outlined"
+                        value={this.props.apptDate}
+                      />
+                    </MuiPickersUtilsProvider>
+                  </Grid>
 
                   {/* Who will is assigning the assignment */}
                   {/* Assignee Last Name for searchability purposes */}
