@@ -1,17 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	withStyles,
-	Card,
-	CardContent,
-	Button,
-	Typography,
-	MenuItem,
-	TextField,
-	Grid,
-	AppBar,
-	Toolbar
-} from '@material-ui/core';
+import { Card, CardContent, Button, Typography, MenuItem, TextField, Grid, AppBar, Toolbar } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import API from '../../utils/API';
 
 const styles = (theme) => ({

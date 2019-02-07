@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Grid, TextField } from '@material-ui/core/styles';
-
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, TextField } from '@material-ui/core';
 const styles = (theme) => ({
 	container: {
 		display: 'flex',
