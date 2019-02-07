@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios';
 
 export default {
     // Gets all clients
@@ -52,5 +52,10 @@ export default {
     saveContractor: function(apptData) {
         return axios.post("/api/contractors", apptData);
     },
-      
+    SaveUser: function(UserData) {
+		    return axios.post('/auth/register', UserData);
+	  },
+	   LoginUser: function(UserData) {
+		    return axios.post('/auth/login', UserData);
+	}
 };
