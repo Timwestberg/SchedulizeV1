@@ -262,8 +262,7 @@ class ContractorCard extends React.Component {
                   }}
                   helperText="Choose one"
                   margin="normal"
-                  variant="outlined"
-                >
+                 >
                   {certification.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.value}
@@ -291,7 +290,6 @@ class ContractorCard extends React.Component {
                   label="Notes"
                   multiline
                   rowsMax="4 md={12} lg={12}"
-                  value={this.state.multiline}
                   className={classes.TextField}
                   fullWidth
                   name="notes"
