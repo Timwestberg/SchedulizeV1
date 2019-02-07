@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Card, CardHeader, CardContent, CardActions, IconButton, Typography } from '@material-ui/core';
+import { Card, CardHeader, CardContent, CardActions, IconButton, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import { red } from '@material-ui/core/colors';
 import { Favorite, Share, ExpandMore } from '@material-ui/icons';

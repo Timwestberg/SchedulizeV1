@@ -1,19 +1,8 @@
 import React from 'react';
-// import Navbar from "../Navbar";
 import PropTypes from 'prop-types';
-import {
-	withStyles,
-	Card,
-	CardContent,
-	Button,
-	Typography,
-	MenuItem,
-	TextField,
-	Grid,
-	AppBar,
-	Toolbar,
-	white
-} from '@material-ui/core/styles';
+import { Card, CardContent, Button, Typography, MenuItem, TextField, Grid, AppBar, Toolbar } from '@material-ui/core';
+import { white } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
 import API from '../../utils/API';
 // import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
 

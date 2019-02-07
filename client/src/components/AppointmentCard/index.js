@@ -8,9 +8,9 @@ import {
 	Typography,
 	TextField,
 	Grid,
-	Fab,
-	withStyles
+	Fab
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { white } from '@material-ui/core/colors';
 import { Add, ExpandMore } from '@material-ui/icons';
 import { DatePicker, DateTimePicker, MuiPickersUtilsProvider } from 'material-ui-pickers';

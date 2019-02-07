@@ -1,17 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	withStyles,
-	Card,
-	CardContent,
-	Button,
-	Typography,
-	MenuItem,
-	TextField,
-	Grid,
-	AppBar,
-	Toolbar
-} from '@material-ui/core/styles';
+import { Card, CardContent, Button, Typography, MenuItem, TextField, Grid, AppBar, Toolbar } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { white } from '@material-ui/core/colors';
 import W9CheckBox from '../contractor/form/W9CheckBox';
 
@@ -55,6 +45,18 @@ const styles = (theme) => ({
 		marginBottom: 12
 	}
 });
+
+const countries = [
+	{
+		value: 'USA'
+	},
+	{
+		value: 'UK'
+	},
+	{
+		value: 'JAP'
+	}
+];
 
 const contractorStand = [
 	{
@@ -334,7 +336,7 @@ class ContractCard extends React.Component {
 										</Grid>
 									</Grid>
 									<Grid container direction='row'>
-										{/* // justify="flex-end" // alignItems="flex-start" */}
+										// justify="flex-end" // alignItems="flex-start"
 										<TextField
 											id='outlined-helperText'
 											label='Postal / Zip Code'
@@ -347,6 +349,31 @@ class ContractCard extends React.Component {
 											disabled={!this.state.editable}
 											onChange={this.handleInputChange}
 										/>
+										{/* <Grid item xs>
+                                            <TextField
+                                                id="outlined-select-currency"
+                                                select
+                                                label="Country"
+                                                className={classes.textField}
+                                                value={this.state.country}
+                                                onChange={this.handleChange('country')}
+                                                fullWidth
+                                                SelectProps={{
+                                                    MenuProps: {
+                                                        className: classes.menu,
+                                                    },
+                                                }}
+                                                helperText="Please select your country"
+                                                margin="normal"
+                                                variant="outlined"
+                                            >
+                                                {countries.map(option => (
+                                                    <MenuItem key={option.value} value={option.value}>
+                                                        {option.value}
+                                                    </MenuItem>
+                                                ))}
+                                            </TextField>
+                                        </Grid> */}
 									</Grid>
 								</Grid>
 							</Grid>
