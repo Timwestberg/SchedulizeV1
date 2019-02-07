@@ -120,7 +120,8 @@ class NewAppointmentCard extends React.Component {
 						<AppBar position='static'>
 							<Toolbar>
 								<Typography variant='h6' color='inherit' className={classes.grow}>
-									New Appointment
+									{/* I cant pull apptDate into the label of the exandable panel */}
+									{this.props.refName} {this.props.refNumber} {this.props.apptDate}
 								</Typography>
 							</Toolbar>
 						</AppBar>
@@ -365,7 +366,7 @@ class NewAppointmentCard extends React.Component {
 
 									{/* Add Button to save the assignment to the database */}
 									<Grid item xs={6}>
-										<Fab color='danger' aria-label='Add' className={classes.fab} type='submit'>
+										<Fab aria-label='Add' className={classes.fab} type='submit'>
 											<Add />
 										</Fab>
 									</Grid>

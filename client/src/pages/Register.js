@@ -19,7 +19,8 @@ class SignUpPage extends React.Component {
 				username: '',
 
 				password: ''
-			}
+			},
+			redirect: `/`
 		};
 
 		this.processForm = this.processForm.bind(this);
@@ -54,6 +55,10 @@ class SignUpPage extends React.Component {
 			username: this.state.user.username,
 			name: this.state.user.name,
 			password: this.state.user.password
+		}).then((res) => {
+			if (res.data.status === 'Success') {
+				window.location = this.state.redirect;
+			}
 		});
 	}
 
