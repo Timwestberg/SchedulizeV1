@@ -1,10 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardContent, Button, Typography, MenuItem, TextField, Grid, AppBar, Toolbar } from '@material-ui/core';
+import {
+	Button,
+	Typography,
+	MenuItem,
+	TextField,
+	Grid,
+	AppBar,
+	Toolbar,
+	ExpansionPanel,
+	ExpansionPanelSummary,
+	ExpansionPanelDetails
+} from '@material-ui/core';
 import { white } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
 import API from '../../utils/API';
-// import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = (theme) => ({
 	cardHeader: {
@@ -118,8 +129,8 @@ class ClientCard extends React.Component {
 
 		return (
 			<div>
-				<Card className={classes.card}>
-					<CardContent>
+				<ExpansionPanel>
+					<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 						<AppBar position='static' className={classes.cardHeader}>
 							<Toolbar>
 								<Typography variant='h6' color='inherit' className={classes.grow}>
@@ -136,6 +147,8 @@ class ClientCard extends React.Component {
 								</Button>
 							</Toolbar>
 						</AppBar>
+					</ExpansionPanelSummary>{' '}
+					<ExpansionPanelDetails>
 						<form className={classes.container} noValidate autoComplete='off'>
 							<Grid container spacing={24} direction='row' justify='center' alignItems='flex-start'>
 								<Grid item xs={4}>
@@ -417,8 +430,8 @@ class ClientCard extends React.Component {
 								</Grid>
 							</Grid>
 						</form>
-					</CardContent>
-				</Card>
+					</ExpansionPanelDetails>
+				</ExpansionPanel>
 			</div>
 		);
 	}
