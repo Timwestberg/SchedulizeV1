@@ -24,6 +24,11 @@ passport.deserializeUser(User.deserializeUser());
 
 const app = express();
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
+
 app.use(morgan);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
