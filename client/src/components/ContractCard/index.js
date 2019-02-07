@@ -58,82 +58,81 @@ const styles = (theme) => ({
 });
 
 const countries = [
-	{
-		value: 'USA'
-	},
-	{
-		value: 'UK'
-	},
-	{
-		value: 'JAP'
-	}
+  {
+    value: "USA"
+  },
+  {
+    value: "UK"
+  },
+  {
+    value: "JAP"
+  }
 ];
 
 const contractorStand = [
-	{
-		value: 'Good'
-	},
-	{
-		value: 'Testing'
-	},
-	{
-		value: 'Bad'
-	},
-	{
-		value: 'Issues'
-	}
+  {
+    value: "Good"
+  },
+  {
+    value: "Testing"
+  },
+  {
+    value: "Bad"
+  },
+  {
+    value: "Issues"
+  }
 ];
 
 class ContractCard extends React.Component {
-	state = {
-		contractorStand: '',
-		country: '',
-		value: '',
-		editable: false,
-		conFirstName: this.props.conFirstName,
-		conLastName: this.props.conLastName,
-		conPhone: this.props.conPhone,
-		conEmail: this.props.conEmail,
-		conCert: this.props.conCert,
-		conPrice: this.props.conPrice,
-		conNotes: this.props.conNotes,
-		conLocationName: this.props.conLocationName,
-		conStreetAddress: this.props.conStreetAddress,
-		conCity: this.props.conCity,
-		conState: this.props.conState,
-		conZipCode: this.props.conZipCode
-	};
+  state = {
+    contractorStand: "",
+    country: "",
+    value: "",
+    editable: false,
+    conFirstName: this.props.conFirstName,
+    conLastName: this.props.conLastName,
+    conPhone: this.props.conPhone,
+    conEmail: this.props.conEmail,
+    conCert: this.props.conCert,
+    conPrice: this.props.conPrice,
+    conNotes: this.props.conNotes,
+    conLocationName: this.props.conLocationName,
+    conStreetAddress: this.props.conStreetAddress,
+    conCity: this.props.conCity,
+    conState: this.props.conState,
+    conZipCode: this.props.conZipCode
+  };
 
-	handleChange = (name) => (event) => {
-		this.setState({
-			[name]: event.target.value
-		});
-	};
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    });
+  };
 
-	handleEditMode = () => {
-		this.setState({
-			editable: true
-		});
-	};
+  handleEditMode = () => {
+    this.setState({
+      editable: true
+    });
+  };
 
-	// handleInputChange = event => {
-	//     console.log("working")
-	//     const value = event.target;
-	//     this.setState({
-	//         [value]: event.target.value
-	//     });
-	// };
+  // handleInputChange = event => {
+  //     console.log("working")
+  //     const value = event.target;
+  //     this.setState({
+  //         [value]: event.target.value
+  //     });
+  // };
 
-	handleInputChange = (event) => {
-		const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
-	};
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-	render() {
-		const { classes } = this.props;
-
+  render() {
+    const { classes } = this.props;
 		return (
 			<div>
 				<ExpansionPanel>
@@ -371,10 +370,11 @@ class ContractCard extends React.Component {
 			</div>
 		);
 	}
+
 }
 
 ContractCard.propTypes = {
-	classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ContractCard);
