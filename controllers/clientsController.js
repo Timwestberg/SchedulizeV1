@@ -11,7 +11,7 @@ module.exports = {
   },
   findById: function(req, res) {
     db.Client
-      .findById(req.params.id)
+      .findById({ _id: req.params._id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -23,7 +23,7 @@ module.exports = {
   },
   update: function(req, res) {
     //console log to see if postman is reaching update route
-    console.log("reached update")
+    console.log("update reached")
     db.Client
       .findOneAndUpdate({ _id: req.params._id }, req.body)
       .then(dbModel => res.json(dbModel))
