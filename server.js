@@ -10,6 +10,11 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
+
 // Connect mongoose
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/schedulizeDB', function(err) {
 	if (err) {
