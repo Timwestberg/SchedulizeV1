@@ -2,21 +2,11 @@ const path = require('path');
 const router = require('express').Router();
 const apiRoutes = require('./api');
 const securityRoutes = require('./auth');
-
+const { ensureAuthenticated } = require('../config/auth');
 router.use('/auth', securityRoutes);
 
-// Temp fix for protection of api routes need to incorporate the Next() function into this
-router.use('/api', apiRoutes);
-// router.use('/api', (req, res) => {
-// 	console.log('Protected Route');
-// 	if (req.isAuthenticated()) {
-// 		apiRoutes;
-// 		console.log('User was Authenticated');
-// 	} else {
-// 		console.log('User is not authenticated!');
-// 		res.redirect('/');
-// 	}
-// });
+// This ensures that every time the api server is hit the user will be check for access rights.
+router.use('/api', ensureAuthenticated, apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
