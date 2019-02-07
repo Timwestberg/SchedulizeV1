@@ -1,53 +1,53 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
-import { white } from "@material-ui/core/colors";
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
+import { white } from '@material-ui/core/colors';
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardContent,
-  TextField,
-  Grid,
-  Fab,
-  Icon,
-  FormControl,
-  MenuItem,
-  Select,
-  InputLabel
-} from "@material-ui/core";
-import Standing from "./form/Standing";
-import W9CheckBox from "./form/W9CheckBox";
-import API from "../../utils/API";
+	Button,
+	Card,
+	CardHeader,
+	CardContent,
+	TextField,
+	Grid,
+	Fab,
+	Icon,
+	FormControl,
+	MenuItem,
+	Select,
+	InputLabel
+} from '@material-ui/core';
+import Standing from './form/Standing';
+import W9CheckBox from './form/W9CheckBox';
+import API from '../../utils/API';
 
 const styles = {
-  card: {
-    minWidth: 300,
-    minHeight: 200
-    // justifyContent: "center",
-  },
-  cardHeader: {
-    background: `#4caf50`,
-    color: white
-  },
-  cardContent: {
-    width: "100%"
-  },
-  form: {
-    minWidth: "100%"
-  },
-  TextField: {
-    minWidth: "100%"
-  },
-  hCenter: {
-    display: "flex"
-    // alignItems: "center"
-    // justifyContent: "center"
-  },
-  fab: {
-    display: "flex"
-    // justifyContent:
-  }
+	card: {
+		minWidth: 300,
+		minHeight: 200
+		// justifyContent: "center",
+	},
+	cardHeader: {
+		background: `#4caf50`,
+		color: white
+	},
+	cardContent: {
+		width: '100%'
+	},
+	form: {
+		minWidth: '100%'
+	},
+	TextField: {
+		minWidth: '100%'
+	},
+	hCenter: {
+		display: 'flex'
+		// alignItems: "center"
+		// justifyContent: "center"
+	},
+	fab: {
+		display: 'flex'
+		// justifyContent:
+	}
 };
 
 const certification = [
@@ -60,6 +60,7 @@ const certification = [
 ];
 
 class ContractorCard extends React.Component {
+
   state = {
     firstName: "",
     lastName: "",
@@ -80,25 +81,25 @@ class ContractorCard extends React.Component {
     // }
   };
 
-  handleChange = event => {
-    const field = event.target.name;
+	handleChange = (event) => {
+		const field = event.target.name;
 
-    const standingComp = this.state.standingComp;
+		const standingComp = this.state.standingComp;
 
-    standingComp[field] = event.target.value;
+		standingComp[field] = event.target.value;
 
-    this.setState({
-      standingComp
-    });
-  };
+		this.setState({
+			standingComp
+		});
+	};
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
+	handleInputChange = (event) => {
+		const { name, value } = event.target;
 
-    this.setState({
-      [name]: value
-    });
-  };
+		this.setState({
+			[name]: value
+		});
+	};
 
   handleCertChange = name => event => {
     const { name, value } = event.target;
@@ -112,9 +113,9 @@ class ContractorCard extends React.Component {
     this.setState({ open: false });
   };
 
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
+	handleOpen = () => {
+		this.setState({ open: true });
+	};
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -135,18 +136,18 @@ class ContractorCard extends React.Component {
     });
     console.log(this.state);
 
-    this.setState({
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      certification: "",
-      standing: "",
-      pricing: "",
-      notes: "",
-      location: ""
-    });
-  };
+		this.setState({
+			firstName: '',
+			lastName: '',
+			phone: '',
+			email: '',
+			certification: '',
+			standing: '',
+			pricing: '',
+			notes: '',
+			location: ''
+		});
+	};
 
   render() {
     const { classes } = this.props;
@@ -216,7 +217,7 @@ class ContractorCard extends React.Component {
                   value={this.state.Standing}
                   onChange={this.handleInputChange}
                 /> */}
-                {/* <FormControl className={classes.input} fullWidth>
+							{/* <FormControl className={classes.input} fullWidth>
                   <InputLabel htmlFor="demo-controlled-open-select">
                     Standing
                   </InputLabel>

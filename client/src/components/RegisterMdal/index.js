@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
-import { Card, CardHeader, TextField, Grid, Fab, CardContent, Button } from '@material-ui/core';
+import { TextField, Grid, CardContent, Button, CssBaseline, Typography, withStyles, Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import AddIcon from '@material-ui/icons/Add';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { Add, LockOutlined } from '@material-ui/icons';
 
 const styles = (theme) => ({
 	main: {
@@ -50,7 +45,7 @@ function SignUpForm(props) {
 			<CssBaseline />
 			<Paper className={classes.paper}>
 				<Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
+					<LockOutlined />
 				</Avatar>
 				<Typography component='h1' variant='h5'>
 					Add User
@@ -96,7 +91,7 @@ function SignUpForm(props) {
 
 						<Grid item sm={12} md={12} lg={12}>
 							<Button type='submit' variant='contained' color='primary'>
-								<AddIcon />
+								<Add />
 								{'Register'}
 							</Button>
 

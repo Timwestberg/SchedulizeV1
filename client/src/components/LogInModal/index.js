@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { TextField, Grid, Button } from '@material-ui/core';
+import { TextField, Grid, Button, withStyles, Typography, Paper, CssBaseline, Avatar } from '@material-ui/core';
 const styles = (theme) => ({
 	main: {
 		width: '80%',
