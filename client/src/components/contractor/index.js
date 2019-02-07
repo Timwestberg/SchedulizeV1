@@ -50,13 +50,22 @@ const styles = {
   }
 };
 
+const certification = [
+  {
+    value: "Certified"
+  },
+  {
+    value: "Qualified "
+  }
+];
+
 class ContractorCard extends React.Component {
   state = {
     firstName: "",
     lastName: "",
     phone: "",
     email: "",
-    // certification: "",
+    certification: "",
     // standing: "",
     pricing: "",
     notes: "",
@@ -65,10 +74,10 @@ class ContractorCard extends React.Component {
     city: "",
     state: "",
     postalCode: "",
-    standingComp: {
-      age: "",
-      open: false
-    }
+    // standingComp: {
+    //   age: "",
+    //   open: false
+    // }
   };
 
   handleChange = event => {
@@ -91,6 +100,14 @@ class ContractorCard extends React.Component {
     });
   };
 
+  handleCertChange = name => event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
+  
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -106,7 +123,7 @@ class ContractorCard extends React.Component {
       lastName: this.state.lastName,
       phone: this.state.phone,
       email: this.state.email,
-      // certification: this.state.certification,
+      certification: this.state.certification,
       // standing: this.state.standing,
       pricing: this.state.pricing,
       notes: this.state.notes,
@@ -193,7 +210,7 @@ class ContractorCard extends React.Component {
                   onChange={this.handleInputChange}
                 />
               </Grid>
-              {/* <Grid item sm={12} md={12} lg={12}> */}
+              <Grid item sm={12} md={12} lg={12}>
                 {/* <Standing
                   name="standing"
                   value={this.state.Standing}
@@ -223,8 +240,32 @@ class ContractorCard extends React.Component {
                     <MenuItem value={3}>Bad</MenuItem>
                     <MenuItem value={4}>Issues</MenuItem>
                   </Select>
-                </FormControl>
-              </Grid> */}
+                </FormControl> */}
+                <TextField
+                  select
+                  id="outlined-with-placeholder"
+                  label="Type of Client"
+                  className={classes.textField}
+                  fullWidth
+                  value={this.state.certification}
+                  name="certification"
+                  onChange={this.handleCertChange("certification")}
+                  SelectProps={{
+                    MenuProps: {
+                      className: classes.menu
+                    }
+                  }}
+                  helperText="Choose one"
+                  margin="normal"
+                  variant="outlined"
+                >
+                  {certification.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
               <Grid item sm={12} md={12} lg={12}>
                 <TextField
                   id="contractorPricing"
