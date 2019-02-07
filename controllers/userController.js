@@ -19,7 +19,11 @@ module.exports = {
 		db.User
 			.register(new User({ username: req.body.username, name: req.body.name }), req.body.password)
 			.then((user) => {
-				res.redirect('/');
+				return res.json({
+					redirect: '/',
+					status: 'Success',
+					message: 'Your credentials are have been inputted into the system'
+				});
 			})
 			.catch((err) => {
 				console.log('Error registering user!', err);

@@ -17,7 +17,7 @@ class LoginPage extends React.Component {
 
 				password: ''
 			},
-			redirect: 'res.data.redirect'
+			redirect: `/addressbook`
 		};
 
 		this.processLogin = this.processForm.bind(this);
@@ -54,10 +54,9 @@ class LoginPage extends React.Component {
 			username: this.state.user.username,
 			password: this.state.user.password
 		}).then((res) => {
-			if (res.status === 'Authorized') {
+			if (res.data.status === 'Authorized') {
 				window.location = this.state.redirect;
 			}
-			window.location = res.data.redirect;
 		});
 	}
 
