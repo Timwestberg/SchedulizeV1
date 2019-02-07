@@ -262,6 +262,7 @@ class ContractorCard extends React.Component {
                   }}
                   helperText="Choose one"
                   margin="normal"
+                  variant="outlined"
                 >
                   {certification.map(option => (
                     <MenuItem key={option.value} value={option.value}>
@@ -290,6 +291,7 @@ class ContractorCard extends React.Component {
                   label="Notes"
                   multiline
                   rowsMax="4 md={12} lg={12}"
+                  value={this.state.multiline}
                   className={classes.TextField}
                   fullWidth
                   name="notes"
@@ -363,10 +365,10 @@ class ContractorCard extends React.Component {
                   onChange={this.handleInputChange}
                 />
               </Grid>
-              <Grid item sm={6} md={6} >
+              <Grid item sm={6} md={6}>
                 <W9CheckBox />
               </Grid>
-              <Grid item sm={6} md={6} >
+              <Grid item sm={6} md={6}>
                 <Fab
                   color="primary"
                   aria-label="Add"

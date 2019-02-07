@@ -1,5 +1,4 @@
 import React from "react";
-// import Navbar from "../Navbar";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -12,7 +11,7 @@ import {
   AppBar,
   Toolbar
 } from "@material-ui/core";
-import {white} from "@material-ui/core/colors"
+import { white } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
 import API from "../../utils/API";
 // import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
