@@ -134,7 +134,7 @@ class ClientCard extends React.Component {
 						<AppBar position='static' className={classes.cardHeader}>
 							<Toolbar>
 								<Typography variant='h6' color='inherit' className={classes.grow}>
-									Client Contact Card
+									{this.state.clientFirstName} {this.state.clientLastName} {this.state.companyName}
 								</Typography>
 								<Button color='inherit' onClick={this.handleEditMode}>
 									Edit

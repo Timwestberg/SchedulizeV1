@@ -57,18 +57,6 @@ const styles = (theme) => ({
 	}
 });
 
-const countries = [
-	{
-		value: 'USA'
-	},
-	{
-		value: 'UK'
-	},
-	{
-		value: 'JAP'
-	}
-];
-
 const contractorStand = [
 	{
 		value: 'Good'
@@ -141,7 +129,7 @@ class ContractCard extends React.Component {
 						<AppBar position='static' className={classes.cardHeader}>
 							<Toolbar>
 								<Typography variant='h6' color='inherit' className={classes.grow}>
-									Contractor Contact Card
+									{this.props.conFirstName} {this.state.conLastName}
 								</Typography>
 								<Button color='inherit' onClick={this.handleEditMode}>
 									Edit
