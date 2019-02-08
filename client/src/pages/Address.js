@@ -12,7 +12,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import ClientSearch from '../components/Searchy/clientSearchy';
-import ApptSearch from  '../components/Searchy/appointmentSearchy';
+import ApptSearch from '../components/Searchy/appointmentSearchy';
 import ContractorSearch from '../components/Searchy/contractorSearchy';
 
 function TabContainer({ children, dir }) {
@@ -64,24 +64,24 @@ class Address extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	//these 3 allow us to access db to search 
+	//these 3 allow us to access db to search
 	changeClientSearch = (data) => {
-				this.setState({
-					clients: data
-				});
+		this.setState({
+			clients: data
+		});
 	};
 
 	changeApptSearch = (data) => {
 		this.setState({
 			appointments: data
 		});
-};
+	};
 
-changeContractorSearch= (data) => {
-	this.setState({
-		contractors: data
-	});
-};
+	changeContractorSearch = (data) => {
+		this.setState({
+			contractors: data
+		});
+	};
 
 	handleChangeIndex = (index) => {
 		this.setState({ value: index });
@@ -154,8 +154,9 @@ changeContractorSearch= (data) => {
 						index={value}
 						onChangeIndex={this.handleChangeIndex}>
 						<TabContainer dir={theme.direction}>
-						<ContractorSearch onSearchChange= {this.changeContractorSearch}
-						>Contractor Search </ContractorSearch>
+							<ContractorSearch onSearchChange={this.changeContractorSearch}>
+								Contractor Search{' '}
+							</ContractorSearch>
 							{contractors.map((contractor) => (
 								<ContractCard
 									// conStreetNumber={contractor.location.streetNumber}
@@ -177,9 +178,7 @@ changeContractorSearch= (data) => {
 							))}
 						</TabContainer>
 						<TabContainer dir={theme.direction}>
-
-						<ClientSearch onSearchChange= {this.changeClientSearch}
-						>Client Search</ClientSearch>
+							<ClientSearch onSearchChange={this.changeClientSearch}>Client Search</ClientSearch>
 							{clients.map((client) => (
 								<ClientCard
 									companyName={client.name}
@@ -202,8 +201,7 @@ changeContractorSearch= (data) => {
 							))}
 						</TabContainer>
 						<TabContainer dir={theme.direction}>
-						<ApptSearch onSearchChange= {this.changeApptSearch}>
-						ApptSearch</ApptSearch>
+							<ApptSearch onSearchChange={this.changeApptSearch}>ApptSearch</ApptSearch>
 							{appointments.map((appointment) => (
 								<AppointmentCard
 									assigneeFirstName={appointment.assigneeFirstName}
@@ -222,59 +220,6 @@ changeContractorSearch= (data) => {
 							))}
 						</TabContainer>
 					</SwipeableViews>
-					{/* {contractors.map((contractor) => (
-					<ContractCard
-						// conStreetNumber={contractor.location.streetNumber}
-						conStreetAddress={contractor.address}
-						conFirstName={contractor.firstName}
-						conLastName={contractor.lastName}
-						conPhone={contractor.phone}
-						conEmail={contractor.email}
-						// conStand
-						conCert={contractor.certification}
-						conPrice={contractor.pricing}
-						conNotes={contractor.notes}
-						conLocationName={contractor.locationName}
-						conCity={contractor.city}
-						conState={contractor.state}
-						conZipCode={contractor.postalCode}
-					/>
-				))} */}
-					<br />
-					{/* {clients.map((client) => (
-					<ClientCard
-						companyName={client.name}
-						clientPhone={client.phone}
-						clientEmail={client.email}
-						position={client.position}
-						clientFirstName={client.firstName}
-						clientLastName={client.lastName}
-						billContact={client.billing.name}
-						clientStreetName={client.billing.address}
-						billPhone={client.billing.phone}
-						billEmail={client.billing.email}
-						clientCity={client.billing.city}
-						clientZipCode={client.billing.zipCode}
-						clientState={client.billing.state}
-						clientType={client.typeClient}
-						idToUpdate={client._id}
-					/>
-				))} */}
-					{/* {appointments.map((appointment) => (
-					<AppointmentCard
-						assigneeFirstName={appointment.assigneeFirstName}
-						assigneeLastName={appointment.assigneeLastName}
-						adjusterFirstName={appointment.adjusterFirstName}
-						adjusterLastName={appointment.adjusterLastName}
-						refName={appointment.refName}
-						refNumber={appointment.refNumber}
-						locationName={appointment.locationName}
-						address={appointment.address}
-						city={appointment.city}
-						state={appointment.state}
-						postalCode={appointment.postalCode}
-					/>
-				))} */}
 				</div>
 			</div>
 		);
