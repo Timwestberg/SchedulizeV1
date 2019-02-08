@@ -10,8 +10,8 @@ import googleMaps from "../utils/keys"
 
 const API_KEY2 = googleMaps.key
 
-Geocode.setApiKey(API_KEY2);
-
+Geocode.setApiKey("AIzaSyBjqqmnBeb7OUYHTEwNF_7eVl5Mnhy7FJ0");
+Geocode.enableDebug()
 
 const style = {
     width: "50%",
@@ -199,5 +199,5 @@ export class TestMap extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: API_KEY2
+    apiKey: "AIzaSyBjqqmnBeb7OUYHTEwNF_7eVl5Mnhy7FJ0"
 })(TestMap)
