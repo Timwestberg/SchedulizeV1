@@ -1,22 +1,16 @@
-import React, { Component } from "react";
-import Navbar from "../Navbar";
+import React from "react";
 import PropTypes from "prop-types";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Button,
+  MenuItem,
+  TextField,
+  Grid
+} from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import MenuItem from "@material-ui/core/MenuItem";
-import classNames from "classnames";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import ClientName from "./form/ClientName";
-import PhoneNumber from "./form/PhoneNumber";
+import { white } from "@material-ui/core/colors";
 import API from "../../utils/API";
 
 const styles = theme => ({
@@ -26,6 +20,13 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1
+  },
+  cardHeader: {
+    background: `#4caf50`,
+    color: white
+  },
+  cardContent: {
+    width: "100%"
   },
   root: {
     flexGrow: 1
@@ -56,18 +57,6 @@ const styles = theme => ({
   }
 });
 
-const countries = [
-  {
-    value: "USA"
-  },
-  {
-    value: "UK"
-  },
-  {
-    value: "JAP"
-  }
-];
-
 const clientType = [
   {
     value: "Investigation"
@@ -89,7 +78,7 @@ class ClientCard extends React.Component {
     // phone: "",
     // email: "",
     position: "",
-    notes:"",
+    notes: "",
     contactPerson: {
       firstName: "",
       lastName: "",
@@ -123,7 +112,7 @@ class ClientCard extends React.Component {
     });
 
     // setTimeout(() => {
-      // console.log(this.state);
+    // console.log(this.state);
     // }, 500);
   };
 
@@ -192,7 +181,7 @@ class ClientCard extends React.Component {
         // phone: "",
         // email: "",
         position: "",
-        notes:"",
+        notes: "",
         contactPerson: {
           firstName: "",
           lastName: "",
@@ -231,19 +220,11 @@ class ClientCard extends React.Component {
       <div className={classes.root}>
         <Grid container item xs={12}>
           <Card className={classes.card}>
+            <CardHeader
+              title="New Client Form"
+              className={classes.cardHeader}
+            />
             <CardContent>
-              <AppBar position="static" className={classes.cardHeader}>
-                <Toolbar>
-                  <Typography
-                    variant="h6"
-                    color="inherit"
-                    className={classes.grow}
-                  >
-                    Client Contact Card
-                  </Typography>
-                  {/* <Button color="inherit">Edit</Button> */}
-                </Toolbar>
-              </AppBar>
               <form
                 className={classes.container}
                 noValidate
@@ -382,7 +363,7 @@ class ClientCard extends React.Component {
                       multiline
                       fullWidth
                       rows="10"
-                      defaultValue="Default Value"
+                      //   defaultValue="Default Value"
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
@@ -444,7 +425,7 @@ class ClientCard extends React.Component {
                     <TextField
                       id="outlined-helperText"
                       label="Street Address"
-                      defaultValue="Street Address"
+                      //   defaultValue="Street Address"
                       fullWidth
                       className={classes.textField}
                       margin="normal"
@@ -462,7 +443,7 @@ class ClientCard extends React.Component {
                       <TextField
                         id="outlined-helperText"
                         label="City"
-                        defaultValue="City"
+                        // defaultValue="City"
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
@@ -474,7 +455,7 @@ class ClientCard extends React.Component {
                         <TextField
                           id="outlined-helperText"
                           label="State/Province"
-                          defaultValue="State"
+                          //   defaultValue="State"
                           className={classes.textField}
                           margin="normal"
                           variant="outlined"
@@ -495,7 +476,7 @@ class ClientCard extends React.Component {
                         <TextField
                           id="outlined-helperText"
                           label="Postal / Zip Code"
-                          defaultValue="Zip Code"
+                          //   defaultValue="Zip Code"
                           className={classes.textField}
                           margin="normal"
                           variant="outlined"
@@ -503,33 +484,9 @@ class ClientCard extends React.Component {
                           value={location.zipCode}
                           onChange={this.handleBillingChange}
                         />
-                        {/* <TextField
-                                          id="outlined-select-currency"
-                                          select
-                                          label="Country"
-                                          className={classes.textField}
-                                          value={this.state.country}
-                                          onChange={this.handleChange('country')}
-                                          fullWidth
-                                          SelectProps={{
-                                              MenuProps: {
-                                                  className: classes.menu,
-                                              },
-                                          }}
-                                          helperText="Please select your country"
-                                          margin="normal"
-                                          variant="outlined"
-                                      >
-                                          {countries.map(option => (
-                                              <MenuItem key={option.value} value={option.value}>
-                                                  {option.value}
-                                              </MenuItem>
-                                          ))}
-                                      </TextField> */}
                       </Grid>
                       <Grid item xs>
                         <Button
-                          type="primary"
                           variant="contained"
                           color="inherit"
                           type="submit"

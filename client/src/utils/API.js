@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios';
 
 export default {
     // Gets all clients
@@ -17,8 +17,8 @@ export default {
     saveClient: function(clientData) {
         return axios.post("/api/clients", clientData);
     },
-    updateClient: function(_id) {
-        return axios.put("/api/client/" + _id);
+    updateClient: function(_id, changes) {
+        return axios.put("/api/clients/" + _id, changes);
     },
     // Gets all appts
     getAppts: function() {
@@ -52,6 +52,10 @@ export default {
     saveContractor: function(apptData) {
         return axios.post("/api/contractors", apptData);
     },
-    //FOR THE MAP FUNCTIONALITY - WE WILL NEED TO ADD AN AXIOS UPDATE
-      
+    SaveUser: function(UserData) {
+		    return axios.post('/auth/register', UserData);
+	  },
+	   LoginUser: function(UserData) {
+		    return axios.post('/auth/login', UserData);
+	}
 };

@@ -4,19 +4,20 @@ import ClientSearch from "../Searchy/clientSearchy.js";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import "./style.css";
+import Forms from "../Forms";
+import ApptSearch from "../Searchy/appointmentSearchy.js";
 
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit
   },
   input: {
-    display: 'none',
-  },
-})
+    display: "none"
+  }
+});
 
 function Navbar(props) {
-
   return (
   <div className="topnav">
   <a href="/">Home</a>
@@ -26,17 +27,33 @@ function Navbar(props) {
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
   <br/>
-  <ClientSearch />
+  <ClientSearch>Client Search</ClientSearch>
   {/* <div className="search-container">
       <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
       <button onClick={props.onClick} type="submit">Submit</button>
   </div> */}
-</div>
-  );
+{/* </div>
+  ); */}
 
+      <Forms />
+
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search.."
+          name="search"
+          value={props.value}
+          onChange={props.onChange}
+        />
+        <button onClick={props.onClick} type="submit">
+          Submit
+        </button>
+      </div>
+    </div>
+  );
 }
 
 Navbar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 export default withStyles(styles)(Navbar);

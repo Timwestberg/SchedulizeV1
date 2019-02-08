@@ -1,9 +1,10 @@
-import React from 'react';
-import SignIn from '../components/LogInModal';
+// import Nav from '../components/Nav';
+import RegisterForm from '../components/RegisterMdal/index';
 import PropTypes from 'prop-types';
+import React from 'react';
 import API from '../utils/API';
-import Navbar from '../components/Nav/index';
-class LoginPage extends React.Component {
+
+class SignUpPage extends React.Component {
 	/**
    * Class constructor.
    */
@@ -13,14 +14,16 @@ class LoginPage extends React.Component {
 		// set the initial component state
 		this.state = {
 			user: {
+				name: '',
+
 				username: '',
 
 				password: ''
 			},
-			redirect: `/addressbook`
+			redirect: `/`
 		};
 
-		this.processLogin = this.processForm.bind(this);
+		this.processForm = this.processForm.bind(this);
 
 		this.changeUser = this.changeUser.bind(this);
 	}
@@ -48,13 +51,12 @@ class LoginPage extends React.Component {
 		event.preventDefault();
 
 		console.log(this.state.user);
-
-		// Login routes from Utility
-		API.LoginUser({
+		API.SaveUser({
 			username: this.state.user.username,
+			name: this.state.user.name,
 			password: this.state.user.password
 		}).then((res) => {
-			if (res.data.status === 'Authorized') {
+			if (res.data.status === 'Success') {
 				window.location = this.state.redirect;
 			}
 		});
@@ -64,19 +66,12 @@ class LoginPage extends React.Component {
    * Render the component.
    */
 	render() {
-		return (
-			<main>
-				<Navbar />
-				<br />
-				<br />
-				<SignIn onSubmit={this.processLogin} onChange={this.changeUser} user={this.state.user} />
-			</main>
-		);
+		return <RegisterForm onSubmit={this.processForm} onChange={this.changeUser} user={this.state.user} />;
 	}
 }
 
-LoginPage.contextTypes = {
+SignUpPage.contextTypes = {
 	router: PropTypes.object.isRequired
 };
 
-export default LoginPage;
+export default SignUpPage;

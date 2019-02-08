@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-// import Navbar from "../Navbar";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-// import CardActions from '@material-ui/core/CardActions';
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import MenuItem from "@material-ui/core/MenuItem";
-// import classNames from 'classnames';
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import { white } from "@material-ui/core/colors";
-import API from "../../utils/API";
-// import FormattedInputs from "../NewAppointmentForm/form/PhoneNumber";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+	Button,
+	Typography,
+	MenuItem,
+	TextField,
+	Grid,
+	AppBar,
+	Toolbar,
+	ExpansionPanel,
+	ExpansionPanelSummary,
+	ExpansionPanelDetails
+} from '@material-ui/core';
+import { white } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
+import API from '../../utils/API';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = theme => ({
   cardHeader: {
@@ -58,18 +58,6 @@ const styles = theme => ({
   }
 });
 
-const countries = [
-  {
-    value: "USA"
-  },
-  {
-    value: "UK"
-  },
-  {
-    value: "JAP"
-  }
-];
-
 const clientType = [
   {
     value: "Investigation"
@@ -108,21 +96,6 @@ class ClientCard extends React.Component {
     objectToUpdate: {}
   };
 
-  componentDidMount() {
-    this.loadClients();
-  }
-
-  loadClients = () => {
-    API.getClients()
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          clients: res.data
-        });
-      })
-      .catch(err => console.log(err));
-  };
-
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value
@@ -132,15 +105,7 @@ class ClientCard extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-        [name]: value,
-    });
-};
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
       [name]: value
-      // idToUpdate: this.state.client._id,
-      // updateToApply: event.target.value
     });
   };
 
@@ -150,265 +115,194 @@ class ClientCard extends React.Component {
     });
   };
 
+  //work in progress for update
   updateDB = idToUpdate => {
-    // console.log(idToUpdate, this.state)
-    let objIdToUpdate = null;
-    this.state.clients.forEach(client => {
-      if (client.id == idToUpdate) {
-        objIdToUpdate = client._id;
-      }
-    });
-    console.log({
-      id: idToUpdate,
-      objectToUpdate: this.state
-    });
+    const id = this.state.clients.findEach(client => client._id === idToUpdate);
+    console.log(id);
     API.updateClient({
-      id: objIdToUpdate,
-      objectToUpdate: this.state
+      clientFirstName: this.state.clientFirstName
     });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    API.updateClient({
-      clientFirstName: this.state.clientFirstName,
-      clientLastName: this.state.clientLastName,
-      billContact: this.state.billContact,
-      clientPhone: this.state.clientPhone,
-      clientEmail: this.state.clientEmail,
-      companyName: this.state.companyName,
-      position: this.state.position,
-      billPhone: this.state.billPhone,
-      billEmail: this.state.billEmail,
-      clientCity: this.state.clientCity,
-      clientState: this.state.clientState,
-      clientStreetNumber: this.state.clientStreetNumber,
-      clientStreetName: this.state.clientStreetName
-    })
-      .then(res => console.log("Information updated"))
-      .catch(err => console.log(err));
   };
 
   render() {
     const { classes } = this.props;
 
-    return (
-      <div>
-        <Card className={classes.card}>
-          <CardContent>
-            <AppBar position="static" className={classes.cardHeader}>
-              <Toolbar>
-                <Typography
-                  variant="h6"
-                  color="inherit"
-                  className={classes.grow}
-                >
-                  Client Contact Card
-                </Typography>
-                <Button color="inherit" onClick={this.handleEditMode}>
-                  Edit
-                </Button>
-                <Button
-                  color="inherit"
-                  // onClick={this.handleFormSubmit}
-                  onClick={() =>
-                    this.updateDB(
-                      this.state.idToUpdate,
-                      this.state.updateToApply
-                    )
-                  }
-                  disabled={
-                    !(
-                      this.state.clientFirstName &&
-                      this.state.clientLastName &&
-                      this.state.clientFirstName &&
-                      this.state.clientLastName &&
-                      this.state.billContact &&
-                      this.state.clientPhone &&
-                      this.state.clientEmail &&
-                      this.state.companyName &&
-                      this.state.position &&
-                      this.state.billPhone &&
-                      this.state.billEmail &&
-                      this.state.clientCity &&
-                      this.state.clientState &&
-                      this.state.clientStreetNumber &&
-                      this.state.clientStreetName
-                    )
-                  }
-                >
-                  Submit
-                </Button>
-              </Toolbar>
-            </AppBar>
-            <form className={classes.container} noValidate autoComplete="off">
-              <Grid
-                container
-                spacing={24}
-                direction="row"
-                justify="center"
-                alignItems="flex-start"
-              >
-                <Grid item xs={4}>
-                  <Grid
-                    container
-                    direction="row"
-                    justify="flex-end"
-                    alignItems="flex-start"
-                  >
-                    <TextField
-                      id="outlined-name"
-                      label="First Name"
-                      className={classes.textField}
-                      value={this.state.clientFirstName}
-                      margin="normal"
-                      variant="outlined"
-                      name="clientFirstName"
-                      disabled={!this.state.editable}
-                      onChange={this.handleInputChange}
-                      // onChange={() => this.setState({ idToUpdate: this.state.client._id })}
-                      // onChange={e => this.setState({ updateToApply: e.target.value })}
-                      // fullWidth
-                    />
-                    <Grid item xs>
-                      <TextField
-                        id="outlined-name"
-                        label="Last Name"
-                        className={classes.textField}
-                        value={this.state.clientLastName}
-                        margin="normal"
-                        variant="outlined"
-                        fullWidth
-                        name="clientLastName"
-                        disabled={!this.state.editable}
-                        onChange={this.handleInputChange}
-                      />
-                    </Grid>
-                  </Grid>
-                  <TextField
-                    id="outlined-number"
-                    label="Phone Number"
-                    value={this.state.clientPhone}
-                    type="Phone Number"
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    margin="normal"
-                    variant="outlined"
-                    name="clientPhone"
-                    disabled={!this.state.editable}
-                    onChange={this.handleInputChange}
-                  />
-                  <TextField
-                    id="outlined-email-input"
-                    label="Email"
-                    className={classes.textField}
-                    fullWidth
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    margin="normal"
-                    variant="outlined"
-                    value={this.state.clientEmail}
-                    name="clientEmail"
-                    disabled={!this.state.editable}
-                    onChange={this.handleInputChange}
-                  />
-                  <TextField
-                    select
-                    id="outlined-with-placeholder"
-                    label="Type of Client"
-                    className={classes.textField}
-                    fullWidth
-                    value={this.state.clientType}
-                    onChange={this.handleChange("clientType")}
-                    SelectProps={{
-                      MenuProps: {
-                        className: classes.menu
-                      }
-                    }}
-                    helperText="Choose one"
-                    margin="normal"
-                    variant="outlined"
-                  >
-                    {clientType.map(option => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.value}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
-                <Grid item xs={4}>
-                  <TextField
-                    id="outlined-full-width"
-                    label="Company / Client Name"
-                    placeholder="Company / Client Name"
-                    value={this.state.companyName}
-                    name="companyName"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    disabled={!this.state.editable}
-                    onChange={this.handleInputChange}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                  <TextField
-                    id="outlined-full-width"
-                    label="Position"
-                    placeholder="Position"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    value={this.state.position}
-                    name="position"
-                    disabled={!this.state.editable}
-                    onChange={this.handleInputChange}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                  <TextField
-                    id="outlined-multiline-static"
-                    label="Notes"
-                    multiline
-                    fullWidth
-                    rows="10"
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    id="outlined-read-only-input"
-                    defaultValue="Billing Information"
-                    className={classes.textField}
-                    fullWidth
-                    margin="normal"
-                    InputProps={{
-                      readOnly: true
-                    }}
-                    variant="outlined"
-                  />
-                  <TextField
-                    id="outlined-full-width"
-                    label="Billing Contact Person"
-                    placeholder="Billing Contact Person"
-                    value={this.state.billContact}
-                    name="billContact"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    disabled={!this.state.editable}
-                    onChange={this.handleInputChange}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                  {/* <TextField
+		return (
+			<div>
+				<ExpansionPanel>
+					<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+						<AppBar position='static' className={classes.cardHeader}>
+							<Toolbar>
+								<Typography variant='h6' color='inherit' className={classes.grow}>
+									{this.state.clientFirstName} {this.state.clientLastName} {this.state.companyName}
+								</Typography>
+								<Button color='inherit' onClick={this.handleEditMode}>
+									Edit
+								</Button>
+								<Button
+									color='inherit'
+									onClick={() => this.updateDB(this.state.idToUpdate, this.state.updateToApply)}
+									disabled={!(this.state.clientFirstName && this.state.clientLastName)}>
+									Submit
+								</Button>
+							</Toolbar>
+						</AppBar>
+					</ExpansionPanelSummary>{' '}
+					<ExpansionPanelDetails>
+						<form className={classes.container} noValidate autoComplete='off'>
+							<Grid container spacing={24} direction='row' justify='center' alignItems='flex-start'>
+								<Grid item xs={4}>
+									<Grid container direction='row' justify='flex-end' alignItems='flex-start'>
+										<TextField
+											id='outlined-name'
+											label='First Name'
+											className={classes.textField}
+											value={this.state.clientFirstName}
+											margin='normal'
+											variant='outlined'
+											name='clientFirstName'
+											disabled={!this.state.editable}
+											onChange={this.handleInputChange}
+											// fullWidth
+										/>
+										<Grid item xs>
+											<TextField
+												id='outlined-name'
+												label='Last Name'
+												className={classes.textField}
+												value={this.state.clientLastName}
+												margin='normal'
+												variant='outlined'
+												fullWidth
+												name='clientLastName'
+												disabled={!this.state.editable}
+												onChange={this.handleInputChange}
+											/>
+										</Grid>
+									</Grid>
+									<TextField
+										id='outlined-number'
+										label='Phone Number'
+										value={this.state.clientPhone}
+										type='Phone Number'
+										className={classes.textField}
+										InputLabelProps={{
+											shrink: true
+										}}
+										margin='normal'
+										variant='outlined'
+										name='clientPhone'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+									/>
+									<TextField
+										id='outlined-email-input'
+										label='Email'
+										className={classes.textField}
+										fullWidth
+										type='email'
+										autoComplete='email'
+										margin='normal'
+										variant='outlined'
+										value={this.state.clientEmail}
+										name='clientEmail'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+									/>
+									<TextField
+										select
+										id='outlined-with-placeholder'
+										label='Type of Client'
+										className={classes.textField}
+										fullWidth
+										value={this.state.clientType}
+										onChange={this.handleChange('clientType')}
+										SelectProps={{
+											MenuProps: {
+												className: classes.menu
+											}
+										}}
+										helperText='Choose one'
+										margin='normal'
+										variant='outlined'>
+										{clientType.map((option) => (
+											<MenuItem key={option.value} value={option.value}>
+												{option.value}
+											</MenuItem>
+										))}
+									</TextField>
+								</Grid>
+								<Grid item xs={4}>
+									<TextField
+										id='outlined-full-width'
+										label='Company / Client Name'
+										placeholder='Company / Client Name'
+										value={this.state.companyName}
+										name='companyName'
+										fullWidth
+										margin='normal'
+										variant='outlined'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+										InputLabelProps={{
+											shrink: true
+										}}
+									/>
+									<TextField
+										id='outlined-full-width'
+										label='Position'
+										placeholder='Position'
+										fullWidth
+										margin='normal'
+										variant='outlined'
+										value={this.state.position}
+										name='position'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+										InputLabelProps={{
+											shrink: true
+										}}
+									/>
+									<TextField
+										id='outlined-multiline-static'
+										label='Notes'
+										multiline
+										fullWidth
+										rows='10'
+										className={classes.textField}
+										margin='normal'
+										variant='outlined'
+									/>
+								</Grid>
+								<Grid item xs={3}>
+									<TextField
+										id='outlined-read-only-input'
+										defaultValue='Billing Information'
+										className={classes.textField}
+										fullWidth
+										margin='normal'
+										InputProps={{
+											readOnly: true
+										}}
+										variant='outlined'
+									/>
+									<TextField
+										id='outlined-full-width'
+										label='Billing Contact Person'
+										placeholder='Billing Contact Person'
+										value={this.state.billContact}
+										name='billContact'
+										fullWidth
+										margin='normal'
+										variant='outlined'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+										InputLabelProps={{
+											shrink: true
+										}}
+									/>
+									{/* <TextField
+
                                         id="outlined-helperText"
                                         label="Contact Name"
                                         value={this.state.billContact}
@@ -455,7 +349,7 @@ class ClientCard extends React.Component {
                   <TextField
                     id="outlined-helperText"
                     label="Street Address"
-                    defaultValue="Street Address"
+                    // defaultValue="Street Address"
                     fullWidth
                     className={classes.textField}
                     margin="normal"
@@ -475,7 +369,7 @@ class ClientCard extends React.Component {
                     <TextField
                       id="outlined-helperText"
                       label="City"
-                      defaultValue="City"
+                      // defaultValue="City"
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
@@ -488,7 +382,7 @@ class ClientCard extends React.Component {
                       <TextField
                         id="outlined-helperText"
                         label="State/Province"
-                        defaultValue="State"
+                        // defaultValue="State"
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
@@ -509,7 +403,7 @@ class ClientCard extends React.Component {
                     <TextField
                       id="outlined-helperText"
                       label="Postal / Zip Code"
-                      defaultValue="Zip Code"
+                      // defaultValue="Zip Code"
                       className={classes.textField}
                       margin="normal"
                       variant="outlined"
@@ -542,16 +436,16 @@ class ClientCard extends React.Component {
                                               </MenuItem>
                                           ))}
                                       </TextField> */}
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+										</Grid>
+									</Grid>
+								</Grid>
+							</Grid>
+						</form>
+					</ExpansionPanelDetails>
+				</ExpansionPanel>
+			</div>
+		);
+	}
 }
 
 ClientCard.propTypes = {

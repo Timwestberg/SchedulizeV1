@@ -1,32 +1,38 @@
 {
-  "name": "schedulize",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
-    "install": "cd client && yarn install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.3",
-    "google-maps-react": "^2.0.2",
-    "if-env": "^1.0.4",
-    "mongodb": "^3.1.13",
-    "mongoose": "^5.3.16",
-    "morgan": "^1.9.1",
-    "prettier": "^1.13.7"
-  }
+	"name": "schedulize",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+		"start:prod": "node server.js",
+		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+		"client": "cd client && npm run start",
+		"seed": "node scripts/seedDB.js",
+		"install": "cd client && yarn install",
+		"build": "cd client && npm run build",
+		"heroku-postbuild": "npm run build"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"concurrently": "^4.1.0",
+		"nodemon": "^1.18.7"
+	},
+	"dependencies": {
+		"axios": "^0.18.0",
+		"body-parser": "^1.18.3",
+		"cookie-parser": "^1.4.3",
+		"express": "^4.16.3",
+		"express-session": "^1.15.6",
+		"google-maps-react": "^2.0.2",
+		"if-env": "^1.0.4",
+		"mongodb": "^3.1.13",
+		"mongoose": "^5.3.16",
+		"morgan": "^1.9.1",
+		"passport": "^0.4.0",
+		"passport-local": "^1.0.0",
+		"passport-local-mongoose": "^5.0.1",
+		"prettier": "^1.13.7"
+	}
 }

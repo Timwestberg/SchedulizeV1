@@ -5,11 +5,11 @@ import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 
 
-class ClientSearch extends Component {
+class ApptSearch extends Component {
   state = {
     query: '',
     results: {
-      clients: []
+      appts: []
     }
   }
 
@@ -19,10 +19,9 @@ class ClientSearch extends Component {
 // transmit as little info as possible 
 
   getInfo = () => {
-    
     // API.getContractors().then(contractors => console.log(contractors.data));
-    API.getClients().then(clients => console.log("clients:"+clients.data));
-    // API.getAppts().then(appts => console.log(appts.data));
+    // API.getClients().then(clients => console.log(clients.data));
+    API.getAppts().then(appts => console.log("appts:"+appts.data));
     // MUST PASS PARAM AS A QUERY IN API.JS - FIND BY FIRST NAME - 
     // Request. PARAMS. ???? 
     // ROUTE /API/CLIENTS?QUERY=+{THIS.STATE.QUERY}
@@ -60,7 +59,7 @@ class ClientSearch extends Component {
   }
 }
 
-export default ClientSearch
+export default ApptSearch
 
 
 
