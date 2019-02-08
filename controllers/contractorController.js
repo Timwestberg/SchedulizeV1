@@ -44,7 +44,7 @@ module.exports = {
     db.Contractor
       .find({
         $or: [{
-            "location.locationName": new RegExp(req.query.query, "i")
+            "locationName": new RegExp(req.query.query, "i")
           },
           {
             "firstName": new RegExp(req.query.query, "i")
@@ -56,7 +56,7 @@ module.exports = {
             "phone": new RegExp(req.query.query, "i")
           },
           {
-            "cityName": new RegExp(req.query.query, "i")
+            "city": new RegExp(req.query.query, "i")
           },
           {
             "certification": new RegExp(req.query.query, "i")

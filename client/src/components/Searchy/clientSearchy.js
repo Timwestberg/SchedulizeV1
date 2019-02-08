@@ -21,11 +21,7 @@ class ClientSearch extends Component {
     this.setState({
       query: this.search.value
     }, () => {
-      if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0) {
-          this.getInfo()
-        }
-      } 
+          this.getInfo() 
     })
   }
 
@@ -38,7 +34,6 @@ class ClientSearch extends Component {
           ref={input => this.search = input}
           onChange={this.handleInputChange}
         />
-        {/* <FloatingActionButtons /> */}
       </form>
 
     )
@@ -47,20 +42,3 @@ class ClientSearch extends Component {
 
 export default ClientSearch
 
-
-
-//search for contractors from mongo DB 
-// create search div
-      //include event for search
-      //include string for search query 
-     
-//use data from search to connect to db and find contractors  
-    //use api UTILS to get contractor info 
-    //use api utils to get client info 
-    //use api utils to get appt info 
-            
-        //include console log to ensure data retrieved - 
-
-// allow search function to be able to sort and filter info from contractors 
-
-//append contractor divs to display div on right side 

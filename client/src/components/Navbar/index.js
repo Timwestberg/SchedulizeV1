@@ -28,9 +28,6 @@ function Navbar(props) {
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
   <br/>
-  
-  <ApptSearch placeholder="2">ApptSearch</ApptSearch>
-  <ContractorSearch placeholder="3">contractorSearchy</ContractorSearch>
   {/* <div className="search-container">
       <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
       <button onClick={props.onClick} type="submit">Submit</button>
