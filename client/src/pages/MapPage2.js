@@ -11,9 +11,6 @@ import FloatButtons from "../components/FloatButtons";
 
 const API_KEY2 = googleMaps.key
 
-Geocode.setApiKey(API_KEY2);
-Geocode.enableDebug()
-
 const style = {
     width: "50%",
     hieght: "50%"
@@ -41,12 +38,13 @@ export class TestMap extends Component {
         contractors: [],
         clients: [],
         coords: {},
-        contractorCoords: []
+        contractorCoords: [],
+        clientCoords: []
     };
 
     componentDidMount() {
-        this.loadContractors();
         this.loadClients();
+        this.loadContractors();
     };
    
     loadContractors = () => {
@@ -55,7 +53,7 @@ export class TestMap extends Component {
                 console.log("contractor ", res.data)
                 //map through contractor state and adding id to argument
                 res.data.map((contractor, contractoridx) => {
-                    this.loadGeocode(contractor.address,contractoridx)
+                    this.loadGeocode(contractor.address, contractoridx)
                 })
                 this.setState({
                     contractors: res.data,
@@ -68,6 +66,9 @@ export class TestMap extends Component {
         API.getClients()
             .then(res => {
                 console.log("client ", res.data)
+                res.data.map((client, clientidx) => {
+                    this.clientGeocode(client.billing.address, clientidx)
+                })
                 this.setState({
                     clients: res.data,
                 })
@@ -111,24 +112,38 @@ export class TestMap extends Component {
         );
     }
     
-    //work in progress for geocode address from contractor card
     loadGeocode = (location, contractoridx) => {
-        API.getGeocode(location)
+        API.getGeocode(location, contractoridx)
             .then(res => {
                 // console.log(res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
-                let contractorCoords = this.state.contractorCoords[contractoridx]|| {};
+                let contractorCoords = this.state.contractorCoords[contractoridx] || {};
                 contractorCoords = {lat: lat, lng: lng}
                 this.state.contractorCoords[contractoridx] = contractorCoords
                 this.setState({
-                    contractorCoords: this.state.contractorCoords
+                    contractorCoords: this.state.contractorCoords,
                 });
-                console.log("COORDS", lat, lng, contractoridx )
-                // return res.data.results[0].geometry.location;
+                console.log("CONS", lat, lng, contractoridx )
+
             })
             .catch(err => console.log(err));
     };
 
+    clientGeocode = (location, clientidx) => {
+        API.getGeocode(location, clientidx)
+            .then(res => {
+                // console.log(res.data)
+                const { lat, lng } = res.data.results[0].geometry.location;
+                let clientCoords = this.state.clientCoords[clientidx] || {};
+                clientCoords = {lat: lat, lng: lng}
+                this.state.clientCoords[clientidx] = clientidx
+                this.setState({
+                    clientCoords: this.state.clientCoords
+                });
+                console.log("CLIENTS", lat, lng, clientidx )
+            })
+            .catch(err => console.log(err));
+    };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -174,12 +189,13 @@ export class TestMap extends Component {
                             <Marker
                                 position={this.state.coords}
                             />
-                            {this.state.clients.map(client => (
+                            {this.state.clients.map((client, idx) => (
                                 <Marker
                                     onClick={this.onMarkerClick}
                                     name={client.billing.name}
                                     title={client.firstName + " " + client.lastName}
-                                    position={client.billing.coords}
+                                    // position={client.billing.coords}
+                                    position={this.state.clientCoords[idx]}
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}

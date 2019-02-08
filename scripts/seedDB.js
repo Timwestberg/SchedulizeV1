@@ -19,14 +19,14 @@ const clientSeed = [
         phone: "555-655-6655",
         email: "tony@schedulize.com",
         position: "Peon",
-        address: "7777 Scehdulize Lane",
+        address: "1450 Frazee Rd",
         city: "San Diego",
         state: "CA",
-        zipCode: "92111",
-        coords: {
-          lat: 32.853103,
-          lng: -117.182880
-        }
+        zipCode: "92108",
+        // coords: {
+        //   lat: 32.853103,
+        //   lng: -117.182880
+        // }
     }
   },
   {
@@ -44,14 +44,14 @@ const clientSeed = [
         phone: "555-775-7755",
         email: "TW@schedulize.com",
         position: "COO",
-        address: "8888 ScehdulizeHQ Lane",
+        address: "6256 Greenwich Dr",
         city: "San Diego",
         state: "CA",
-        zipCode: "92111",
-        coords: {
-          lat: 32.881923,
-          lng: -117.243544
-        }
+        zipCode: "92122",
+        // coords: {
+        //   lat: 32.881923,
+        //   lng: -117.243544
+        // }
     }
   }
 ];
