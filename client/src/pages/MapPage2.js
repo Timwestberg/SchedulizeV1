@@ -107,8 +107,8 @@ export class TestMap extends Component {
     }
     
     //work in progress for geocode address from contractor card
-    loadGeocode = () => {
-        API.getGeocode()
+    loadGeocode = (location) => {
+        API.getGeocode(location)
             .then(res => {
                 // console.log(res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
