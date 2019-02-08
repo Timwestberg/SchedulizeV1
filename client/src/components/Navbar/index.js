@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
-import Search from "../Searchy";
+import ClientSearch from "../Searchy/clientSearchy.js";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import "./style.css";
@@ -26,7 +26,7 @@ function Navbar(props) {
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
   <br/>
-  <Search />
+  <ClientSearch />
   {/* <div className="search-container">
       <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
       <button onClick={props.onClick} type="submit">Submit</button>
