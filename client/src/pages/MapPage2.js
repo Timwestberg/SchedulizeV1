@@ -7,11 +7,12 @@ import Geocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
 import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
+import FloatButtons from "../components/FloatButtons";
 
 const API_KEY2 = googleMaps.key
 
 Geocode.setApiKey(API_KEY2);
-
+Geocode.enableDebug()
 
 const style = {
     width: "50%",
@@ -39,18 +40,23 @@ export class TestMap extends Component {
         selectedPlace: {},
         contractors: [],
         clients: [],
-        coords: {}
+        coords: {},
+        contractorCoords: []
     };
 
     componentDidMount() {
         this.loadContractors();
         this.loadClients();
     };
-
+   
     loadContractors = () => {
         API.getContractors()
             .then(res => {
                 console.log("contractor ", res.data)
+                //map through contractor state and adding id to argument
+                res.data.map((contractor, contractoridx) => {
+                    this.loadGeocode(contractor.address,contractoridx)
+                })
                 this.setState({
                     contractors: res.data,
                 })
@@ -91,9 +97,9 @@ export class TestMap extends Component {
     };
 
     addressSearch = () => {
-        Geocode.fromAddress(this.state.search).then(
-            response => {
-                const { lat, lng } = response.results[0].geometry.location;
+        API.getGeocode(this.state.search).then(
+            res => {
+                const { lat, lng } = res.data.results[0].geometry.location;
                 this.setState({
                     coords: { lat, lng }
                 });
@@ -104,6 +110,24 @@ export class TestMap extends Component {
             }
         );
     }
+    
+    //work in progress for geocode address from contractor card
+    loadGeocode = (location, contractoridx) => {
+        API.getGeocode(location)
+            .then(res => {
+                // console.log(res.data)
+                const { lat, lng } = res.data.results[0].geometry.location;
+                let contractorCoords = this.state.contractorCoords[contractoridx]|| {};
+                contractorCoords = {lat: lat, lng: lng}
+                this.state.contractorCoords[contractoridx] = contractorCoords
+                this.setState({
+                    contractorCoords: this.state.contractorCoords
+                });
+                console.log("COORDS", lat, lng, contractoridx )
+                // return res.data.results[0].geometry.location;
+            })
+            .catch(err => console.log(err));
+    };
 
 
     handleInputChange = event => {
@@ -162,12 +186,13 @@ export class TestMap extends Component {
                                     icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                                 />
                             ))}
-                            {this.state.contractors.map(contractor => (
+                            {this.state.contractors.map((contractor, idx) => (
                                 <Marker
                                     onClick={this.onMarkerClick}
                                     name={contractor.locationName}
                                     title={contractor.firstName + " " + contractor.lastName}
-                                    position={contractor.coords}
+                                    // position={contractor.coords}
+                                    position={this.state.contractorCoords[idx]}
                                     location={contractor.address + " " +
                                         contractor.city + " " +
                                         contractor.state + " " + contractor.postalCode}
@@ -199,5 +224,5 @@ export class TestMap extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: API_KEY2
+    apiKey: "AIzaSyBjqqmnBeb7OUYHTEwNF_7eVl5Mnhy7FJ0"
 })(TestMap)

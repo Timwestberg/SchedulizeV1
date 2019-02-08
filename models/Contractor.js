@@ -26,11 +26,11 @@ const contractorSchema = new Schema({
     match: [/\S+@\S+\.\S+/, "is invalid"],
     index: true
   },
-  // certification: {
-  //   type: String,
-  //   required: true,
-  //   trim: true,
-  // },
+  certification: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   // standing: {
   //   type: String,
   //   required: true,

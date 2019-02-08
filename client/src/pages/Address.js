@@ -11,6 +11,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import ClientSearch from '../components/Searchy/clientSearchy';
+import ApptSearch from  '../components/Searchy/appointmentSearchy';
+import ContractorSearch from '../components/Searchy/contractorSearchy';
 
 function TabContainer({ children, dir }) {
 	return (
@@ -60,6 +63,25 @@ class Address extends Component {
 			})
 			.catch((err) => console.log(err));
 	};
+
+	//these 3 allow us to access db to search 
+	changeClientSearch = (data) => {
+				this.setState({
+					clients: data
+				});
+	};
+
+	changeApptSearch = (data) => {
+		this.setState({
+			appointments: data
+		});
+};
+
+changeContractorSearch= (data) => {
+	this.setState({
+		contractors: data
+	});
+};
 
 	handleChangeIndex = (index) => {
 		this.setState({ value: index });
@@ -132,6 +154,8 @@ class Address extends Component {
 						index={value}
 						onChangeIndex={this.handleChangeIndex}>
 						<TabContainer dir={theme.direction}>
+						<ContractorSearch onSearchChange= {this.changeContractorSearch}
+						>Contractor Search </ContractorSearch>
 							{contractors.map((contractor) => (
 								<ContractCard
 									// conStreetNumber={contractor.location.streetNumber}
@@ -148,10 +172,14 @@ class Address extends Component {
 									conCity={contractor.city}
 									conState={contractor.state}
 									conZipCode={contractor.postalCode}
+									key={contractors._id}
 								/>
 							))}
 						</TabContainer>
 						<TabContainer dir={theme.direction}>
+
+						<ClientSearch onSearchChange= {this.changeClientSearch}
+						>Client Search</ClientSearch>
 							{clients.map((client) => (
 								<ClientCard
 									companyName={client.name}
@@ -169,10 +197,13 @@ class Address extends Component {
 									clientState={client.billing.state}
 									clientType={client.typeClient}
 									idToUpdate={client._id}
+									key={client._id}
 								/>
 							))}
 						</TabContainer>
 						<TabContainer dir={theme.direction}>
+						<ApptSearch onSearchChange= {this.changeApptSearch}>
+						ApptSearch</ApptSearch>
 							{appointments.map((appointment) => (
 								<AppointmentCard
 									assigneeFirstName={appointment.assigneeFirstName}
@@ -186,6 +217,7 @@ class Address extends Component {
 									city={appointment.city}
 									state={appointment.state}
 									postalCode={appointment.postalCode}
+									key={appointments._id}
 								/>
 							))}
 						</TabContainer>
