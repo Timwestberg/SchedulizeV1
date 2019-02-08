@@ -7,7 +7,7 @@ export default {
     },
     //Gets the client with the given id
     getClient: function(id) {
-        return axios.get("/api/clients/" + id);
+        return axios.get("/api/clients/one/" + id);
     },
     //Deletes the client with the give id
     deleteClient: function(id) {

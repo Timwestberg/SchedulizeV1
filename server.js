@@ -1,14 +1,18 @@
+//externals on top (vendors or 3rd parties)
 const express = require('express');
 const morgan = require('morgan')('combined');
 const bodyParser = require('body-parser');
-const routes = require('./routes');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-const mongoose = require('mongoose');
+//bottom - internals 
+const routes = require('./routes');
 const User = require('./models/User');
+//app definition
+const app = express();
 
 // Connect mongoose
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/schedulizeDB', function(err) {
@@ -25,7 +29,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-const app = express();
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
