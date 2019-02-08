@@ -11,6 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import ClientSearch from '../components/Searchy/clientSearchy';
 
 function TabContainer({ children, dir }) {
 	return (
@@ -59,6 +60,12 @@ class Address extends Component {
 				});
 			})
 			.catch((err) => console.log(err));
+	};
+
+	changeClientSearch = (data) => {
+				this.setState({
+					clients: data
+				});
 	};
 
 	handleChangeIndex = (index) => {
@@ -148,10 +155,13 @@ class Address extends Component {
 									conCity={contractor.city}
 									conState={contractor.state}
 									conZipCode={contractor.postalCode}
+									key={contractors._id}
 								/>
 							))}
 						</TabContainer>
 						<TabContainer dir={theme.direction}>
+						<ClientSearch onSearchChange= {this.changeClientSearch}
+						>Client Search</ClientSearch>
 							{clients.map((client) => (
 								<ClientCard
 									companyName={client.name}
@@ -169,6 +179,7 @@ class Address extends Component {
 									clientState={client.billing.state}
 									clientType={client.typeClient}
 									idToUpdate={client._id}
+									key={client._id}
 								/>
 							))}
 						</TabContainer>
@@ -186,6 +197,7 @@ class Address extends Component {
 									city={appointment.city}
 									state={appointment.state}
 									postalCode={appointment.postalCode}
+									key={appointments._id}
 								/>
 							))}
 						</TabContainer>

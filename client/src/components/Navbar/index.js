@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import "./style.css";
 import Forms from "../Forms";
 import ApptSearch from "../Searchy/appointmentSearchy.js";
+import ContractorSearch from "../Searchy/contractorSearchy.js";
 
 
 const styles = theme => ({
@@ -27,7 +28,9 @@ function Navbar(props) {
   <a href="/forms">Forms</a>
   <a href="/">Logout</a>
   <br/>
-  <ClientSearch>Client Search</ClientSearch>
+  
+  <ApptSearch placeholder="2">ApptSearch</ApptSearch>
+  <ContractorSearch placeholder="3">contractorSearchy</ContractorSearch>
   {/* <div className="search-container">
       <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
       <button onClick={props.onClick} type="submit">Submit</button>

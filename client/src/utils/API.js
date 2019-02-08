@@ -2,6 +2,9 @@ import axios from 'axios';
 
 export default {
     // Gets all clients
+    searchClients: function(query) {
+        return axios.get("/api/clients/params?query="+query);
+    },
     getClients: function() {
         return axios.get("/api/clients");
     },

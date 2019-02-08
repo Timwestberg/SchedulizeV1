@@ -20,8 +20,8 @@ class ContractorSearch extends Component {
 
   getInfo = () => {
     
-    API.getContractors().then(contractors => console.log(contractors.data));
-    API.getClients().then(clients => console.log("Contractors:"+clients.data));
+    API.getContractors().then(contractors => console.log("contractors:ms"+contractors.data));
+    // API.getClients().then(clients => console.log("Contractors:"+clients.data));
     // API.getAppts().then(appts => console.log(appts.data));
     // MUST PASS PARAM AS A QUERY IN API.JS - FIND BY FIRST NAME - 
     // Request. PARAMS. ???? 

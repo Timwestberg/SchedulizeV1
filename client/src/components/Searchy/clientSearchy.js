@@ -12,24 +12,9 @@ class ClientSearch extends Component {
       clients: []
     }
   }
-
-  // pass search terms into get functions
-// bunch 
-//filter on server - 
-// transmit as little info as possible 
-
   getInfo = () => {
-    
-    // API.getContractors().then(contractors => console.log(contractors.data));
-    API.getClients().then(clients => console.log("clients:"+clients.data));
-    // API.getAppts().then(appts => console.log(appts.data));
-    // MUST PASS PARAM AS A QUERY IN API.JS - FIND BY FIRST NAME - 
-    // Request. PARAMS. ???? 
-    // ROUTE /API/CLIENTS?QUERY=+{THIS.STATE.QUERY}
-
-    // .then(res =>
-    //   this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-    // )
+    API.searchClients(this.state.query).then(clients => { console.log("clients:ms"+ clients.data)
+  this.props.onSearchChange(clients.data)}); 
   }
 
   handleInputChange = () => {
