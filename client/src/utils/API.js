@@ -2,12 +2,23 @@ import axios from 'axios';
 
 export default {
     // Gets all clients
-    getClients: function () {
+
+    searchClients: function(query) {
+        return axios.get("/api/clients/params?query="+query);
+    },
+    searchContractors: function(query) {
+        return axios.get("/api/contractors/params?query="+query);
+    },
+    searchAppts: function(query) {
+        return axios.get("/api/appointments/params?query="+query);
+    },
+    getClients: function() {
         return axios.get("/api/clients");
     },
     //Gets the client with the given id
-    getClient: function (id) {
-        return axios.get("/api/clients/" + id);
+    getClient: function(id) {
+        return axios.get("/api/clients/one/" + id);
+
     },
     //Deletes the client with the give id
     deleteClient: function (id) {

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const clientRoutes = require("./schedulize");
+const clientRoutes = require("./clients");
 const contractorRoutes = require("./contractors");
 const apptRoutes = require("./appointments")
 

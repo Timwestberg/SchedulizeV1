@@ -7,6 +7,7 @@ import Geocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
 import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
+import FloatButtons from "../components/FloatButtons";
 
 const API_KEY2 = googleMaps.key
 
@@ -46,7 +47,7 @@ export class TestMap extends Component {
         this.loadContractors();
         this.loadClients();
     };
-
+   
     loadContractors = () => {
         API.getContractors()
             .then(res => {

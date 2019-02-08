@@ -119,6 +119,12 @@ class ContractCard extends React.Component {
 		});
 	};
 
+	componentWillReceiveProps = (nextProps) => {
+		this.setState({
+			...nextProps
+		})
+	}
+
 	render() {
 		const { classes } = this.props;
 		return (
@@ -128,7 +134,7 @@ class ContractCard extends React.Component {
 						<AppBar position='static' className={classes.cardHeader}>
 							<Toolbar>
 								<Typography variant='h6' color='inherit' className={classes.grow}>
-									{this.props.conFirstName} {this.state.conLastName}
+									{this.props.conFirstName} {this.props.conLastName}
 								</Typography>
 								<Button color='inherit' onClick={this.handleEditMode}>
 									Edit

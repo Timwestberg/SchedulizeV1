@@ -33,5 +33,12 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findByParams: function(req, res) {
+    console.log(req.query);
+    db.Appointment
+    .find({$or: [{"refName": new RegExp(req.query.query,"i")}, {"assigneePhone": new RegExp(req.query.query,"i")}, {"locationName": new RegExp(req.query.query,"i")}, {"refNumber": new RegExp(req.query.query,"i")}]})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   }
 };
