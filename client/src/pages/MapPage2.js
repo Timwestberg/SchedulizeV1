@@ -50,7 +50,7 @@ export class TestMap extends Component {
     loadContractors = () => {
         API.getContractors()
             .then(res => {
-                console.log("contractor ", res.data)
+                // console.log("contractor ", res.data)
                 //map through contractor state and adding id to argument
                 res.data.map((contractor, contractoridx) => {
                     this.loadGeocode(contractor.address, contractoridx)
@@ -67,8 +67,7 @@ export class TestMap extends Component {
             .then(res => {
                 console.log("client ", res.data)
                 res.data.map((client, clientidx) => {
-                    const address = client.billing.address
-                    this.clientGeocode(address, clientidx)
+                    this.clientGeocode(client.billing.address, clientidx)
                 })
                 this.setState({
                     clients: res.data,
@@ -116,7 +115,7 @@ export class TestMap extends Component {
     loadGeocode = (location, contractoridx) => {
         API.getGeocode(location, contractoridx)
             .then(res => {
-                // console.log(res.data)
+                // console.log("conGeocode", res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
                 let contractorCoords = this.state.contractorCoords[contractoridx] || {};
                 contractorCoords = {lat: lat, lng: lng}
@@ -124,7 +123,7 @@ export class TestMap extends Component {
                 this.setState({
                     contractorCoords: this.state.contractorCoords,
                 });
-                console.log("CONS", lat, lng, contractoridx )
+                // console.log("CONS", lat, lng, contractoridx )
 
             })
             .catch(err => console.log(err));
@@ -133,15 +132,16 @@ export class TestMap extends Component {
     clientGeocode = (location, clientidx) => {
         API.getGeocode(location, clientidx)
             .then(res => {
-                // console.log(res.data)
+                // console.log("clientGeocode", res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
+                console.log("clientlatlang", lat, lng)
                 let clientCoords = this.state.clientCoords[clientidx] || {};
                 clientCoords = { lat: lat, lng: lng }
                 this.state.clientCoords[clientidx] = clientidx
                 this.setState({
                     clientCoords: this.state.clientCoords
                 });
-                console.log("CLIENTS", lat, lng, clientidx )
+                // console.log("CLIENTS", lat, lng, clientidx )
             })
             .catch(err => console.log(err));
     };
