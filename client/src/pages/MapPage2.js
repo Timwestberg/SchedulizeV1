@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
 import FloatButtons from "../components/FloatButtons";
+import ApptMap from "../components/ApptMap";
 
 const API_KEY2 = googleMaps.key
 
@@ -155,7 +156,7 @@ export class TestMap extends Component {
                     </Grid>
 
                     <Grid item xs={6} sm={3}>
-                        <ContractCard />
+                        <ApptMap />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
