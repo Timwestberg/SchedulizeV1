@@ -53,6 +53,7 @@ export class TestMap extends Component {
         API.getContractors()
             .then(res => {
                 console.log("contractor ", res.data)
+                //map through contractor state and adding id to argument
                 res.data.map((contractor, contractoridx) => {
                     this.loadGeocode(contractor.address,contractoridx)
                 })
