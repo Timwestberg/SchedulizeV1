@@ -11,7 +11,7 @@ import googleMaps from "../utils/keys"
 const API_KEY2 = googleMaps.key
 
 Geocode.setApiKey(API_KEY2);
-
+Geocode.enableDebug()
 
 const style = {
     width: "50%",
@@ -91,9 +91,9 @@ export class TestMap extends Component {
     };
 
     addressSearch = () => {
-        Geocode.fromAddress(this.state.search).then(
-            response => {
-                const { lat, lng } = response.results[0].geometry.location;
+        API.getGeocode(this.state.search).then(
+            res => {
+                const { lat, lng } = res.data.results[0].geometry.location;
                 this.setState({
                     coords: { lat, lng }
                 });
@@ -104,6 +104,24 @@ export class TestMap extends Component {
             }
         );
     }
+    
+    //work in progress for geocode address from contractor card
+    loadGeocode = () => {
+        API.getGeocode()
+            .then(res => {
+                // console.log(res.data)
+                const { lat, lng } = res.data.results[0].geometry.location;
+                // this.setState({
+                //     contractorCoords: {
+                //         lat,
+                //         lng
+                //     }
+                // });
+                console.log( lat, lng )
+                // return res.data.results[0].geometry.location;
+            })
+            .catch(err => console.log(err));
+    };
 
 
     handleInputChange = event => {
@@ -168,6 +186,7 @@ export class TestMap extends Component {
                                     name={contractor.locationName}
                                     title={contractor.firstName + " " + contractor.lastName}
                                     position={contractor.coords}
+                                    // position={this.loadGeocode(contractor.address)}
                                     location={contractor.address + " " +
                                         contractor.city + " " +
                                         contractor.state + " " + contractor.postalCode}
@@ -199,5 +218,5 @@ export class TestMap extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: API_KEY2
+    apiKey: "AIzaSyBjqqmnBeb7OUYHTEwNF_7eVl5Mnhy7FJ0"
 })(TestMap)
