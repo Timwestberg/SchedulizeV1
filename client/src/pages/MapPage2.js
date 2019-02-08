@@ -67,7 +67,8 @@ export class TestMap extends Component {
             .then(res => {
                 console.log("client ", res.data)
                 res.data.map((client, clientidx) => {
-                    this.clientGeocode(client.billing.address, clientidx)
+                    const address = client.billing.address
+                    this.clientGeocode(address, clientidx)
                 })
                 this.setState({
                     clients: res.data,
@@ -135,7 +136,7 @@ export class TestMap extends Component {
                 // console.log(res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
                 let clientCoords = this.state.clientCoords[clientidx] || {};
-                clientCoords = {lat: lat, lng: lng}
+                clientCoords = { lat: lat, lng: lng }
                 this.state.clientCoords[clientidx] = clientidx
                 this.setState({
                     clientCoords: this.state.clientCoords
