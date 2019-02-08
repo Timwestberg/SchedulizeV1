@@ -5,6 +5,9 @@ router.route("/")
   .get(contractorsController.findAll)
   .post(contractorsController.create)
   
+  router
+  .route("/params")
+  .get(contractorsController.findByParams)
 
 // Matches with "/api/books/:id"
 router

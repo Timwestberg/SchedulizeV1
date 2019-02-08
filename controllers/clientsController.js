@@ -39,7 +39,7 @@ module.exports = {
   findByParams: function(req, res) {
     // console.log(req.query);
     db.Client
-    .find({$or: [{"contactPerson.firstName": new RegExp(req.query.query,"i")}, {"contactPerson.lastName": new RegExp(req.query.query,"i")}, {"billing.location.locationName": new RegExp(req.query.query,"i")}]})
+    .find({$or: [{"contactPerson.firstName": new RegExp(req.query.query,"i")}, {"contactPerson.lastName": new RegExp(req.query.query,"i")}, {"contactPerson.phone": new RegExp(req.query.query,"i")}, {"billing.location.locationName": new RegExp(req.query.query,"i")}]})
     // .find({"contactPerson.firstName": new RegExp(req.query.query,"i")})
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
