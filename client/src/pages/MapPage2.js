@@ -55,7 +55,7 @@ export class TestMap extends Component {
                 //map through contractor state and adding id to argument
                 res.data.map((contractor, contractoridx) => {
                     //use geocode function here before setting state so that the state can have coords with idx
-                    this.loadGeocode(contractor.billing.address, contractoridx)
+                    this.loadGeocode(contractor.address, contractoridx)
                 })
                 this.setState({
                     contractors: res.data,
@@ -69,7 +69,7 @@ export class TestMap extends Component {
             .then(res => {
                 console.log("client ", res.data)
                 res.data.map((client, clientidx) => {
-                    this.clientGeocode(client.address, clientidx)
+                    this.clientGeocode(client.billing.address, clientidx)
                 })
                 this.setState({
                     clients: res.data,
@@ -202,7 +202,7 @@ export class TestMap extends Component {
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}
-                                    // icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                                    // icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                                 />
                             ))}
                             {this.state.contractors.map((contractor, idx) => (
