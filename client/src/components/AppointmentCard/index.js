@@ -63,8 +63,8 @@ class NewAppointmentCard extends React.Component {
 		city: '',
 		state: '',
 		postalCode: '',
-		apptID: ''
 		// employeeAssign: ""
+		selectedAppointment: {},
 	};
 
 	handleChange = (name) => (event) => {
@@ -87,11 +87,10 @@ class NewAppointmentCard extends React.Component {
 		this.setState({ open: true });
 	};
 
-	captureapptID = (data) => {
-		this.setState({
-			container: data
-		});
-	};
+	captureappointmentID = () => {
+			console.log("this fucking worked "+ this.state.selectedPlace.contractorID)
+		};
+	
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
@@ -113,10 +112,10 @@ class NewAppointmentCard extends React.Component {
 			city: this.state.city,
 			state: this.state.state,
 			postalCode: this.state.postalCode,
-			apptID: this.state._id
+			// key: this.state.key
 			// employeeAssign: this.state.employeeAssign
 		});
-		console.log(this.state);
+		// console.log(this.state);
 	};
 
 	render(props) {
@@ -227,6 +226,19 @@ class NewAppointmentCard extends React.Component {
 											className={classes.textField}
 											name='adjusterLastName'
 											value={this.props.adjusterLastName}
+											margin='normal'
+											variant='outlined'
+											onChange={this.handleInputChange}
+										/>
+									</Grid>
+									<Grid item xs={12} md={6} lg={6}>
+										<TextField
+											fullWidth
+											id='appointmentID'
+											label='appointmentID'
+											className={classes.textField}
+											name='appointmentID'
+											value={this.props.key}
 											margin='normal'
 											variant='outlined'
 											onChange={this.handleInputChange}
@@ -375,7 +387,7 @@ class NewAppointmentCard extends React.Component {
 									{/* Add Button to save the assignment to the database */}
 									<Grid item xs={6}>
 									{/* call icon in with fab */}
-										<Fab aria-label='accessibility' className={classes.fab} type='submit' onClick={this.captureapptIDgit }>
+										<Fab aria-label='accessibility' className={classes.fab} type='submit' onClick={() => this.captureappointmentID()}>
 											<Accessibility />
 										</Fab>
 									</Grid>
