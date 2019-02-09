@@ -88,19 +88,20 @@ const clientSchema = new Schema({
     trim: true
   },
   // // Billing aray containing two arrays contact person || and billing Location
-    billName: {
+  billing: {
+    name: {
       type: String,
       required: true,
       trim: true
     },
-    billPhone: {
+    phone: {
       type: String,
       required: true,
       maxlength: 12,
       minlength: 9,
       trim: true
     },
-    billEmail: {
+    email: {
       type: String,
       lowercase: true,
       required: [true, "can't be blank"],
@@ -142,6 +143,7 @@ const clientSchema = new Schema({
       minlength: 5,
       trim: true
     }
+  }
 });
 
 const Client = mongoose.model("Client", clientSchema);
