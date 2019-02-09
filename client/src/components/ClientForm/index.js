@@ -152,27 +152,27 @@ class ClientCard extends React.Component {
       // email: this.state.email,
       position: this.state.position,
       notes: this.state.notes,
-      contactPerson: {
+      // contactPerson: {
         firstName: this.state.contactPerson.firstName,
         lastName: this.state.contactPerson.lastName,
         phone: this.state.contactPerson.phone,
-        email: this.state.contactPerson.email
+        email: this.state.contactPerson.email,
         // position: contactPerson.position
-      },
+      // },
       clientType: this.state.clientType,
       billing: {
-        contactBilling: {
+        // contactBilling: {
           name: this.state.billing.contactBilling.name,
           phone: this.state.billing.contactBilling.phone,
-          email: this.state.billing.contactBilling.email
+          email: this.state.billing.contactBilling.email,
           // position: contactBilling.position
-        },
-        location: {
+        // },
+        // location: {
           address: this.state.billing.location.address,
           city: this.state.billing.location.city,
           state: this.state.billing.location.state,
           zipCode: this.state.billing.location.zipCode
-        }
+        // }
       }
     }).then(res => {
       console.log(res.data);
