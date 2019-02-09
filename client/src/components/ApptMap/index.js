@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
-import ClientCard from '../components/ClientCard';
-import ContractCard from '../components/ContractCard';
-import AppointmentCard from '../components/AppointmentCard';
-import API from '../utils/API';
+import Navbar from '../Navbar';
+import ClientCard from '../ClientCard';
+import ContractCard from '../ContractCard';
+import AppointmentCard from '../AppointmentCard';
+import API from '../../utils/API';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
@@ -11,9 +11,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import ClientSearch from '../components/Searchy/clientSearchy';
-import ApptSearch from '../components/Searchy/appointmentSearchy';
-import ContractorSearch from '../components/Searchy/contractorSearchy';
+import ClientSearch from '../Searchy/clientSearchy';
+import ApptSearch from '../Searchy/appointmentSearchy';
+import ContractorSearch from '../Searchy/contractorSearchy';
 
 function TabContainer({ children, dir }) {
 	return (
@@ -35,17 +35,17 @@ const styles = (theme) => ({
 	}
 });
 
-class Address extends Component {
+class ApptMap extends Component {
 	state = {
 		value: 0,
-		clients: [],
-		contractors: [],
+		// clients: [],
+		// contractors: [],
 		appointments: []
 	};
 
 	componentDidMount() {
-		this.loadContractors();
-		this.loadClients();
+		// this.loadContractors();
+		// this.loadClients();
 		this.loadAppointments();
 	}
 
@@ -65,11 +65,11 @@ class Address extends Component {
 	};
 
 	//these 3 allow us to access db to search
-	changeClientSearch = (data) => {
-		this.setState({
-			clients: data
-		});
-	};
+	// changeClientSearch = (data) => {
+	// 	this.setState({
+	// 		clients: data
+	// 	});
+	// };
 
 	changeApptSearch = (data) => {
 		this.setState({
@@ -77,26 +77,26 @@ class Address extends Component {
 		});
 	};
 
-	changeContractorSearch = (data) => {
-		this.setState({
-			contractors: data
-		});
-	};
+	// changeContractorSearch = (data) => {
+	// 	this.setState({
+	// 		contractors: data
+	// 	});
+	// };
 
 	handleChangeIndex = (index) => {
 		this.setState({ value: index });
 	};
 
-	loadContractors = () => {
-		API.getContractors()
-			.then((res) => {
-				console.log('contractor ', res.data);
-				this.setState({
-					contractors: res.data
-				});
-			})
-			.catch((err) => console.log(err));
-	};
+	// loadContractors = () => {
+	// 	API.getContractors()
+	// 		.then((res) => {
+	// 			console.log('contractor ', res.data);
+	// 			this.setState({
+	// 				contractors: res.data
+	// 			});
+	// 		})
+	// 		.catch((err) => console.log(err));
+	// };
 
 	loadAppointments = () => {
 		API.getAppts()
@@ -133,7 +133,7 @@ class Address extends Component {
 		const { classes, theme } = this.props;
 		return (
 			<div>
-				<Navbar />
+				{/* <Navbar /> */}
 
 				<br />
 				<div className={classes.root}>
@@ -144,8 +144,8 @@ class Address extends Component {
 							indicatorColor='primary'
 							textColor='primary'
 							variant='fullWidth'>
-							<Tab label='Contractors' />
-							<Tab label='Clients' />
+							{/* <Tab label='Contractors' />
+							<Tab label='Clients' /> */}
 							<Tab label='Appointments' />
 						</Tabs>
 					</AppBar>
@@ -153,7 +153,7 @@ class Address extends Component {
 						axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
 						index={value}
 						onChangeIndex={this.handleChangeIndex}>
-						<TabContainer dir={theme.direction}>
+						{/* <TabContainer dir={theme.direction}>
 							<ContractorSearch onSearchChange={this.changeContractorSearch}>
 								Contractor Search{' '}
 							</ContractorSearch>
@@ -199,7 +199,7 @@ class Address extends Component {
 									key={client._id}
 								/>
 							))}
-						</TabContainer>
+						</TabContainer> */}
 						<TabContainer dir={theme.direction}>
 							<ApptSearch onSearchChange={this.changeApptSearch}>ApptSearch</ApptSearch>
 							{appointments.map((appointment) => (
@@ -226,9 +226,9 @@ class Address extends Component {
 	}
 }
 
-Address.propTypes = {
+ApptMap.propTypes = {
 	classes: PropTypes.object.isRequired,
 	theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Address);
+export default withStyles(styles, { withTheme: true })(ApptMap);

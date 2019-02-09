@@ -1,75 +1,67 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Button,
-  MenuItem,
-  TextField,
-  Grid
-} from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import { white } from "@material-ui/core/colors";
-import API from "../../utils/API";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardHeader, CardContent, Button, MenuItem, TextField, Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import { white } from '@material-ui/core/colors';
+import API from '../../utils/API';
 
-const styles = theme => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  grow: {
-    flexGrow: 1
-  },
-  cardHeader: {
-    background: `#4caf50`,
-    color: white
-  },
-  cardContent: {
-    width: "100%"
-  },
-  root: {
-    flexGrow: 1
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
-  },
-  dense: {
-    marginTop: 16
-  },
-  menu: {
-    width: 200
-  },
-  card: {
-    minWidth: 275
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
-  }
+const styles = (theme) => ({
+	container: {
+		display: 'flex',
+		flexWrap: 'wrap'
+	},
+	grow: {
+		flexGrow: 1
+	},
+	cardHeader: {
+		background: `#4caf50`,
+		color: white
+	},
+	cardContent: {
+		width: '100%'
+	},
+	root: {
+		flexGrow: 1
+	},
+	textField: {
+		marginLeft: theme.spacing.unit,
+		marginRight: theme.spacing.unit
+	},
+	dense: {
+		marginTop: 16
+	},
+	menu: {
+		width: 200
+	},
+	card: {
+		minWidth: 275
+	},
+	bullet: {
+		display: 'inline-block',
+		margin: '0 2px',
+		transform: 'scale(0.8)'
+	},
+	title: {
+		fontSize: 14
+	},
+	pos: {
+		marginBottom: 12
+	}
 });
 
 const clientType = [
-  {
-    value: "Investigation"
-  },
-  {
-    value: "Workers Compensation"
-  },
-  {
-    value: "Insurance"
-  },
-  {
-    value: "Custom"
-  }
+	{
+		value: 'Investigation'
+	},
+	{
+		value: 'Workers Compensation'
+	},
+	{
+		value: 'Insurance'
+	},
+	{
+		value: 'Custom'
+	}
 ];
 
 class ClientCard extends React.Component {
@@ -504,10 +496,11 @@ class ClientCard extends React.Component {
       </div>
     );
   }
+
 }
 
 ClientCard.propTypes = {
-  classes: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ClientCard);
