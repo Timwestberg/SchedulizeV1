@@ -15,6 +15,7 @@ import ClientForm from '../ClientForm/index';
 import NewAppointmentForm from '../NewAppointmentForm/NewAppointment';
 import ContractorCard from '../contractor';
 
+
 class Forms extends React.Component {
 	state = {
 		forms: {

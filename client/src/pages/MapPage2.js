@@ -9,6 +9,7 @@ import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
 import FloatButtons from "../components/FloatButtons";
 import ApptMap from "../components/ApptMap";
+import ContractMap from "../components/ContractMap";
 
 const API_KEY2 = googleMaps.key
 
@@ -160,8 +161,8 @@ export class TestMap extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <Button onClick={() => { debugger; this.onClickAssign() }}>
-                            Select a Contractor on the map below, then select this button to assign. </Button>
+                        {/* <Button onClick={() => { debugger; this.onClickAssign() }}>
+                            Staff </Button> */}
                         <Map
                             google={this.props.google}
                             zoom={12}
@@ -181,6 +182,7 @@ export class TestMap extends Component {
                                     name={client.billing.name}
                                     title={client.firstName + " " + client.lastName}
                                     position={client.billing.coords}
+                                    // position={this.state.clientCoords[idx]}
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}
@@ -215,7 +217,7 @@ export class TestMap extends Component {
                         </Map>
                     </Grid>
                     <Grid item xs={6} sm={3}>
-                        <ContractCard />
+                        <ContractMap />
                     </Grid>
                 </Grid>
             </div>
