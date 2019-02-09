@@ -13,6 +13,9 @@ import ContractMap from "../components/ContractMap";
 
 const API_KEY2 = googleMaps.key
 
+Geocode.setApiKey(API_KEY2);
+Geocode.enableDebug()
+
 const style = {
     width: "50%",
     hieght: "50%"
@@ -39,24 +42,22 @@ export class TestMap extends Component {
         selectedPlace: {},
         contractors: [],
         clients: [],
-        clientCoords: [],
         coords: {},
         contractorCoords: []
     };
 
     componentDidMount() {
-        this.loadClients();
         this.loadContractors();
+        this.loadClients();
     };
    
     loadContractors = () => {
         API.getContractors()
             .then(res => {
-                // console.log("contractor ", res.data)
+                console.log("contractor ", res.data)
                 //map through contractor state and adding id to argument
                 res.data.map((contractor, contractoridx) => {
-                    //use geocode function here before setting state so that the state can have coords with idx
-                    this.loadGeocode(contractor.address, contractoridx)
+                    this.loadGeocode(contractor.address,contractoridx)
                 })
                 this.setState({
                     contractors: res.data,
@@ -69,16 +70,13 @@ export class TestMap extends Component {
         API.getClients()
             .then(res => {
                 console.log("client ", res.data)
-                res.data.map((client, clientidx) => {
-                    this.clientGeocode(client.billing.address, clientidx)
-                })
                 this.setState({
                     clients: res.data,
                 })
             })
             .catch(err => console.log(err));
     };
-    
+
     onMarkerClick = (props, marker, e) => {
         this.setState({
             selectedPlace: props,
@@ -114,41 +112,24 @@ export class TestMap extends Component {
             }
         );
     }
-
-    //geocode for contractor to be used when contractor is mount before set to state
+    
+    //work in progress for geocode address from contractor card
     loadGeocode = (location, contractoridx) => {
         API.getGeocode(location)
             .then(res => {
-                // console.log("conGeocode", res.data)
+                // console.log(res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
-                let contractorCoords = this.state.contractorCoords[contractoridx] || {};
+                let contractorCoords = this.state.contractorCoords[contractoridx]|| {};
                 contractorCoords = {lat: lat, lng: lng}
                 this.state.contractorCoords[contractoridx] = contractorCoords
                 this.setState({
-                    contractorCoords: this.state.contractorCoords,
+                    contractorCoords: this.state.contractorCoords
                 });
-                // console.log("CONS", lat, lng, contractoridx )
-
+                console.log("COORDS", lat, lng, contractoridx )
+                // return res.data.results[0].geometry.location;
             })
             .catch(err => console.log(err));
     };
-
-    clientGeocode = (location, clientidx) => {
-        API.getGeocode(location)
-            .then(res => {
-                console.log("clientGeocode", res.data)
-                const { lat, lng } = res.data.results[0].geometry.location;
-                let clientCoords = this.state.clientCoords[clientidx] || {} ;
-                clientCoords = { lat: lat, lng: lng }
-                this.state.clientCoords[clientidx] = clientCoords;
-                this.setState({
-                    clientCoords: this.state.clientCoords,
-                });
-                console.log("CLIENTS", lat, lng, clientidx )
-            })
-            .catch(err => console.log(err));
-    };
-
 
 
     handleInputChange = event => {
@@ -195,15 +176,16 @@ export class TestMap extends Component {
                             <Marker
                                 position={this.state.coords}
                             />
-                            {this.state.clients.map((client, idx) => (
+                            {this.state.clients.map(client => (
                                 <Marker
                                     onClick={this.onMarkerClick}
-                                    name={client.billName}
-                                    position={this.state.clientCoords[idx]}
+                                    name={client.billing.name}
+                                    title={client.firstName + " " + client.lastName}
+                                    position={client.billing.coords}
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}
-                                    // icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                                 />
                             ))}
                             {this.state.contractors.map((contractor, idx) => (
@@ -211,6 +193,7 @@ export class TestMap extends Component {
                                     onClick={this.onMarkerClick}
                                     name={contractor.locationName}
                                     title={contractor.firstName + " " + contractor.lastName}
+                                    // position={contractor.coords}
                                     position={this.state.contractorCoords[idx]}
                                     location={contractor.address + " " +
                                         contractor.city + " " +
@@ -218,7 +201,7 @@ export class TestMap extends Component {
                                     key={contractor._id}
                                     contractorID={contractor._id}
                                     contractorID={contractor._id}
-                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                                    icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                                 />
                             ))}
                             <InfoWindow
