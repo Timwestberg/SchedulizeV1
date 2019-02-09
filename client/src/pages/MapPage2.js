@@ -104,7 +104,10 @@ export class TestMap extends Component {
     }
 
     onClickAssign = () => {
-        console.log("assigned");
+        console.log("assigned"+this.state.selectedPlace.contractorID);
+        alert(
+            "Your Appointment has been staffed! \n"+ this.state.selectedPlace.name+" has been assigned to your appointment"
+        )
     }
 
     onMapClicked = () => {
@@ -196,8 +199,8 @@ export class TestMap extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        {/* <Button onClick={() => { debugger; this.onClickAssign() }}>
-                            Staff </Button> */}
+                        <Button onClick={() => { debugger; this.onClickAssign()}}>
+                            Staff </Button>
                         <Map
                             google={this.props.google}
                             zoom={10}

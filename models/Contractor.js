@@ -74,7 +74,11 @@ const contractorSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  // appointmentID: {
+  //   type: String,
+  //   trim: true
+  // }
 });
 
 const Contractor = mongoose.model("Contractor", contractorSchema);

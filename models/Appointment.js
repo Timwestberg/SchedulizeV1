@@ -93,7 +93,12 @@ const apptSchema = new Schema({
     maxlength: 5,
     minlength: 5
   },
-
+  contractors:  [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Contractor"
+  }
+] ,
   //location end
   //contractor covering
   //   contractor: [

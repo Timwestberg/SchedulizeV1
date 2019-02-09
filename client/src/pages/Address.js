@@ -215,7 +215,7 @@ class Address extends Component {
 									city={appointment.city}
 									state={appointment.state}
 									postalCode={appointment.postalCode}
-									key={appointments._id}
+									key={appointment._id}
 								/>
 							))}
 						</TabContainer>
