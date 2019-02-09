@@ -1,0 +1,31 @@
+/* Humming Bird
+.box {
+  background : url('http://sfwallpaper.com/images/hi-res-image-1.jpg');
+  overflow: auto; 
+  background-size:cover;
+  height: 1000px;
+} */
+
+/* Picturesque house
+.box {
+  background : url('https://wallpapertag.com/wallpaper/full/4/3/7/339974-widescreen-hi-res-wallpaper-2560x1600-large-resolution.jpg');
+  overflow: auto; 
+  background-size:cover;
+  height: 1000px;
+}  */
+
+/* perferred - gondola */
+.box {
+  background : url('https://cdn.wonderfulengineering.com/wp-content/uploads/2014/03/high-resolution-wallpapers-2.jpg');
+  overflow: auto; 
+  background-size:cover;
+  height: 1000px;
+} 
+
+/* vinyard
+.box {
+  background : url('https://tablascreek.com/uploads/trade/Tablas_Creek_Vineyard.jpg');
+  overflow: auto; 
+  background-size:cover;
+  height: 1000px;
+}  */

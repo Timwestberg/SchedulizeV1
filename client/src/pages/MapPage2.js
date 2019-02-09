@@ -9,6 +9,7 @@ import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
 import FloatButtons from "../components/FloatButtons";
 import ApptMap from "../components/ApptMap";
+import ContractMap from "../components/ContractMap";
 
 const API_KEY2 = googleMaps.key
 
@@ -215,7 +216,7 @@ export class TestMap extends Component {
                         </Map>
                     </Grid>
                     <Grid item xs={6} sm={3}>
-                        <ContractCard />
+                        <ContractMap />
                     </Grid>
                 </Grid>
             </div>
