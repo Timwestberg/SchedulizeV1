@@ -161,8 +161,8 @@ export class TestMap extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <Button onClick={() => { debugger; this.onClickAssign() }}>
-                            Select a Contractor on the map below, then select this button to assign. </Button>
+                        {/* <Button onClick={() => { debugger; this.onClickAssign() }}>
+                            Staff </Button> */}
                         <Map
                             google={this.props.google}
                             zoom={12}
