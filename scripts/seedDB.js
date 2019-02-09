@@ -14,18 +14,20 @@ const clientSeed = [
     phone: "555-888-999",
     email: "tp@schedulize.com",
     position: "Grunt",
-    billName: "Tony Phakasoum",
-    billPhone: "555-655-6655",
-    billEmail: "tony@schedulize.com",
-    billPosition: "Peon",
-    address: "1450 Frazee Rd",
-    city: "San Diego",
-    state: "CA",
-    zipCode: "92108",
-    // coords: {
-    //   lat: 32.853103,
-    //   lng: -117.182880
-    // }
+    billing: {
+        name: "Tony Phakasoum",
+        phone: "555-655-6655",
+        email: "tony@schedulize.com",
+        position: "Peon",
+        address: "7777 Scehdulize Lane",
+        city: "San Diego",
+        state: "CA",
+        zipCode: "92111",
+        coords: {
+          lat: 32.853103,
+          lng: -117.182880
+        }
+    }
   },
   {
     name: "Schedulize Main",
@@ -37,18 +39,20 @@ const clientSeed = [
     phone: "555-888-5555",
     email: "tw@schedulize.com",
     position: "CEO",
-    billName: "Tim Westberg",
-    billPhone: "555-775-7755",
-    billEmail: "TW@schedulize.com",
-    billPosition: "COO",
-    address: "6256 Greenwich Dr",
-    city: "San Diego",
-    state: "CA",
-    zipCode: "92122",
-    // coords: {
-    //   lat: 32.881923,
-    //   lng: -117.243544
-    // }
+    billing: {
+        name: "Tim Westberg",
+        phone: "555-775-7755",
+        email: "TW@schedulize.com",
+        position: "COO",
+        address: "8888 ScehdulizeHQ Lane",
+        city: "San Diego",
+        state: "CA",
+        zipCode: "92111",
+        coords: {
+          lat: 32.881923,
+          lng: -117.243544
+        }
+    }
   }
 ];
 
