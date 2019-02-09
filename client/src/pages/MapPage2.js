@@ -9,6 +9,7 @@ import ContractCard from '../components/ContractCard';
 import googleMaps from "../utils/keys"
 import FloatButtons from "../components/FloatButtons";
 import ApptMap from "../components/ApptMap";
+import ContractMap from "../components/ContractMap";
 
 const API_KEY2 = googleMaps.key
 
@@ -195,11 +196,11 @@ export class TestMap extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <Button onClick={() => { debugger; this.onClickAssign() }}>
-                            Select a Contractor on the map below, then select this button to assign. </Button>
+                        {/* <Button onClick={() => { debugger; this.onClickAssign() }}>
+                            Staff </Button> */}
                         <Map
                             google={this.props.google}
-                            zoom={12}
+                            zoom={10}
                             style={style}
                             initialCenter={{
                                 lat: 32.852721,
@@ -250,7 +251,7 @@ export class TestMap extends Component {
                         </Map>
                     </Grid>
                     <Grid item xs={6} sm={3}>
-                        <ContractCard />
+                        <ContractMap />
                     </Grid>
                 </Grid>
             </div>

@@ -92,6 +92,7 @@ class ClientCard extends React.Component {
     clientState: this.props.clientState,
     // clientStreetNumber: this.props.clientStreetNumber,
     clientStreetName: this.props.clientStreetName,
+    clientZipCode: this.props.clientZipCode,
     idToUpdate: this.props.idToUpdate,
     objectToUpdate: {}
   };

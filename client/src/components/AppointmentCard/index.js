@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { white } from '@material-ui/core/colors';
-import { Add, ExpandMore } from '@material-ui/icons';
+import { Accessibility, ExpandMore } from '@material-ui/icons';
 import { DatePicker, DateTimePicker, MuiPickersUtilsProvider } from 'material-ui-pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import API from '../../utils/API';
@@ -62,7 +62,8 @@ class NewAppointmentCard extends React.Component {
 		address: '',
 		city: '',
 		state: '',
-		postalCode: ''
+		postalCode: '',
+		apptID: ''
 		// employeeAssign: ""
 	};
 
@@ -86,6 +87,12 @@ class NewAppointmentCard extends React.Component {
 		this.setState({ open: true });
 	};
 
+	captureapptID = (data) => {
+		this.setState({
+			container: data
+		});
+	};
+
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		API.saveAppt({
@@ -105,7 +112,8 @@ class NewAppointmentCard extends React.Component {
 			address: this.state.address,
 			city: this.state.city,
 			state: this.state.state,
-			postalCode: this.state.postalCode
+			postalCode: this.state.postalCode,
+			apptID: this.state._id
 			// employeeAssign: this.state.employeeAssign
 		});
 		console.log(this.state);
@@ -366,8 +374,9 @@ class NewAppointmentCard extends React.Component {
 
 									{/* Add Button to save the assignment to the database */}
 									<Grid item xs={6}>
-										<Fab aria-label='Add' className={classes.fab} type='submit'>
-											<Add />
+									{/* call icon in with fab */}
+										<Fab aria-label='accessibility' className={classes.fab} type='submit' onClick={this.captureapptIDgit }>
+											<Accessibility />
 										</Fab>
 									</Grid>
 								</Grid>

@@ -19,14 +19,14 @@ const clientSeed = [
         phone: "555-655-6655",
         email: "tony@schedulize.com",
         position: "Peon",
-        address: "7777 Scehdulize Lane",
+        address: "1450 Frazee Rd",
         city: "San Diego",
         state: "CA",
-        zipCode: "92111",
-        coords: {
-          lat: 32.853103,
-          lng: -117.182880
-        }
+        zipCode: "92108",
+        // coords: {
+        //   lat: 32.853103,
+        //   lng: -117.182880
+        // }
     }
   },
   {
@@ -44,14 +44,14 @@ const clientSeed = [
         phone: "555-775-7755",
         email: "TW@schedulize.com",
         position: "COO",
-        address: "8888 ScehdulizeHQ Lane",
+        address: "9500 Gilman Dr",
         city: "San Diego",
         state: "CA",
-        zipCode: "92111",
-        coords: {
-          lat: 32.881923,
-          lng: -117.243544
-        }
+        // zipCode: "92093",
+        // coords: {
+        //   lat: 32.881923,
+        //   lng: -117.243544
+        // }
     }
   }
 ];
@@ -71,10 +71,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92123,
-    coords: {
-      lat: 32.809641,
-      lng: -117.115324
-    }
+    // coords: {
+    //   lat: 32.809641,
+    //   lng: -117.115324
+    // }
   },
   {
     firstName: "Paul",
@@ -90,10 +90,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92111,
-    coords: {
-      lat: 32.817031,
-      lng: -117.18016
-    }
+    // coords: {
+    //   lat: 32.817031,
+    //   lng: -117.18016
+    // }
   },
   {
     firstName: "John",
@@ -109,10 +109,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92122,
-    coords: {
-      lat: 32.861728,
-      lng: -117.223366
-    }
+    // coords: {
+    //   lat: 32.861728,
+    //   lng: -117.223366
+    // }
   },
   {
     firstName: "Jane",
@@ -127,11 +127,11 @@ const contractorSeed = [
     address: "3810 Valley Centre Dr",
     city: "San Diego",
     state: "CA",
-    zipCode: 92113,
-    coords: {
-      lat: 32.938572,
-      lng: -117.230389
-    }
+    postalCode: 92113,
+    // coords: {
+    //   lat: 32.938572,
+    //   lng: -117.230389
+    // }
   },
   {
     firstName: "Dwayne",
@@ -146,11 +146,11 @@ const contractorSeed = [
     address: "10631 Camino Ruiz",
     city: "San Diego",
     state: "CA",
-    zipCode: 92126,
-    coords: {
-      lat: 32.91165,
-      lng: -117.143575
-    }
+    postalCode: 92126,
+    // coords: {
+    //   lat: 32.91165,
+    //   lng: -117.143575
+    // }
   }
 ];
 

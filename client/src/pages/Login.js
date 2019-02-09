@@ -3,10 +3,26 @@ import SignIn from '../components/LogInModal';
 import PropTypes from 'prop-types';
 import API from '../utils/API';
 import Navbar from '../components/Nav/index';
+import './style.css';
+
+const styles = theme => ({
+  main: {
+    width: 'auto',
+    display: 'block', // Fix IE 11 issue.
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+      width: 400,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+		}
+	}	});
+
 class LoginPage extends React.Component {
 	/**
    * Class constructor.
    */
+
 	constructor(props) {
 		super(props);
 
@@ -65,7 +81,7 @@ class LoginPage extends React.Component {
    */
 	render() {
 		return (
-			<main>
+			<main className={`box ${styles.main}`}>
 				<Navbar />
 				<br />
 				<br />

@@ -1,4 +1,7 @@
 import axios from 'axios';
+import googleMaps from "../utils/keys"
+
+const API_KEY2 = googleMaps.key
 
 export default {
     // Gets all clients
