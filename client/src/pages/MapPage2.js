@@ -40,14 +40,17 @@ export class TestMap extends Component {
         activeMarker: {},
         selectedPlace: {},
         contractors: [],
+        appointments: [],
         clients: [],
         coords: {},
-        contractorCoords: []
+        contractorCoords: [],
+        appointmentCoords: []
     };
 
     componentDidMount() {
         this.loadContractors();
-        this.loadClients();
+        this.loadAppointments();
+        // this.loadClients();
     };
    
     loadContractors = () => {
@@ -60,6 +63,21 @@ export class TestMap extends Component {
                 })
                 this.setState({
                     contractors: res.data,
+                })
+            })
+            .catch(err => console.log(err));
+    };
+
+    loadAppointments = () => {
+        API.getAppts()
+            .then(res => {
+                console.log("appointment ", res.data)
+                //map through contractor state and adding id to argument
+                res.data.map((appointment, appointmentidx) => {
+                    this.apptGeocode(appointment.address, appointmentidx)
+                })
+                this.setState({
+                    appointments: res.data,
                 })
             })
             .catch(err => console.log(err));
@@ -124,7 +142,24 @@ export class TestMap extends Component {
                 this.setState({
                     contractorCoords: this.state.contractorCoords
                 });
-                console.log("COORDS", lat, lng, contractoridx )
+                // console.log("COORDS", lat, lng, contractoridx )
+                // return res.data.results[0].geometry.location;
+            })
+            .catch(err => console.log(err));
+    };
+
+    apptGeocode = (location, appointmentidx) => {
+        API.getGeocode(location)
+            .then(res => {
+                // console.log(res.data)
+                const { lat, lng } = res.data.results[0].geometry.location;
+                let appointmentCoords = this.state.appointmentCoords[appointmentidx]|| {};
+                appointmentCoords = {lat: lat, lng: lng}
+                this.state.appointmentCoords[appointmentidx] = appointmentCoords
+                this.setState({
+                    appointmentCoords: this.state.appointmentCoords
+                });
+                console.log("APPT COORDS", lat, lng, appointmentidx )
                 // return res.data.results[0].geometry.location;
             })
             .catch(err => console.log(err));
@@ -175,16 +210,16 @@ export class TestMap extends Component {
                             <Marker
                                 position={this.state.coords}
                             />
-                            {this.state.clients.map(client => (
+                            {this.state.appointments.map((appointment, idx) => (
                                 <Marker
                                     onClick={this.onMarkerClick}
-                                    name={client.billing.name}
-                                    title={client.firstName + " " + client.lastName}
-                                    position={client.billing.coords}
-                                    key={client._id}
-                                    clientID={client._id}
-                                    clientID={client._id}
-                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                                    name={appointment.refName}
+                                    title={appointment.locationName}
+                                    position={this.state.appointmentCoords[idx]}
+                                    key={appointment._id}
+                                    appointmentID={appointment._id}
+                                    appointmentID={appointment._id}
+                                    icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                                 />
                             ))}
                             {this.state.contractors.map((contractor, idx) => (
@@ -200,7 +235,7 @@ export class TestMap extends Component {
                                     key={contractor._id}
                                     contractorID={contractor._id}
                                     contractorID={contractor._id}
-                                    icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                                 />
                             ))}
                             <InfoWindow
