@@ -37,9 +37,9 @@ export class TestMap extends Component {
         selectedPlace: {},
         contractors: [],
         clients: [],
+        clientCoords: [],
         coords: {},
-        contractorCoords: [],
-        clientCoords: []
+        contractorCoords: []
     };
 
     componentDidMount() {
@@ -67,7 +67,7 @@ export class TestMap extends Component {
             .then(res => {
                 console.log("client ", res.data)
                 res.data.map((client, clientidx) => {
-                    this.clientGeocode(client.billing.address, clientidx)
+                    this.clientGeocode(client.address, clientidx)
                 })
                 this.setState({
                     clients: res.data,
@@ -75,7 +75,7 @@ export class TestMap extends Component {
             })
             .catch(err => console.log(err));
     };
-
+    
     onMarkerClick = (props, marker, e) => {
         this.setState({
             selectedPlace: props,
@@ -111,9 +111,10 @@ export class TestMap extends Component {
             }
         );
     }
-    
+
+
     loadGeocode = (location, contractoridx) => {
-        API.getGeocode(location, contractoridx)
+        API.getGeocode(location)
             .then(res => {
                 // console.log("conGeocode", res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
@@ -130,21 +131,22 @@ export class TestMap extends Component {
     };
 
     clientGeocode = (location, clientidx) => {
-        API.getGeocode(location, clientidx)
+        API.getGeocode(location)
             .then(res => {
-                // console.log("clientGeocode", res.data)
+                console.log("clientGeocode", res.data)
                 const { lat, lng } = res.data.results[0].geometry.location;
-                console.log("clientlatlang", lat, lng)
-                let clientCoords = this.state.clientCoords[clientidx] || {};
+                let clientCoords = this.state.clientCoords[clientidx] || {} ;
                 clientCoords = { lat: lat, lng: lng }
-                this.state.clientCoords[clientidx] = clientidx
+                this.state.clientCoords[clientidx] = clientCoords;
                 this.setState({
-                    clientCoords: this.state.clientCoords
+                    clientCoords: this.state.clientCoords,
                 });
-                // console.log("CLIENTS", lat, lng, clientidx )
+                console.log("CLIENTS", lat, lng, clientidx )
             })
             .catch(err => console.log(err));
     };
+
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -193,7 +195,7 @@ export class TestMap extends Component {
                             {this.state.clients.map((client, idx) => (
                                 <Marker
                                     onClick={this.onMarkerClick}
-                                    name={client.billing.name}
+                                    name={client.billName}
                                     title={client.firstName + " " + client.lastName}
                                     // position={client.billing.coords}
                                     position={this.state.clientCoords[idx]}

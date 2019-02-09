@@ -18,7 +18,7 @@ const clientSeed = [
     billPhone: "555-655-6655",
     billEmail: "tony@schedulize.com",
     billPosition: "Peon",
-    Address: "1450 Frazee Rd",
+    address: "1450 Frazee Rd",
     city: "San Diego",
     state: "CA",
     zipCode: "92108",
@@ -37,10 +37,10 @@ const clientSeed = [
     phone: "555-888-5555",
     email: "tw@schedulize.com",
     position: "CEO",
-    name: "Tim Westberg",
-    phone: "555-775-7755",
-    email: "TW@schedulize.com",
-    position: "COO",
+    billName: "Tim Westberg",
+    billPhone: "555-775-7755",
+    billEmail: "TW@schedulize.com",
+    billPosition: "COO",
     address: "6256 Greenwich Dr",
     city: "San Diego",
     state: "CA",
@@ -123,7 +123,7 @@ const contractorSeed = [
     address: "3810 Valley Centre Dr",
     city: "San Diego",
     state: "CA",
-    zipCode: 92113,
+    postalCode: 92113,
     coords: {
       lat: 32.938572,
       lng: -117.230389
@@ -142,7 +142,7 @@ const contractorSeed = [
     address: "10631 Camino Ruiz",
     city: "San Diego",
     state: "CA",
-    zipCode: 92126,
+    postalCode: 92126,
     coords: {
       lat: 32.91165,
       lng: -117.143575
