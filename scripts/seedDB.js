@@ -183,22 +183,22 @@ const appointmentSeed = [
   {
     // dateInput: "today",
     // apptDate: "today",
-    assigneeFirstName: "firstName",
-    assigneelastName: "lastName",
+    assigneeFirstName: "Dom",
+    assigneeLastName: "Toretto",
     assigneePhone: 1231231234,
-    adjusterFirstName: "FirstName",
-    adjusterLastName: "LastName",
+    adjusterFirstName: "Brian",
+    adjusterLastName: "Spilner",
     adjusterPhone: 1231231234,
     assignmentType: "legal",
-    notes: "stuff",
-    refName: "Person",
+    notes: "A Quarter Mile at a Time",
+    refName: "Deckard Shaw",
     refNumber: 5,
-    locationName: "somewhere",
-    address: "1234 somewhere lane",
+    locationName: "DSS",
+    address: "1450 Frazee Rd",
     city: "San Diego",
     state: "CA",
-    postalCode: 91911,
-    employeeAssign: "employee1"
+    postalCode: 92108,
+    employeeAssign: "Luke Hobbs"
   }
 ];
 
