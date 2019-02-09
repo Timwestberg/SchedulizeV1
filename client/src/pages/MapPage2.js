@@ -181,8 +181,8 @@ export class TestMap extends Component {
                                     onClick={this.onMarkerClick}
                                     name={client.billing.name}
                                     title={client.firstName + " " + client.lastName}
-                                    // position={client.billing.coords} from cleanClientGeocode
-                                    position={this.state.clientCoords[idx]}
+                                    position={client.billing.coords}
+                                    // position={this.state.clientCoords[idx]}
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}
