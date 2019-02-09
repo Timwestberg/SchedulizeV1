@@ -14,8 +14,9 @@ import {
 import ClientForm from '../ClientForm/index';
 import NewAppointmentForm from '../NewAppointmentForm/NewAppointment';
 import ContractorCard from '../contractor';
-
-
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import './style.css';
 class Forms extends React.Component {
 	state = {
 		forms: {
@@ -63,9 +64,13 @@ class Forms extends React.Component {
 		return (
 			<div>
 				{/* <Grid container justify="center" alignItems="center"> */}
-				<Button variant='outlined' color='primary' onClick={this.handleClickOpen}>
+				{/* <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>
 					Open Forms
-				</Button>
+				</Button> */}
+
+				<Fab color='primary' aria-label='Add' className='formsButton' onClick={this.handleClickOpen}>
+					<AddIcon />
+				</Fab>
 				<Dialog
 					fullScreen={fullScreen}
 					open={this.state.forms.open}
