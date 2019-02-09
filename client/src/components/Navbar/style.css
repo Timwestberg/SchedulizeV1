@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Playfair+Display|Ubuntu');
+
 .topnav {
 	overflow: hidden;
 	background-color: #9ccc65;
 	display: flex;
 	justify-content: center;
+	font-family: 'Merriweather', serif;
 	/* padding-top: 2px; */
 }
 
@@ -29,7 +32,7 @@
 }
 
 .topnav a:hover {
-	background-color: #80deea;
+	background-color: white;
 	color: black;
 }
 

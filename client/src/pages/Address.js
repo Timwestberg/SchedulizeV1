@@ -146,7 +146,7 @@ class Address extends Component {
 							variant='fullWidth'>
 							<Tab label='Contractors' />
 							<Tab label='Clients' />
-							<Tab label='Appointments' />
+							{/* <Tab label='Appointments' /> */}
 						</Tabs>
 					</AppBar>
 					<SwipeableViews
@@ -200,7 +200,7 @@ class Address extends Component {
 								/>
 							))}
 						</TabContainer>
-						<TabContainer dir={theme.direction}>
+						{/* <TabContainer dir={theme.direction}>
 							<ApptSearch onSearchChange={this.changeApptSearch}>ApptSearch</ApptSearch>
 							{appointments.map((appointment) => (
 								<AppointmentCard
@@ -218,7 +218,7 @@ class Address extends Component {
 									key={appointment._id}
 								/>
 							))}
-						</TabContainer>
+						</TabContainer> */}
 					</SwipeableViews>
 				</div>
 			</div>

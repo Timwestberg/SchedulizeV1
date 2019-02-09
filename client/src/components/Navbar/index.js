@@ -25,7 +25,7 @@ const styles = (theme) => ({
 function Navbar(props) {
 	return (
 		<div className='topnav'>
-			<a href='/'>Home</a>
+			{/* <a href='/'>Home</a> */}
 			<a href='/calendar'>Calendar</a>
 			<a href='/addressbook'>Address Book</a>
 			<a href='/map'>Map</a>
@@ -44,7 +44,7 @@ function Navbar(props) {
 				<TextField
 					type='text'
 					id='outlined-search'
-					label='Search field'
+					label='Search Location'
 					name='search'
 					type='search'
 					value={props.value}
@@ -53,7 +53,12 @@ function Navbar(props) {
 					margin='normal'
 					variant='outlined'
 				/>
-				<Button variant='contained' id='SearchButton' className={props.classes.button}>
+				<Button
+					variant='contained'
+					onClick={props.onClick}
+					type='submit'
+					id='SearchButton'
+					className={props.classes.button}>
 					Search
 				</Button>
 			</div>

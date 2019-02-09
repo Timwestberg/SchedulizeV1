@@ -122,8 +122,8 @@ class ContractCard extends React.Component {
 	componentWillReceiveProps = (nextProps) => {
 		this.setState({
 			...nextProps
-		})
-	}
+		});
+	};
 
 	render() {
 		const { classes } = this.props;
@@ -145,36 +145,39 @@ class ContractCard extends React.Component {
 					<ExpansionPanelDetails>
 						<form className={classes.container} noValidate autoComplete='off'>
 							<Grid container spacing={24} direction='row' justify='center' alignItems='flex-start'>
-								<Grid item xs={4}>
-									<Grid container direction='row' justify='flex-end' alignItems='flex-start'>
-										<TextField
-											id='outlined-name'
-											label='First Name'
-											className={classes.textField}
-											value={this.props.conFirstName}
-											name='conFirstName'
-											margin='normal'
-											variant='outlined'
-											disabled={!this.state.editable}
-											onChange={this.handleInputChange}
-											// fullWidth
-										/>
-										<Grid item xs>
-											<TextField
-												id='outlined-name'
-												label='Last Name'
-												className={classes.textField}
-												value={this.state.conLastName}
-												name='conLastName'
-												margin='normal'
-												variant='outlined'
-												fullWidth
-												disabled={!this.state.editable}
-												onChange={this.handleInputChange}
-											/>
-										</Grid>
-									</Grid>
+								<Grid item sm={12} md={11} lg={5}>
 									<TextField
+										fullWidth
+										id='outlined-name'
+										label='First Name'
+										className={classes.textField}
+										value={this.props.conFirstName}
+										name='conFirstName'
+										margin='normal'
+										variant='outlined'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+										// fullWidth
+									/>
+								</Grid>
+								<Grid item sm={12} md={11} lg={6}>
+									<TextField
+										fullWidth
+										id='outlined-name'
+										label='Last Name'
+										className={classes.textField}
+										value={this.state.conLastName}
+										name='conLastName'
+										margin='normal'
+										variant='outlined'
+										fullWidth
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+									/>
+								</Grid>
+								<Grid item sm={12} md={5} lg={5}>
+									<TextField
+										fullWidth
 										id='outlined-number'
 										label='Phone Number'
 										value={this.state.conPhone}
@@ -189,6 +192,8 @@ class ContractCard extends React.Component {
 										disabled={!this.state.editable}
 										onChange={this.handleInputChange}
 									/>
+								</Grid>
+								<Grid item sm={12} md={6} lg={6}>
 									<TextField
 										id='outlined-email-input'
 										label='Email'
@@ -203,6 +208,8 @@ class ContractCard extends React.Component {
 										disabled={!this.state.editable}
 										onChange={this.handleInputChange}
 									/>
+								</Grid>
+								<Grid item sm={12} md={11} lg={11}>
 									<TextField
 										select
 										id='outlined-with-placeholder'
@@ -225,9 +232,12 @@ class ContractCard extends React.Component {
 											</MenuItem>
 										))}
 									</TextField>
+								</Grid>
+								<Grid item sm={4} md={3} lg={3}>
 									<W9CheckBox />
 								</Grid>
-								<Grid item xs={4}>
+
+								<Grid item sm={8} md={8} lg={8}>
 									<TextField
 										id='outlined-full-width'
 										label='Type of Certifcation / Numbers'
@@ -243,6 +253,9 @@ class ContractCard extends React.Component {
 										disabled={!this.state.editable}
 										onChange={this.handleInputChange}
 									/>
+								</Grid>
+
+								<Grid item sm={12} md={11} lg={11}>
 									<TextField
 										id='outlined-full-width'
 										label='Pricing'
@@ -258,6 +271,9 @@ class ContractCard extends React.Component {
 										disabled={!this.state.editable}
 										onChange={this.handleInputChange}
 									/>
+								</Grid>
+
+								<Grid item sm={12} md={11} lg={11}>
 									<TextField
 										id='outlined-multiline-static'
 										label='Notes'
@@ -274,7 +290,7 @@ class ContractCard extends React.Component {
 										onChange={this.handleInputChange}
 									/>
 								</Grid>
-								<Grid item xs={3}>
+								<Grid item sm={12} md={11} lg={11}>
 									<TextField
 										id='outlined-read-only-input'
 										defaultValue='Billing Information'
@@ -286,6 +302,8 @@ class ContractCard extends React.Component {
 										}}
 										variant='outlined'
 									/>
+								</Grid>
+								<Grid item sm={12} md={11} lg={11}>
 									<TextField
 										id='outlined-helperText'
 										label='Location Name'
@@ -299,6 +317,9 @@ class ContractCard extends React.Component {
 										disabled={!this.state.editable}
 										onChange={this.handleInputChange}
 									/>
+								</Grid>
+
+								<Grid item sm={12} md={11} lg={11}>
 									<TextField
 										id='outlined-helperText'
 										label='Street Address'
@@ -312,50 +333,55 @@ class ContractCard extends React.Component {
 										disabled={!this.state.editable}
 										onChange={this.handleInputChange}
 									/>
-									<Grid container direction='row' justify='flex-end' alignItems='flex-start'>
-										<TextField
-											id='outlined-helperText'
-											label='City'
-											defaultValue='City'
-											className={classes.textField}
-											margin='normal'
-											variant='outlined'
-											value={this.state.conCity}
-											name='conCity'
-											disabled={!this.state.editable}
-											onChange={this.handleInputChange}
-										/>
-										<Grid item xs>
-											<TextField
-												id='outlined-helperText'
-												label='State/Province'
-												defaultValue='State'
-												className={classes.textField}
-												margin='normal'
-												variant='outlined'
-												fullWidth
-												value={this.state.conState}
-												name='conState'
-												disabled={!this.state.editable}
-												onChange={this.handleInputChange}
-											/>
-										</Grid>
-									</Grid>
-									<Grid container direction='row'>
-										{/* // justify="flex-end" // alignItems="flex-start" */}
-										<TextField
-											id='outlined-helperText'
-											label='Postal / Zip Code'
-											defaultValue='Zip Code'
-											className={classes.textField}
-											margin='normal'
-											variant='outlined'
-											value={this.state.conZipCode}
-											name='conZipCode'
-											disabled={!this.state.editable}
-											onChange={this.handleInputChange}
-										/>
-									</Grid>
+								</Grid>
+
+								<Grid item sm={12} md={3} lg={3}>
+									<TextField
+										fullWidth
+										id='outlined-helperText'
+										label='City'
+										defaultValue='City'
+										className={classes.textField}
+										margin='dense'
+										variant='outlined'
+										value={this.state.conCity}
+										name='conCity'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+									/>
+								</Grid>
+
+								<Grid item sm={12} md={3} lg={3}>
+									<TextField
+										id='outlined-helperText'
+										label='State/Province'
+										defaultValue='State'
+										className={classes.textField}
+										margin='dense'
+										variant='outlined'
+										fullWidth
+										value={this.state.conState}
+										name='conState'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+									/>
+								</Grid>
+								{/* // justify="flex-end" // alignItems="flex-start" */}
+
+								<Grid item sm={12} md={3} lg={3}>
+									<TextField
+										id='outlined-helperText'
+										label='Postal / Zip Code'
+										fullWidth
+										defaultValue='Zip Code'
+										className={classes.textField}
+										margin='dense'
+										variant='outlined'
+										value={this.state.conZipCode}
+										name='conZipCode'
+										disabled={!this.state.editable}
+										onChange={this.handleInputChange}
+									/>
 								</Grid>
 							</Grid>
 						</form>
