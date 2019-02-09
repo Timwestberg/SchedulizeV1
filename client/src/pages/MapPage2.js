@@ -197,7 +197,7 @@ export class TestMap extends Component {
                             {this.state.clients.map((client, idx) => (
                                 <Marker
                                     onClick={this.onMarkerClick}
-                                    name={client.billName}
+                                    name={client.billing.name}
                                     position={this.state.clientCoords[idx]}
                                     key={client._id}
                                     clientID={client._id}
