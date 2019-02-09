@@ -67,10 +67,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92123,
-    coords: {
-      lat: 32.809641,
-      lng: -117.115324
-    }
+    // coords: {
+    //   lat: 32.809641,
+    //   lng: -117.115324
+    // }
   },
   {
     firstName: "Paul",
@@ -86,10 +86,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92111,
-    coords: {
-      lat: 32.817031,
-      lng: -117.18016
-    }
+    // coords: {
+    //   lat: 32.817031,
+    //   lng: -117.18016
+    // }
   },
   {
     firstName: "John",
@@ -105,10 +105,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92122,
-    coords: {
-      lat: 32.861728,
-      lng: -117.223366
-    }
+    // coords: {
+    //   lat: 32.861728,
+    //   lng: -117.223366
+    // }
   },
   {
     firstName: "Jane",
@@ -124,10 +124,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92113,
-    coords: {
-      lat: 32.938572,
-      lng: -117.230389
-    }
+    // coords: {
+    //   lat: 32.938572,
+    //   lng: -117.230389
+    // }
   },
   {
     firstName: "Dwayne",
@@ -143,10 +143,10 @@ const contractorSeed = [
     city: "San Diego",
     state: "CA",
     postalCode: 92126,
-    coords: {
-      lat: 32.91165,
-      lng: -117.143575
-    }
+    // coords: {
+    //   lat: 32.91165,
+    //   lng: -117.143575
+    // }
   }
 ];
 

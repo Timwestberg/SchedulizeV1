@@ -54,6 +54,7 @@ export class TestMap extends Component {
                 // console.log("contractor ", res.data)
                 //map through contractor state and adding id to argument
                 res.data.map((contractor, contractoridx) => {
+                    //use geocode function here before setting state so that the state can have coords with idx
                     this.loadGeocode(contractor.address, contractoridx)
                 })
                 this.setState({
@@ -113,7 +114,7 @@ export class TestMap extends Component {
         );
     }
 
-
+    //geocode for contractor to be used when contractor is mount before set to state
     loadGeocode = (location, contractoridx) => {
         API.getGeocode(location)
             .then(res => {
@@ -197,13 +198,11 @@ export class TestMap extends Component {
                                 <Marker
                                     onClick={this.onMarkerClick}
                                     name={client.billName}
-                                    title={client.firstName + " " + client.lastName}
-                                    // position={client.billing.coords}
                                     position={this.state.clientCoords[idx]}
                                     key={client._id}
                                     clientID={client._id}
                                     clientID={client._id}
-                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                                    // icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                                 />
                             ))}
                             {this.state.contractors.map((contractor, idx) => (
@@ -211,7 +210,6 @@ export class TestMap extends Component {
                                     onClick={this.onMarkerClick}
                                     name={contractor.locationName}
                                     title={contractor.firstName + " " + contractor.lastName}
-                                    // position={contractor.coords}
                                     position={this.state.contractorCoords[idx]}
                                     location={contractor.address + " " +
                                         contractor.city + " " +
@@ -219,7 +217,7 @@ export class TestMap extends Component {
                                     key={contractor._id}
                                     contractorID={contractor._id}
                                     contractorID={contractor._id}
-                                    icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                    icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
                                 />
                             ))}
                             <InfoWindow
