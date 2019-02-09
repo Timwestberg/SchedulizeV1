@@ -54,7 +54,7 @@ import { render } from "react-dom";
 import moment from "dayz/lib/moment-range";
 import Dayz from "dayz";
 import API from "../../utils/API";
-// require('./demo.scss');
+import "dayz/demo.scss";
 let COUNT = 1;
 
 class DailyView extends React.Component {
@@ -70,49 +70,49 @@ class DailyView extends React.Component {
       date,
       display: "week",
       events: new Dayz.EventsCollection([
-        {
-          content: "Continuing event Past",
-          range: moment.range(moment("2019-02-08"), moment("2019-02-14"))
-        },
+        // {
+        //   content: "Continuing event Past",
+        //   range: moment.range(moment("2019-02-08"), moment("2019-02-14"))
+        // },
+
+        // {
+        //   content: "Continuing event Before",
+        //   range: moment.range("2019-02-04", "2019-02-09")
+        // },
+
+        // {
+        //   content: "Weeklong",
+        //   range: moment.range("2019-02-06", moment("2019-02-12").endOf("day"))
+        // },
+
+        // {
+        //   content: "A Longer Event",
+        //   range: moment.range(moment("2019-02-04"), moment("2019-02-14"))
+        // },
+
+        // {
+        //   content: "Inclusive",
+        //   range: moment.range(moment("2019-02-07"), moment("2019-02-12"))
+        // },
 
         {
-          content: "Continuing event Before",
-          range: moment.range("2019-02-04", "2019-02-09")
-        },
-
-        {
-          content: "Weeklong",
-          range: moment.range("2019-02-06", moment("2019-02-12").endOf("day"))
-        },
-
-        {
-          content: "A Longer Event",
-          range: moment.range(moment("2019-02-04"), moment("2019-02-14"))
-        },
-
-        {
-          content: "Inclusive",
-          range: moment.range(moment("2019-02-07"), moment("2019-02-12"))
-        },
-
-        {
-          content: "9am - 2pm (resizable)",
+          content: `Tim Westberg: ${moment().format("MMMM Do YYYY")}`,
           resizable: { step: 15 },
           range: moment.range(
-            moment("2019-02-11").hour(9),
-            moment("2019-02-11").hour(14)
+            moment().hour(10).minute(0),
+            moment().hour(14).minute(0)
           )
         },
 
-        {
-          content: "8am - 8pm (non-resizable)",
-          range: moment.range(
-            moment("2019-02-07").hour(8),
-            moment("2019-02-07")
-              .hour(21)
-              .minutes(40)
-          )
-        }
+        // {
+        //   content: "8am - 8pm (non-resizable)",
+        //   range: moment.range(
+        //     moment("2019-02-07").hour(8),
+        //     moment("2019-02-07")
+        //       .hour(21)
+        //       .minutes(40)
+        //   )
+        // }
         // {
         //   content: "10am - 10pm",
         //   range: moment.range(
