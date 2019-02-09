@@ -53,6 +53,31 @@ const clientSeed = [
         //   lng: -117.243544
         // }
     }
+  },
+  {
+    name: "Company Name",
+    phone: "555-555-7777",
+    email: "mpmks1@try.com",
+    position: "CEO",
+    firstName: "Mira",
+    lastName: "Starwars",
+    phone: "555-666-5555",
+    email: "orange@county.com",
+    position: "Boss",
+    billing: {
+        name: "Mira Starwars",
+        phone: "777-775-7755",
+        email: "TW@schedulize.com",
+        position: "COO",
+        address: "95700 Gilman Dr",
+        city: "San Diego",
+        state: "CA",
+        // zipCode: "92093",
+        // coords: {
+        //   lat: 32.881923,
+        //   lng: -117.243544
+        // }
+    }
   }
 ];
 

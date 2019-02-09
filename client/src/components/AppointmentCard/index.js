@@ -88,7 +88,7 @@ class NewAppointmentCard extends React.Component {
 	};
 
 	captureappointmentID = () => {
-			console.log("this fucking worked "+ this.state.selectedPlace.contractorID)
+			console.log("this fucking worked "+ this.state.selectedAppointment.appointmentID)
 		};
 	
 
