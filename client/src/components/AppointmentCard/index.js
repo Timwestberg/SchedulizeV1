@@ -375,7 +375,7 @@ class NewAppointmentCard extends React.Component {
 									{/* Add Button to save the assignment to the database */}
 									<Grid item xs={6}>
 									{/* call icon in with fab */}
-										<Fab aria-label='accessibility' className={classes.fab} type='submit' onClick={this.captureapptID}>
+										<Fab aria-label='accessibility' className={classes.fab} type='submit' onClick={this.captureapptIDgit }>
 											<Accessibility />
 										</Fab>
 									</Grid>
