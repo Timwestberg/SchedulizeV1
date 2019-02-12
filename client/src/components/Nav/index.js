@@ -29,7 +29,7 @@ function Nav() {
 			<AppBar className='AppBar'>
 				{/*color={theme.palette.primary.main}*/}
 				<Toolbar>
-					<Typography variant='h6' color='default'>
+					<Typography id='title' variant='h2' color='default'>
 						Schedulize
 					</Typography>
 				</Toolbar>

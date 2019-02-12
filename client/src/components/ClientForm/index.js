@@ -27,7 +27,7 @@ const styles = (theme) => ({
 		marginLeft: theme.spacing.unit,
 		marginRight: theme.spacing.unit
 	},
-	dense: {
+	normal: {
 		marginTop: 16
 	},
 	menu: {
@@ -226,11 +226,11 @@ class ClientCard extends React.Component {
 											onChange={this.handleContactChange}
 											variant='outlined'
 											fullWidth
-											margin='dense'
+											margin='normal'
 										/>
 									</Grid>
 
-									<Grid item sm={12} md={11} lg={5}>
+									<Grid item sm={12} md={11} lg={6}>
 										<TextField
 											id='outlined-name'
 											label='Last Name'
@@ -238,7 +238,7 @@ class ClientCard extends React.Component {
 											name='lastName'
 											value={contactPerson.lastName}
 											onChange={this.handleContactChange}
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 											fullWidth
 										/>
@@ -246,6 +246,7 @@ class ClientCard extends React.Component {
 
 									<Grid item sm={12} md={11} lg={5}>
 										<TextField
+											fullWidth
 											id='outlined-number'
 											label='Phone Number'
 											name='phone'
@@ -256,12 +257,12 @@ class ClientCard extends React.Component {
 											InputLabelProps={{
 												shrink: true
 											}}
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 										/>
 									</Grid>
 
-									<Grid item sm={12} md={11} lg={5}>
+									<Grid item sm={12} md={11} lg={6}>
 										<TextField
 											id='outlined-email-input'
 											label='Email'
@@ -272,7 +273,7 @@ class ClientCard extends React.Component {
 											value={contactPerson.email}
 											onChange={this.handleContactChange}
 											autoComplete='email'
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 										/>
 									</Grid>
@@ -383,6 +384,7 @@ class ClientCard extends React.Component {
 
 									<Grid item sm={12} md={6} lg={5}>
 										<TextField
+											fullWidth
 											id='outlined-number'
 											label='Billing Phone Number'
 											name='phone'
@@ -393,12 +395,12 @@ class ClientCard extends React.Component {
 											InputLabelProps={{
 												shrink: true
 											}}
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 										/>
 									</Grid>
 
-									<Grid item sm={12} md={6} lg={5}>
+									<Grid item sm={12} md={6} lg={6}>
 										<TextField
 											id='outlined-email-input'
 											label='Billing Email'
@@ -409,7 +411,7 @@ class ClientCard extends React.Component {
 											value={contactBilling.email}
 											onChange={this.handleBillingChange}
 											autoComplete='email'
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 										/>
 									</Grid>
@@ -432,10 +434,11 @@ class ClientCard extends React.Component {
 									<Grid item sm={12} md={3} lg={3}>
 										<TextField
 											id='outlined-helperText'
+											fullWidth
 											label='City'
 											// defaultValue="City"
 											className={classes.textField}
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 											name='city'
 											value={location.city}
@@ -449,7 +452,7 @@ class ClientCard extends React.Component {
 											label='State/Province'
 											//   defaultValue="State"
 											className={classes.textField}
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 											fullWidth
 											name='state'
@@ -459,11 +462,12 @@ class ClientCard extends React.Component {
 									</Grid>
 									<Grid item sm={12} md={3} lg={3}>
 										<TextField
+											fullWidth
 											id='outlined-helperText'
 											label='Postal / Zip Code'
 											//   defaultValue="Zip Code"
 											className={classes.textField}
-											margin='dense'
+											margin='normal'
 											variant='outlined'
 											name='zipCode'
 											value={location.zipCode}
