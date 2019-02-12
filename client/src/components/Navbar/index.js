@@ -1,12 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import ClientSearch from '../Searchy/clientSearchy.js';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import './style.css';
 import Forms from '../Forms';
-import ApptSearch from '../Searchy/appointmentSearchy.js';
-import ContractorSearch from '../Searchy/contractorSearchy.js';
 import Button from '@material-ui/core/Button';
 
 const styles = (theme) => ({

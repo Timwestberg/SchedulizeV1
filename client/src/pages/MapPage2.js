@@ -186,12 +186,12 @@ export class TestMap extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={24} sm={12}>
 
-                        <Navbar
+                        {/* <Navbar
                             onClick={this.addressSearch}
                             onChange={this.handleInputChange}
                             //search is equivalent to name but push through props
                             value={this.state.search}
-                        />
+                        /> */}
                     </Grid>
 
                     <Grid item xs={6} sm={3}>
