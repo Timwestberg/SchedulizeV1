@@ -30,7 +30,7 @@ function Nav() {
 				{/*color={theme.palette.primary.main}*/}
 				<Toolbar>
 					<Typography id='title' variant='h2' color='default'>
-						Schedulize
+						Schedulizetest
 					</Typography>
 				</Toolbar>
 			</AppBar>

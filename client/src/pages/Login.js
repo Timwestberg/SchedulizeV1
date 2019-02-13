@@ -5,18 +5,19 @@ import API from '../utils/API';
 import Navbar from '../components/Nav/index';
 import './style.css';
 
-const styles = theme => ({
-  main: {
-    width: 'auto',
-    display: 'block', // Fix IE 11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-      width: 400,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+const styles = (theme) => ({
+	main: {
+		width: 'auto',
+		display: 'block', // Fix IE 11 issue.
+		marginLeft: theme.spacing.unit * 3,
+		marginRight: theme.spacing.unit * 3,
+		[theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+			width: 400,
+			marginLeft: 'auto',
+			marginRight: 'auto'
 		}
-	}	});
+	}
+});
 
 class LoginPage extends React.Component {
 	/**
@@ -82,7 +83,7 @@ class LoginPage extends React.Component {
 	render() {
 		return (
 			<main className={`box ${styles.main}`}>
-				<Navbar />
+				{/* <Navbar /> */}
 				<br />
 				<br />
 				<SignIn onSubmit={this.processLogin} onChange={this.changeUser} user={this.state.user} />

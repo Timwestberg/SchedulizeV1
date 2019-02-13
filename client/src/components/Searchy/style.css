@@ -1,7 +1,11 @@
 .selSearch {
 	width: 100%;
-	border-radius: 13px;
+	background-color: #e0f2f1;
+	border-radius: 53px 53px 53px 53px;
+	box-shadow: 3px 7px 31px -12px rgba(0, 0, 0, 0.75);
+	margin: 20px;
 	outline: none;
 	height: 90px;
 	font-size: 25px;
+	text-align: center;
 }

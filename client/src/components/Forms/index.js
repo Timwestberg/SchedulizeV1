@@ -71,40 +71,15 @@ class Forms extends React.Component {
 				<Fab color='primary' aria-label='Add' className='formsButton' onClick={this.handleClickOpen}>
 					<AddIcon />
 				</Fab>
+
 				<Dialog
 					fullScreen={fullScreen}
 					open={this.state.forms.open}
 					onClose={this.handleClose}
 					aria-labelledby='responsive-dialog-title'>
-					<DialogTitle id='responsive-dialog-title'>{'Would you like to add to the database?'}</DialogTitle>
+					<DialogTitle id='responsive-dialog-title'>{'What would you like to add?'}</DialogTitle>
 					<DialogContent>
-						{/* Contractor Form Btn */}
-						<Grid container justify='center'>
-							<Grid item xs={7}>
-								<Button variant='outlined' fullWidth color='primary' onClick={this.handleContractorOpen}>
-									Contractor Form
-								</Button>
-								<Dialog
-									fullScreen={fullScreen}
-									open={this.state.contractor.open}
-									onClose={this.handleClose}
-									aria-labelledby='responsive-dialog-title'>
-									<ContractorCard />
-								</Dialog>
-							</Grid>
-							{/* Client Form Btn */}
-							<Grid item xs={7}>
-								<Button variant='outlined' fullWidth color='primary' onClick={this.handleClientOpen}>
-									Client Form
-								</Button>
-								<Dialog
-									fullScreen={fullScreen}
-									open={this.state.client.open}
-									onClose={this.handleClose}
-									aria-labelledby='responsive-dialog-title'>
-									<ClientForm />
-								</Dialog>
-							</Grid>
+						<Grid container spacing={24} justify='center'>
 							{/* Appointment Form Btn */}
 							<Grid item xs={7}>
 								<Button variant='outlined' fullWidth color='primary' onClick={this.handleAppointmentOpen}>
@@ -118,14 +93,37 @@ class Forms extends React.Component {
 									<NewAppointmentForm />
 								</Dialog>
 							</Grid>
+							{/* Client Form Btn */}
+							<Grid item xs={7}>
+								<Button variant='outlined' fullWidth color='primary' onClick={this.handleClientOpen}>
+									Client
+								</Button>
+								<Dialog
+									fullScreen={fullScreen}
+									open={this.state.client.open}
+									onClose={this.handleClose}
+									aria-labelledby='responsive-dialog-title'>
+									<ClientForm />
+								</Dialog>
+							</Grid>
+							{/* Contractor Form Btn */}
+							<Grid item xs={7}>
+								<Button variant='outlined' fullWidth color='primary' onClick={this.handleContractorOpen}>
+									Contractor
+								</Button>
+								<Dialog
+									fullScreen={fullScreen}
+									open={this.state.contractor.open}
+									onClose={this.handleClose}
+									aria-labelledby='responsive-dialog-title'>
+									<ContractorCard />
+								</Dialog>
+							</Grid>
 						</Grid>
 					</DialogContent>
 					<DialogActions>
-						<Button onClick={this.handleClose} color='primary'>
-							Disagree
-						</Button>
 						<Button onClick={this.handleClose} color='primary' autoFocus>
-							Agree
+							Cancel
 						</Button>
 					</DialogActions>
 				</Dialog>

@@ -133,7 +133,7 @@ class Address extends Component {
 		const { classes, theme } = this.props;
 		return (
 			<div>
-				<Navbar />
+				{/* <Navbar /> */}
 
 				<br />
 				<div className={classes.root}>
@@ -157,6 +157,7 @@ class Address extends Component {
 							<ContractorSearch onSearchChange={this.changeContractorSearch}>
 								Contractor Search{' '}
 							</ContractorSearch>
+
 							{contractors.map((contractor) => (
 								<ContractCard
 									// conStreetNumber={contractor.location.streetNumber}
