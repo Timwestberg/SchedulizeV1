@@ -16,6 +16,7 @@ import { white } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
 import API from '../../utils/API';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import './style.css';
 
 const styles = (theme) => ({
 	cardHeader: {
@@ -130,7 +131,7 @@ class ClientCard extends React.Component {
 
 		return (
 			<div>
-				<ExpansionPanel>
+				<ExpansionPanel className='clientPanel'>
 					<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 						<AppBar position='static' className={classes.cardHeader}>
 							<Toolbar>

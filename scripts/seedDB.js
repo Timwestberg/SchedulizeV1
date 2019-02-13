@@ -323,25 +323,6 @@ const appointmentSeed = [
 		employeeAssign: 'Luke Hobbs'
 	},
 	{
-		firstName: 'Rod',
-		lastName: 'Swartwood',
-		phone: '555-777-1290',
-		email: 'Rod@schedulize.com',
-		certification: 'Qualified',
-		standing: 'Good',
-		pricing: 500,
-		notes: 'Good Standing',
-		locationName: 'HR Prime LLC',
-		address: '1257 Armorlite Dr',
-		city: 'San Marcos',
-		state: 'CA',
-		postalCode: 92026
-		// coords: {
-		//   lat: 32.809641,
-		//   lng: -117.115324
-		// }
-	},
-	{
 		dateInput: '2019-02-09',
 		apptDate: '2019-02-12',
 		assigneeFirstName: 'Dom',

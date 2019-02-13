@@ -16,6 +16,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { white } from '@material-ui/core/colors';
 import W9CheckBox from '../contractor/form/W9CheckBox';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import './style.css';
+
 const styles = (theme) => ({
 	cardHeader: {
 		background: `#4caf50`,
@@ -129,7 +131,7 @@ class ContractCard extends React.Component {
 		const { classes } = this.props;
 		return (
 			<div>
-				<ExpansionPanel>
+				<ExpansionPanel className='contractorPanel'>
 					<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 						<AppBar position='static' className={classes.cardHeader}>
 							<Toolbar>
