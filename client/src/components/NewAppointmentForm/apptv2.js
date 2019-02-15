@@ -188,40 +188,26 @@ class NewAppointmentForm extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // const formData = {};
-    // for (let field in this.state.apptForm) {
-    //   formData[field] = this.state.apptForm[field].value;
-    // }
-    const {apptForm} = this.state
-    API.saveAppt({
-    //   formData
-        dateInput: apptForm.dateInput.value,
-        apptDate: apptForm.apptDate.value,
-        assigneeFirstName: apptForm.assigneeFirstName.value,
-        assigneeLastName: apptForm.assigneeLastName.value,
-        adjusterFirstName: apptForm.adjusterFirstName.value,
-        adjusterLastName: apptForm.adjusterLastName.value,
-        refName: apptForm.refName.value,
-        refNumber: apptForm.refNumber.value,
-        locationName: apptForm.locationName.value,
-        address: apptForm.address.value,
-        city: apptForm.city.value,
-        state: apptForm.state.value,
-        postalCode: apptForm.postalCode.value
-    }).then(res => {
-      console.log(res.data);
-      this.resetState()
+    const { apptForm } = this.state;
+
+    const formData = {};
+    for (let field in apptForm) {
+      formData[field] = apptForm[field].value;
+    }
+
+    API.saveAppt(formData).then(res => {
+      setTimeout(() => {
+        alert(`Appointment #${res.data._id} has been Saved`);
+      }, 100);
+      const formData = {};
+      for (let field in apptForm) {
+        apptForm[field].value = "";
+        formData[field] = apptForm[field].value;
+      }
+      this.setState({ apptForm: { ...apptForm, formData } });
     });
-    // console.log(this.state);
   };
 
-  resetState = (event, inputId) => {
-    const updatedApptForm = { ...this.state.apptForm };
-    const updatedFormElement = { ...updatedApptForm[inputId] };
-    updatedFormElement.value = "";
-    updatedApptForm[inputId] = updatedFormElement;
-    this.setState({ apptForm: updatedApptForm });
-  }
 
   render() {
     const { classes } = this.props;
