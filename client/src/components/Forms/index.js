@@ -15,8 +15,9 @@ import ClientForm from '../ClientForm/index';
 import NewAppointmentForm from '../NewAppointmentForm/NewAppointment';
 import ContractorCard from '../contractor';
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import CreateIcon from '@material-ui/icons/Create';
 import './style.css';
+import Tooltip from '@material-ui/core/Tooltip';
 class Forms extends React.Component {
 	state = {
 		forms: {
@@ -67,10 +68,11 @@ class Forms extends React.Component {
 				{/* <Button variant='outlined' color='primary' onClick={this.handleClickOpen}>
 					Open Forms
 				</Button> */}
-
-				<Fab color='primary' aria-label='Add' className='formsButton' onClick={this.handleClickOpen}>
-					<AddIcon />
-				</Fab>
+				<Tooltip title='Forms' placement='right-start'>
+					<Fab color='primary' aria-label='Add' className='formsButton' onClick={this.handleClickOpen}>
+						<CreateIcon />
+					</Fab>
+				</Tooltip>
 
 				<Dialog
 					fullScreen={fullScreen}
