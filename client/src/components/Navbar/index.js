@@ -1,88 +1,154 @@
-import React from "react";
-import TextField from "@material-ui/core/TextField";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
-import "./style.css";
-import Forms from "../Forms";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  input: {
-    display: "none"
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
-  }
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './style.css';
+import Forms from '../Forms';
+import { withStyles, AppBar, Toolbar, Typography, MenuItem, Menu, Grid } from '@material-ui/core/';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Tooltip from '@material-ui/core/Tooltip';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+const styles = (theme) => ({
+	button: {
+		margin: theme.spacing.unit
+	},
+	input: {
+		display: 'none'
+	},
+	textField: {
+		marginLeft: theme.spacing.unit,
+		marginRight: theme.spacing.unit
+	},
+	root: {
+		flexGrow: 1
+	},
+	grow: {
+		flexGrow: 1,
+		color: 'white'
+	},
+	menuButton: {
+		marginLeft: -12,
+		marginRight: 20
+	},
+	link: {
+		textDecoration: 'none'
+	}
 });
 
-function Navbar(props) {
-  return (
-    <div className='topnav'>
-			{/* <a href='/'>Home</a> */}
-			{/* first way */}
-      {/* <Link to={"/calendar"}>
-        <a onClick={() => props.handlePageChange("Calendar")}>Calendar</a>
-      </Link>
-      <Link to={"/addressbook"}>
-        <a onClick={() => props.handlePageChange("AddressBook")}>
-          Address Book
-        </a>
-      </Link>
-      <Link to={"/map"}>
-        <a onClick={() => props.handlePageChange("Map")}>Map</a>
-      </Link> */}
+class NavBar extends React.Component {
+	state = {
+		auth: true,
+		anchorEl: null
+	};
 
-			{/* second way */}
-        <a onClick={() => props.handlePageChange("Calendar")}>Calendar</a>
-        <a onClick={() => props.handlePageChange("AddressBook")}>
-          Address Book
-        </a>
-        <a onClick={() => props.handlePageChange("Map")}>Map</a>
+	handleChange = (event) => {
+		this.setState({ auth: event.target.checked });
+	};
 
-      <a href='/'>Logout</a>
-      <br />
-      {/* <div className="search-container">
-      <input type="text" placeholder="Search.." name="search" value={props.value} onChange={props.onChange}/>
-      <button onClick={props.onClick} type="submit">Submit</button>
-  </div> */}
-      {/* </div>
-  ); */}
+	handleMenu = (event) => {
+		this.setState({ anchorEl: event.currentTarget });
+	};
 
-      <Forms />
+	handleClose = () => {
+		this.setState({ anchorEl: null });
+	};
 
-      <div className='search-container'>
-        <TextField
-          type='text'
-          id='outlined-search'
-          label='Search Location'
-          name='search'
-          type='search'
-          value={props.value}
-          className={props.classes.textField}
-          onChange={props.onChange}
-          margin='normal'
-          variant='outlined'
-        />
-        <Button
-          variant='contained'
-          onClick={props.onClick}
-          type='submit'
-          id='SearchButton'
-          className={props.classes.button}
-        >
-          Search
-        </Button>
-      </div>
-    </div>
-  );
+	render() {
+		const { classes } = this.props;
+		const { auth, anchorEl } = this.state;
+		const open = Boolean(anchorEl);
+
+		return (
+			<Grid
+				container
+				spacing={16}
+				direction='row'
+				justify='space-evenly'
+				alignItems='center'
+				className={classes.root}>
+				<AppBar position='static'>
+					<Toolbar>
+						<Grid item xs>
+							<Typography align='center' variant='h6' color='inherit' className={classes.grow}>
+								Schedulize
+							</Typography>
+						</Grid>
+
+						<Grid item xs>
+							<MenuItem onClick={() => this.props.handlePageChange('Calendar')}>
+								<Typography align='center' variant='h6' color='inherit' className={classes.grow}>
+									Calendar
+								</Typography>
+							</MenuItem>
+						</Grid>
+
+						<Grid item xs>
+							<MenuItem align='center' onClick={() => this.props.handlePageChange('AddressBook')}>
+								<Typography align='center' variant='h6' color='inherit' className={classes.grow}>
+									AddressBook
+								</Typography>
+							</MenuItem>
+						</Grid>
+
+						<Grid item xs>
+							<MenuItem align='center' onClick={() => this.props.handlePageChange('Map')}>
+								<Typography align='center' variant='h6' color='inherit' className={classes.grow}>
+									Map
+								</Typography>
+							</MenuItem>
+						</Grid>
+
+						<Grid item xs>
+							<Forms />
+						</Grid>
+
+						<div>
+							<Grid item xs>
+								<Tooltip title='Options' placement='left-start'>
+									<IconButton
+										aria-owns={open ? 'menu-appbar' : undefined}
+										aria-haspopup='true'
+										onClick={this.handleMenu}
+										color='inherit'>
+										<AccountCircle />
+									</IconButton>
+								</Tooltip>
+							</Grid>
+
+							<Menu
+								id='menu-appbar'
+								anchorEl={anchorEl}
+								anchorOrigin={{
+									vertical: 'top',
+									horizontal: 'right'
+								}}
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'right'
+								}}
+								open={open}
+								onClose={this.handleClose}>
+								<MenuItem>
+									<Link className={classes.link} to={'/addUser'}>
+										Add User
+									</Link>
+								</MenuItem>
+								<MenuItem>
+									<Link className={classes.link} to={'/'}>
+										Logout
+									</Link>
+								</MenuItem>
+							</Menu>
+						</div>
+					</Toolbar>
+				</AppBar>
+			</Grid>
+		);
+	}
 }
 
-Navbar.propTypes = {
-  classes: PropTypes.object.isRequired
+NavBar.propTypes = {
+	classes: PropTypes.object.isRequired
 };
-export default withStyles(styles)(Navbar);
+
+export default withStyles(styles)(NavBar);
